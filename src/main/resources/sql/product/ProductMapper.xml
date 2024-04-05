@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+				
+<mapper namespace="ProductMapper">
+	<resultMap id = "productSelectMap" type = "productVO">
+		<!-- <result property = "fileName" column = "image_file" jdbcType="VARCHAR"/> -->
+  		<!-- <result property = "manuDate" column = "manufacture_day" jdbcType="VARCHAR"/> -->
+  		<result property = "manuDate" column = "manufacture_day" jdbcType="DATE"/>
+  		<result property = "price" column = "price" jdbcType="NUMERIC"/>
+  		<result property = "prodDetail" column = "prod_detail" jdbcType="VARCHAR"/>
+  		<result property = "prodName" column = "prod_name" jdbcType = "VARCHAR"/>
+  		<result property = "prodNo" column = "prod_no" jdbcType = "NUMERIC"/>
+  		<result property = "regDate" column = "reg_date" jdbcType = "DATE"/>
+		<result property = "count" column = "count" jdbcType = "NUMERIC"/>
+	</resultMap>
+	
+	<resultMap id = "fileSelectMap"  type = "FileVO">
+		<result property = "imageNo" column = "image_no" jdbcType="NUMERIC"/>
+		<result property = "prodNo" column = "prod_no" jdbcType="NUMERIC"/>
+  		<result property = "fileName" column = "file_name" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+  	<sql id = "getProductListSelect">
+  		 SELECT * FROM product 
+  		<where>
+  			<if test = "searchCondition == 'prodNo'">
+  				prod_no LIKE '%'||#{searchKeyword}||'%'
+  			</if>
+  			<if test = "searchCondition == 'prodName'">
+				prod_name LIKE '%'||#{searchKeyword}||'%'
+  			</if>
+  			  <if test = "searchCondition == 'price'">
+				price BETWEEN #{searchKeywordSub:NUMERIC} AND #{searchKeywordThird:NUMERIC}
+  			</if>
+  		</where>
+  		  	<if test = "sortCondition == 'prodNo' ">
+  				ORDER BY prod_no
+  			</if>
+  			<if test = "sortCondition == 'prodName' ">
+  				ORDER BY prod_name
+  			</if>
+  		  	<if test = "sortCondition == 'price' ">
+  				ORDER BY price
+  			</if>
+  			<if test = "sortCondition == null">
+  				ORDER BY prod_no
+  			</if>
+  	</sql>
+  	
+  	<insert id="addProduct"  parameterType = "productVO">
+  		INSERT
+  		INTO product
+  		VALUES(
+  			seq_product_prod_no.nextval,
+  			#{prodName:VARCHAR},
+  			#{prodDetail:VARCHAR},
+  			#{manuDate:DATE},
+  			#{price:NUMERIC},
+  			SYSDATE,
+  			#{count:NUMERIC}
+  		)					
+  	</insert>
+  	
+  	 <select id="getProduct"  parameterType = "int"  resultMap = "productSelectMap">
+		SELECT *
+		FROM product   				
+		WHERE prod_no = #{prod_no:NUMERIC}							
+  	</select>
+  	
+  	 <update id = "updateProduct" parameterType = "productVO">
+  		UPDATE product
+  		<set>
+  			<if test = "prodName != null" >prod_name = #{prodName:VARCHAR},</if>
+  			<if test = "prodDetail != null"> prod_detail = #{prodDetail:VARCHAR},</if>
+  			<if test = "manuDate != null"> manufacture_day = #{manuDate:DATE},</if>
+  			<if test = "price != null"> price = #{price:NUMERIC},</if>
+  			<if test = "count != null"> count = #{count:NUMERIC}</if>
+  		</set>
+  		WHERE prod_no = #{prodNo:NUMERIC}
+  	</update>
+  	
+  	<delete id = "deleteProduct" parameterType = "int">
+  		DELETE 
+  		FROM 
+  		product WHERE prod_no = #{prodNo:NUMERIC}
+  	</delete>
+  	
+  	<select id = "getProductList"  parameterType = "searchVO"  resultMap = "productSelectMap">
+  		SELECT *
+  		FROM
+  		( SELECT inner_table.*, ROWNUM AS row_seq 
+  		  FROM ( <include refid = "getProductListSelect"/> ) inner_table
+  		WHERE ROWNUM &lt; #{page} * #{pageSize} + 1 )
+  		WHERE row_seq BETWEEN (#{page} - 1) * #{pageSize} + 1 AND #{page} * #{pageSize}
+  	</select>
+  	
+  	<select id = "getProductCount" parameterType = "searchVO"  resultType = "int">
+  		SELECT COUNT(*) FROM (
+			<include refid = "getProductListSelect"/>
+		)
+	</select>
+	
+	<update id = "updateProductCount" parameterType = "map" >
+		UPDATE product
+		<set>
+			<if test = "countResult != null" >count = #{countResult:NUMERIC}</if>
+		</set>
+		WHERE prod_no = #{prodNo:NUMERIC}
+	</update>
+	
+	<select id = "getProductImage" parameterType = "int" resultMap = "fileSelectMap">
+		SELECT * 
+		FROM productImage 
+		WHERE prod_no = #{prodNo:NUMERIC}
+	</select>
+	
+	<insert id = "addProductImage" parameterType = "FileVO">
+		INSERT 
+		INTO productImage
+		VALUES(
+  			seq_product_image_no.nextval,
+ 			seq_product_prod_no.currval,
+  			#{fileName:VARCHAR}
+  		)	
+	</insert>
+	
+	<insert id = "updateAddProductImage" parameterType = "FileVO">
+		INSERT 
+		INTO productImage
+		VALUES(
+  			seq_product_image_no.nextval,
+ 			#{prodNo:NUMERIC},
+  			#{fileName:VARCHAR}
+  		)	
+	</insert>
+	
+	<delete id = "deleteProductImage"  parameterType = "int">
+  		DELETE 
+  		FROM 
+  		productImage WHERE prod_no = #{prodNo:NUMERIC}
+  	</delete>
+  	
+  	<select id = "getProductInfo" resultMap = "productSelectMap">
+  		SELECT prod_no, prod_name FROM product
+  	</select>
+</mapper>
