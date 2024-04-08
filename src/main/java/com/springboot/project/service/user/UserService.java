@@ -3,7 +3,7 @@ package com.springboot.project.service.user;
 import java.util.List;
 import java.util.Map;
 
-import com.model2.mvc.common.SearchVO;
+import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.UserVO;
 
 

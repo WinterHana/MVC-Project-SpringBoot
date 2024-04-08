@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.model2.mvc.common.SearchVO;
 import com.model2.mvc.common.util.CommonUtil;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductVO;
+import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.product.ProductDAO;
 import com.springboot.project.service.product.ProductService;

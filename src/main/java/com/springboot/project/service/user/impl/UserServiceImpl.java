@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.model2.mvc.common.SearchVO;
 import com.model2.mvc.common.util.CommonUtil;
+import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.purchase.PurchaseDAO;
 import com.springboot.project.service.user.UserDAO;

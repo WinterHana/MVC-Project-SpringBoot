@@ -3,9 +3,9 @@ package com.springboot.project.service.product;
 import java.util.List;
 import java.util.Map;
 
-import com.model2.mvc.common.SearchVO;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductVO;
+import com.springboot.project.service.domain.SearchVO;
 
 public interface ProductDAO {
 	public int addProduct(ProductVO productVO);

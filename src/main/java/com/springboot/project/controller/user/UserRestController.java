@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.model2.mvc.common.Page;
-import com.model2.mvc.common.SearchVO;
 import com.springboot.project.controller.common.CommonController;
+import com.springboot.project.service.domain.Page;
+import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.user.UserService;
 

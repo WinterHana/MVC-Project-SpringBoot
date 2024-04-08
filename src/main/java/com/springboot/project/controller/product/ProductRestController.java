@@ -23,14 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.model2.mvc.common.Page;
-import com.model2.mvc.common.SearchVO;
 import com.model2.mvc.common.util.HistoryUtil;
 import com.model2.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
 import com.springboot.project.service.domain.FileVO;
+import com.springboot.project.service.domain.Page;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
+import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
 
