@@ -12,10 +12,4 @@ public class ServletInitializer extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(MiniProjectApplication.class);
 	}
-
-	public void onStartup(ServletContext servletContext) throws ServletException {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

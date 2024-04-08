@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+	Main point of MyBatis Framework 
+	- JDBC Connection
+	- Mapper : SQL meta-data
+-->
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+ <configuration>	
+ 	
+ 	<!-- Bean Type Aliases -->
+ 	<typeAliases>
+ 		<typeAlias alias = "userVO" type = "com.springboot.project.service.domain.UserVO"/>
+ 		<typeAlias alias = "searchVO" type = "com.springboot.project.service.domain.SearchVO"/>
+ 		<typeAlias alias = "productVO" type = "com.springboot.project.service.domain.ProductVO"/>
+ 		<typeAlias alias = "purchaseVO" type = "com.springboot.project.service.domain.PurchaseVO"/>
+ 		<typeAlias alias = "FileVO" type = "com.springboot.project.service.domain.FileVO"/>
+ 	</typeAliases>
+	 
+	<!-- SQL mapping -->
+	<mappers>
+		<mapper resource = "mapper/user/UserMapper.xml"/>
+		<mapper resource = "mapper/product/ProductMapper.xml"/>
+		<mapper resource = "mapper/purchase/PurchaseMapper.xml"/>
+	</mappers>
+	
+ </configuration>
