@@ -40,7 +40,7 @@ class UserRepositoryJpaTest {
 	
 	@Test
 	public void getUserListTest() {
-		Pageable pageable = PageRequest.of(0, 10);
+		Pageable pageable = PageRequest.of(1, 10);
 		
 		Page<User> result = userRepository.findAll(pageable);
 		
