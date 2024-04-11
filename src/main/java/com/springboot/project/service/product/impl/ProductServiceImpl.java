@@ -22,6 +22,8 @@ import com.springboot.project.service.product.ProductDAO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseDAO;
 
+import jakarta.transaction.Transactional;
+
 @Service("productServiceImpl")
 public class ProductServiceImpl implements ProductService {
 	
@@ -32,6 +34,8 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	@Qualifier("purchaseDAOImpl")
 	private PurchaseDAO purchaseDAO;
+	
+	private String path = "C://Project_Eclipse/MiniProject/src/main/resources/static/img/uploadFiles/";
 	
 	public ProductServiceImpl() {
 		System.out.println("[" + getClass().getName() + " Default Constructor] Call");
@@ -121,6 +125,7 @@ public class ProductServiceImpl implements ProductService {
 		return map;
 	}
 
+	@Transactional
 	@Override
 	public int addProduct(ProductVO productVO, List<MultipartFile> multipartFiles) {
 		int result = 0;
@@ -150,7 +155,7 @@ public class ProductServiceImpl implements ProductService {
 					UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
 					String fileName = uuid + originalFileName;
 					
-					f.transferTo(new File("C://Project_Eclipse/MiniProject/src/main/resources/static/img/uploadFiles/" + fileName));		
+					f.transferTo(new File(path + fileName));		
 					
 					FileVO file = new FileVO();
 					file.setFileName(fileName);
@@ -165,6 +170,7 @@ public class ProductServiceImpl implements ProductService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int updateProduct(ProductVO productVO, List<MultipartFile> multipartFiles) {
 		int result = 0;
@@ -199,7 +205,7 @@ public class ProductServiceImpl implements ProductService {
 					UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
 					String fileName = uuid + originalFileName;
 					
-					f.transferTo(new File("/Project_Eclipse/01.Model2MVCShop(stu)/src/main/webapp/resources/img/uploadFiles/" + fileName));		
+					f.transferTo(new File(path + fileName));		
 					
 					FileVO file = new FileVO();
 					file.setFileName(fileName);
@@ -215,6 +221,7 @@ public class ProductServiceImpl implements ProductService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int deleteProduct(ProductVO product) {
 		int result = 0;

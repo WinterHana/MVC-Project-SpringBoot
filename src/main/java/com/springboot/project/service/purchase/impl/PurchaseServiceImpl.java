@@ -23,6 +23,8 @@ import com.springboot.project.service.purchase.PurchaseService;
 import com.springboot.project.service.purchase.dao.PurchaseDAOImpl;
 import com.springboot.project.service.user.dao.UserDAOImpl;
 
+import jakarta.transaction.Transactional;
+
 @Service("purchaseServiceImpl")
 public class PurchaseServiceImpl implements PurchaseService {
 	
@@ -47,6 +49,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		this.purchaseDAO = purchaseDAO;
 	}
 	
+	@Transactional
 	@Override
 	public int addPurchase(PurchaseVO purchaseVO) {	
 		// addPurchase
@@ -114,6 +117,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int updatePurchase(PurchaseVO purchaseVO) {
 		int result = 0;
@@ -148,6 +152,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int updateTranCode(PurchaseVO purchaseVO) {
 		int result = 0;
@@ -165,6 +170,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int deletePurchase(PurchaseVO purchaseVO) {
 		// addPurchase

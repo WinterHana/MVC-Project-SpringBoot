@@ -61,7 +61,6 @@ public class ProductController extends CommonController  {
 			Model model) {
 		System.out.println("[ProductController.getProduct()] start");
 		
-		ModelAndView modelAndView = new ModelAndView("forward:/product/getProduct.jsp");
 		ProductVO product = productService.getProduct(prodNo);
 		model.addAttribute("product", product);
 		

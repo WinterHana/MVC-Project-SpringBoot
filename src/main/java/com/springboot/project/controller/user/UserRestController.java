@@ -4,12 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +26,8 @@ import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.user.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/rest/user/*")
 public class UserRestController extends CommonController {
@@ -35,9 +36,30 @@ public class UserRestController extends CommonController {
 	@Qualifier("userServiceImpl")
 	UserService userService;
 	
+	@PostMapping("login")
+	public void login(
+			HttpSession session, 
+			@RequestBody UserVO user,
+			Model model) {
+		System.out.println("[UserRestController.loginUser()] start");
+		
+		session.setAttribute("user",  userService.loginUser(user));
+
+		System.out.println("[UserRestController.loginUser()] end");
+	}
+	
+	@GetMapping("logout")
+	public void logout(HttpSession session) {
+		System.out.println("[UserController.logout()] start");
+		
+		session.invalidate();
+		
+		System.out.println("[UserController.logout()] end");
+	}
+	
 	@PostMapping(value = "checkDuplication")
 	public Map<String, Object> checkDuplication(@RequestBody UserVO user) {
-		System.out.println("[UserController.checkDuplicationUser()] start");
+		System.out.println("[UserRestController.checkDuplicationUser()] start");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -46,7 +68,7 @@ public class UserRestController extends CommonController {
 		map.put("result", result);
 		map.put("userId", user.getUserId());
 		
-		System.out.println("[UserController.checkDuplicationUser()] end");
+		System.out.println("[UserRestController.checkDuplicationUser()] end");
 		
 		return map;
 	}			
@@ -54,11 +76,11 @@ public class UserRestController extends CommonController {
 	@PostMapping(value = "getUser/{userId}")
 	public UserVO getUser(@PathVariable("userId") String userId) {
 		
-		System.out.println("[UserController.getUser()] start");
+		System.out.println("[UserRestController.getUser()] start");
 		
 		UserVO user = userService.getUser(userId);
 
-		System.out.println("[UserController.getUser()] end");
+		System.out.println("[UserRestController.getUser()] end");
 		
 		return user;
 	}
@@ -68,7 +90,7 @@ public class UserRestController extends CommonController {
 	public Map<String, Object> listUser(
 			@RequestBody SearchVO search,
 			@PathVariable("page") int page) {
-		System.out.println("[UserController.listUser()] start");
+		System.out.println("[UserRestController.listUser()] start");
 		
 		// 1. Page setting Default page = 1;
 		search.setPage(page);
@@ -91,22 +113,60 @@ public class UserRestController extends CommonController {
 		result.put("list", map.get("list"));
 		result.put("resultPage", resultPage);
 		result.put("search", search);
-		// result.put("getList", "fncGetUserList");
 		
-		
-		System.out.println("[UserController.listUser()] end");
+		System.out.println("[UserRestController.listUser()] end");
 		
 		return result;
+	}
+	
+	@PostMapping("addUser")
+	public void addUser(@RequestBody UserVO user) {
+		System.out.println("[UserController.addUser()] start");
+		
+		userService.addUser(user);
+		
+		System.out.println("[UserController.addUser()] end");
+	}
+	
+	@PostMapping("updateUser")
+	public void updateUser(
+			HttpSession session, 
+			@RequestBody UserVO user) {
+		System.out.println("[UserController.updateUser()] start");
+		
+		userService.updateUser(user);
+		
+		UserVO sessionUser = (UserVO)session.getAttribute("user");
+		
+		if(sessionUser != null) {
+			String sessionId=sessionUser.getUserId();
+			
+			if(sessionId.equals(user.getUserId())){
+				session.setAttribute("user", user);
+			}
+		}
+		
+		System.out.println("[UserController.updateUser()] end");
+	}
+	
+	@PostMapping(value = "deleteUser")
+	public void deleteUser(
+			@RequestBody UserVO user) {
+		System.out.println("[UserController.deleteUser()] start");
+		
+		userService.deleteUser(user.getUserId());
+		
+		System.out.println("[UserController.deleteUser()] end");
 	}
 	
 	// AutoComplete Asynchronous
 	@PostMapping(value = "getUserIds")
 	public List<String> getUserIds() {
-		System.out.println("[UserController.getUserIds()] start");
+		System.out.println("[UserRestController.getUserIds()] start");
 		
 		List<String> result = userService.getUserIdAndUserNames("userId");
 		
-		System.out.println("[UserController.getUserIds()] end");
+		System.out.println("[UserRestController.getUserIds()] end");
 		
 		return result;
 	}
@@ -114,11 +174,11 @@ public class UserRestController extends CommonController {
 	// AutoComplete Asynchronous
 	@PostMapping(value = "getUserNames")
 	public List<String> getUserNames() {
-		System.out.println("[UserController.getUserNames()] start");
+		System.out.println("[UserRestController.getUserNames()] start");
 		
 		List<String> result = userService.getUserIdAndUserNames("userName");
 		
-		System.out.println("[UserController.getUserNames()] end");
+		System.out.println("[UserRestController.getUserNames()] end");
 		
 		return result;
 	}
