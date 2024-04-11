@@ -5,9 +5,9 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.model2.mvc.common.SearchVO;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductVO;
+import com.springboot.project.service.domain.SearchVO;
 
 public interface ProductService {
 	public ProductVO getProduct(int productId);

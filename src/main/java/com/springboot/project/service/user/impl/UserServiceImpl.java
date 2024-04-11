@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.model2.mvc.common.SearchVO;
 import com.model2.mvc.common.util.CommonUtil;
+import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.purchase.PurchaseDAO;
 import com.springboot.project.service.user.UserDAO;
 import com.springboot.project.service.user.UserService;
+
+import jakarta.transaction.Transactional;
 
 @Service("userServiceImpl")
 public class UserServiceImpl implements UserService{
@@ -42,6 +44,8 @@ public class UserServiceImpl implements UserService{
 		this.userDAO = userDAO;
 	}
 	
+	@Transactional
+	@Override
 	public int addUser(UserVO userVO) {
 		int result = 0;
 		
@@ -56,6 +60,7 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
+	@Override
 	public UserVO loginUser(UserVO userVO) {
 		UserVO result = null;
 		
@@ -74,6 +79,7 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
+	@Override
 	public UserVO getUser(String userId) {
 		UserVO result = null;
 		
@@ -88,6 +94,7 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
+	@Override
 	public Map<String,Object> getUserList(SearchVO searchVO) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<UserVO> list = null;
@@ -120,7 +127,9 @@ public class UserServiceImpl implements UserService{
 		
 		return map;
 	}
-
+	
+	@Transactional
+	@Override
 	public int updateUser(UserVO userVO) {
 		int result = 0;
 		
@@ -135,6 +144,7 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
+	@Override
 	public boolean checkDuplication(String userId) {
 		boolean result = true;
 		
@@ -153,6 +163,7 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int deleteUser(String userId) {
 		int result = 0;

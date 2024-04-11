@@ -14,23 +14,25 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.model2.mvc.common.Page;
-import com.model2.mvc.common.SearchVO;
 import com.model2.mvc.common.util.HistoryUtil;
 import com.model2.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
 import com.springboot.project.service.domain.FileVO;
+import com.springboot.project.service.domain.Page;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
+import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
 
@@ -92,7 +94,6 @@ public class ProductRestController extends CommonController  {
 		
 		ProductVO product = productService.getProduct(prodNo);
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("path", "forward:/product/getProduct.jsp");
 		map.put("product", product);
 		
 		System.out.println("[ProductController.getProduct()] end");
@@ -122,5 +123,38 @@ public class ProductRestController extends CommonController  {
 		System.out.println("[UserController.getProdNos()] end");
 		
 		return result;
+	}
+	
+	@PostMapping("/addProduct")
+	public void addProduct(
+			@ModelAttribute("product") ProductVO product,
+			@RequestParam("multipartFile") List<MultipartFile> multiFileLists) {
+		System.out.println("[ProductController.addProduct()] start");
+		
+		// 제품 추가
+		productService.addProduct(product, multiFileLists);
+		
+		System.out.println("[ProductController.addProduct()] end");
+	}
+	
+	@PostMapping(value = "/updateProduct")
+	public void updateProduct(
+			@ModelAttribute("product") ProductVO product,
+			@RequestParam("multipartFile") List<MultipartFile> multiFileLists) {
+		System.out.println("[ProductController.updateProduct()] start");
+		
+		// 제품 수정
+		productService.updateProduct(product, multiFileLists);
+		
+		System.out.println("[ProductController.updateProduct()] end");
+	}
+	
+	@PostMapping(value = "/deleteProduct")
+	public void deleteProduct(@RequestBody ProductVO product) {
+		System.out.println("[ProductController.deleteProduct()] start");
+		
+		productService.deleteProduct(product);
+		
+		System.out.println("[ProductController.deleteProduct()] end");
 	}
 }

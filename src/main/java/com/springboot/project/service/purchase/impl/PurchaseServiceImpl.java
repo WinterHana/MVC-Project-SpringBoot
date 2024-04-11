@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.model2.mvc.common.SearchVO;
 import com.model2.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
+import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.product.ProductDAO;
 import com.springboot.project.service.product.ProductService;
@@ -22,6 +22,8 @@ import com.springboot.project.service.purchase.PurchaseDAO;
 import com.springboot.project.service.purchase.PurchaseService;
 import com.springboot.project.service.purchase.dao.PurchaseDAOImpl;
 import com.springboot.project.service.user.dao.UserDAOImpl;
+
+import jakarta.transaction.Transactional;
 
 @Service("purchaseServiceImpl")
 public class PurchaseServiceImpl implements PurchaseService {
@@ -47,6 +49,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		this.purchaseDAO = purchaseDAO;
 	}
 	
+	@Transactional
 	@Override
 	public int addPurchase(PurchaseVO purchaseVO) {	
 		// addPurchase
@@ -114,6 +117,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int updatePurchase(PurchaseVO purchaseVO) {
 		int result = 0;
@@ -148,6 +152,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int updateTranCode(PurchaseVO purchaseVO) {
 		int result = 0;
@@ -165,6 +170,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public int deletePurchase(PurchaseVO purchaseVO) {
 		// addPurchase

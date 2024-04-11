@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,16 +21,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.model2.mvc.common.Page;
-import com.model2.mvc.common.SearchVO;
+ 
 import com.model2.mvc.common.util.PaymentOption;
 import com.model2.mvc.common.util.TranStatusCode;
 import com.model2.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
+import com.springboot.project.service.domain.Page;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
 import com.springboot.project.service.domain.RestApiCommonVO;
+import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.UpdateTranCodeVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.product.ProductService;
@@ -52,10 +53,9 @@ public class PurchaseRestController extends CommonController {
 	@Qualifier("userServiceImpl")
 	UserService userService;
 	
-	// Test
 	@RequestMapping(value = "/listPurchase/{page}")
 	public Map<String, Object> listPurchase(
-			@ModelAttribute("search") SearchVO search, 
+			@RequestBody SearchVO search, 
 			@PathVariable("page") int page,
 			HttpSession session) {
 		System.out.println("[PurchaseController.listPurchase()] start");
@@ -119,7 +119,67 @@ public class PurchaseRestController extends CommonController {
 		return resultMap;
 	}
 	
-	// Test
+	@RequestMapping(value = "/listAdminPurchase/{page}")
+	public String listAdminPurchase(
+			@RequestBody SearchVO search,
+			@PathVariable("page") int page,
+			HttpSession session,
+			Model model) {
+		System.out.println("[PurchaseController.listPurchase()] start");
+		
+		// Default page = 1;
+		search.setPage(page);
+		if(search.getPage() == 0) {
+			search.setPage(1);
+		}
+		
+		search.setPageUnit(PAGE_UNIT); 
+		search.setPageSize(PAGE_SIZE);
+		
+		// 2. Get purchaseList
+		boolean isAdmin = false;
+		UserVO user = (UserVO) session.getAttribute("user");
+		if (user.getRole().equals("admin")) {
+			isAdmin = true;
+		} else {
+			// 일반 User 방지 -> index.jsp로 복귀
+			return "index";
+		}
+		
+		Map<String, Object> map = purchaseService.getPurchaseList(search, user);
+		
+		Page resultPage	= new Page(
+				search.getPage(), 
+				((Integer)map.get("totalCount")).intValue(), 
+				PAGE_UNIT,
+				PAGE_SIZE
+		);
+		
+		// 3. Get Enum Message
+		List<PurchaseVO> list = (List<PurchaseVO>) map.get("list");
+		Map<Integer, String> messageMap = new HashMap<Integer, String>();
+		
+		Iterator<PurchaseVO> iterator = list.iterator();
+		while (iterator.hasNext()) {
+			PurchaseVO purchaseResult = iterator.next();
+			String tranCode = purchaseResult.getTranCode();
+			String message = TranStatusCodeUtil.getMessage(tranCode, isAdmin);
+			messageMap.put(purchaseResult.getTranNo(), message);
+		}
+		
+		String url = "purchase/listAdminPurchase";
+		
+		model.addAttribute("list", list);
+		model.addAttribute("resultPage", resultPage);
+		model.addAttribute("search", search);
+		model.addAttribute("getList", "fncGetPurchaseList");
+		model.addAttribute("messageMap", messageMap);
+		
+		System.out.println("[PurchaseController.listPurchase()] end");
+		
+		return url;
+	}
+	
 	@RequestMapping(value = "/getPurchase/{tranNo}")
 	public Map<String, Object> getPurchase(@PathVariable("tranNo") int tranNo) {
 		System.out.println("[PurchaseController.getPurchase()] start");
@@ -141,32 +201,6 @@ public class PurchaseRestController extends CommonController {
 		return resultMap;
 	}
 	
-	// Test
-	@RequestMapping(value = "/addPurchaseView/{prodNo}")
-	public Map<String, Object> addPurchaseView(
-			@PathVariable("prodNo") int prodNo,
-			HttpSession session) {
-		System.out.println("[PurchaseController.addPurchaseView()] start");
-		
-		UserVO user =  (UserVO)session.getAttribute("user");
-		ProductVO result = productService.getProduct(prodNo);
-		if(user == null) {
-			user = new UserVO();
-			user.setUserId("test");
-		}
-		
-		Map<String, Object> resultMap = new HashMap<String, Object>();
-		resultMap.put("path", "forward:/purchase/addPurchaseView.jsp");
-		resultMap.put("product", result);
-		resultMap.put("userId", user.getUserId());
-		
-		System.out.println("[PurchaseController.addPurchaseView()] end");
-		
-		return resultMap;
-		
-	}
-	
-	// Test
 	@RequestMapping(value = "/addPurchase")
 	public Map<String, Object> addPurchase(
 			@RequestBody RestApiCommonVO restApiCommon) {
@@ -187,7 +221,6 @@ public class PurchaseRestController extends CommonController {
 		purchaseService.addPurchase(purchase);
 		
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("path", "forward:/purchase/addPurchase.jsp");
 		result.put("purchase", purchase);
 		
 		System.out.println("[PurchaseController.addPurchase()] end");
@@ -195,7 +228,7 @@ public class PurchaseRestController extends CommonController {
 		return result;
 	}
 	
-	// Test
+	
 	@PostMapping(value = "/updateTranCode/{page}")
 	public Map<String, Object> updateTranCode(
 			@RequestBody UpdateTranCodeVO updateTranCode,
@@ -217,39 +250,27 @@ public class PurchaseRestController extends CommonController {
 		return result;
 	}
 	
-	// Test
-	@RequestMapping(value = "/updatePurchaseView/{tranNo}")
-	public Map<String, Object> updatePurchaseView(@PathVariable("tranNo") int tranNo) {
-		System.out.println("[PurchaseController.updatePurchaseView()] start");
-		
-		PurchaseVO purchaseResult = purchaseService.getPurchase(tranNo);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		if(purchaseResult != null) {
-			map.put("path", "forward:/purchase/updatePurchaseView.jsp");
-			map.put("purchase", purchaseResult);
-		}
-
-		System.out.println("[PurchaseController.updatePurchaseView()] end");
-		
-		return map;
-	}
-	
-	// Test
 	@RequestMapping(value = "/updatePurchase")
-	public Map<String, Object> updatePurchase(@RequestBody PurchaseVO purchase) {
+	public String updatePurchase(@RequestBody PurchaseVO purchase) {
 		System.out.println("[PurchaseController.updatePurchase()] start");
-		
-		Map<String, Object> map = new HashMap<String, Object>();
 		
 		int result = purchaseService.updatePurchase(purchase);
 		
-		if(result == 1) {
-			map.put("path", "redirect:/purchase/getPurchase/" + purchase.getTranNo());
-		}
-		
 		System.out.println("[PurchaseController.updatePurchase()] end");
 		
-		return map;
+		return "success";
+	}
+	
+	@PostMapping(value = "/deletePurchase") 
+	public String deletePurchase (
+			@RequestBody RestApiCommonVO restApiCommon) {
+		System.out.println("[PurchaseController.deletePurchase()] start");
+		
+		restApiCommon.getPurchase().setPurchaseProd(restApiCommon.getProduct());
+		purchaseService.deletePurchase(restApiCommon.getPurchase());
+		
+		System.out.println("[PurchaseController.deletePurchase()] end");
+		
+		return "success";
 	}
 }

@@ -24,8 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.model2.mvc.common.Page;
-import com.model2.mvc.common.SearchVO;
 import com.model2.mvc.common.util.HistoryUtil;
 import com.model2.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
@@ -63,7 +61,6 @@ public class ProductController extends CommonController  {
 			Model model) {
 		System.out.println("[ProductController.getProduct()] start");
 		
-		ModelAndView modelAndView = new ModelAndView("forward:/product/getProduct.jsp");
 		ProductVO product = productService.getProduct(prodNo);
 		model.addAttribute("product", product);
 		
