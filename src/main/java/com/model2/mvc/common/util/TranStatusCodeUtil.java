@@ -27,21 +27,6 @@ public class TranStatusCodeUtil {
 		return null;
 	}
 	
-	// 구매 관리에 사용
-//	public static String getMessage(String tranCode) {
-//		System.out.println("[TranStatusCodeUtil.getMessage(String)] start");
-//		
-//		for(TranStatusCode tsc : TranStatusCode.values()) {
-//			if(tsc.getNumber().trim().equals(tranCode.trim())) {
-//				System.out.println("[TranStatusCodeUtil.getMessage] Success end");
-//					return tsc.getSaleMessage();
-//			}
-//		}
-//		
-//		System.out.println("[TranStatusCodeUtil.getMessage(String)] Exception end");
-//		return null;
-//	}
-	
 	// 다음 배송 상태를 받을 때 사용 - UserPurchase 전용
 	public static String getNextCode(String tranCode) {
 		if (tranCode.trim().equals("001")) {
