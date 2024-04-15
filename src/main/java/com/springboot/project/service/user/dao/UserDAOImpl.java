@@ -74,4 +74,10 @@ public class UserDAOImpl implements UserDAO {
 		System.out.println("[" + getClass().getName() + ".getUserIdAndUserNames] Call");
 		return sqlSession.selectList("UserMapper.getUserIdAndUserNames");
 	}
+
+	@Override
+	public int updateMileage(UserVO user) {
+		System.out.println("[" + getClass().getName() + ".updateMileage] Call");
+		return sqlSession.update("UserMapper.updateMileage");
+	}
 }

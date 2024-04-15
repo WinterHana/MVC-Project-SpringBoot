@@ -201,5 +201,5 @@ public class UserServiceImpl implements UserService{
 		}
 		
 		return result.stream().distinct().collect(Collectors.toList());
-	}	
+	}
 }

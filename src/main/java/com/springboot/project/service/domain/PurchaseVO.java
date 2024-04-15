@@ -26,4 +26,5 @@ public class PurchaseVO {
 	private String tranCode;
 	private int tranNo;
 	private int prodCount;
+	private int totalPrice;
 }

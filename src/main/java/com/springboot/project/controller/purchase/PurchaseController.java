@@ -287,16 +287,18 @@ public class PurchaseController extends CommonController {
 	public String deletePurchase(
 			@ModelAttribute("purchase") PurchaseVO purchase,
 			@ModelAttribute("product") ProductVO product, 
+			@ModelAttribute("user") UserVO user,
 			HttpSession session) {
 		System.out.println("[PurchaseController.deletePurchase()] start");
 		
 		purchase.setPurchaseProd(product);
+		purchase.setBuyer(user);
 		purchaseService.deletePurchase(purchase);
 		
 		String url = null;
-		UserVO user = (UserVO) session.getAttribute("user");			
+		UserVO loginUser = (UserVO) session.getAttribute("user");			
 		
-		if (user.getRole().equals("admin")) {
+		if (loginUser.getRole().equals("admin")) {
 			url = "redirect:/purchase/listAdminPurchase/1";
 		} else {
 			url = "redirect:/purchase/listPurchase/1";

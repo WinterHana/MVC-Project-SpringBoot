@@ -21,6 +21,7 @@ import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseDAO;
 import com.springboot.project.service.purchase.PurchaseService;
 import com.springboot.project.service.purchase.dao.PurchaseDAOImpl;
+import com.springboot.project.service.user.UserDAO;
 import com.springboot.project.service.user.dao.UserDAOImpl;
 
 import jakarta.transaction.Transactional;
@@ -35,6 +36,10 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Autowired
 	@Qualifier("productDAOImpl")
 	private ProductDAO productDAO;
+	
+	@Autowired
+	@Qualifier("userDAOImpl")
+	private UserDAO userDAO;
 	
 	public PurchaseServiceImpl() {
 		System.out.println("[" + getClass().getName() + " Default Constructor] Call");
@@ -51,18 +56,23 @@ public class PurchaseServiceImpl implements PurchaseService {
 	
 	@Transactional
 	@Override
-	public int addPurchase(PurchaseVO purchaseVO) {	
+	public int addPurchase(PurchaseVO purchase) {	
 		// addPurchase
 		int result = 0;
 		
 		// updateProductCount
 		Map<String, Integer> requestMap = new HashMap<String, Integer>();
-		requestMap.put("prodNo", purchaseVO.getPurchaseProd().getProdNo());
-		requestMap.put("countResult", purchaseVO.getPurchaseProd().getCount() - purchaseVO.getProdCount());
+		requestMap.put("prodNo", purchase.getPurchaseProd().getProdNo());
+		requestMap.put("countResult", purchase.getPurchaseProd().getCount() - purchase.getProdCount());
+		
+		// updateMileage
+		UserVO user = userDAO.getUser(purchase.getBuyer().getUserId());
+		user.setMileage(user.getMileage() - purchase.getTotalPrice());
 		
 		try {
-			result += purchaseDAO.addPurchase(purchaseVO);
+			result += purchaseDAO.addPurchase(purchase);
 			result += productDAO.updateProductCount(requestMap);
+			result += userDAO.updateMileage(user);
 		} catch (Exception e) {
 			System.out.println("[" + getClass().getName() + " .addPurchase] Exception");
 			e.printStackTrace();
@@ -172,13 +182,18 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	@Transactional
 	@Override
-	public int deletePurchase(PurchaseVO purchaseVO) {
+	public int deletePurchase(PurchaseVO purchase) {
 		// addPurchase
 		int result = 0;
 		
 		// updateProductCount
 		Map<String, Integer> requestMap = new HashMap<String, Integer>();
-		int prodNo = purchaseVO.getPurchaseProd().getProdNo();
+		int prodNo = purchase.getPurchaseProd().getProdNo();
+		
+		// updateMileage
+		UserVO user = userDAO.getUser(purchase.getBuyer().getUserId());
+		user.setMileage(user.getMileage() + purchase.getTotalPrice());
+		
 		
 		try {
 			requestMap.put("prodNo", prodNo);
@@ -187,11 +202,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 			// 제품이 삭제되어 더 이상 갯수를 Update할 필요가 없을 때의 예외 처리
 			if(product != null) {
 				int count = product.getCount();
-				requestMap.put("countResult", count + purchaseVO.getProdCount());
+				requestMap.put("countResult", count + purchase.getProdCount());
 				result += productDAO.updateProductCount(requestMap);
 			}
 			
-			result += purchaseDAO.deletePurchase(purchaseVO.getTranNo());
+			result += purchaseDAO.deletePurchase(purchase.getTranNo());
+			result += userDAO.updateMileage(user);
 		} catch (Exception e) {
 			System.out.println("[" + getClass().getName() + " .addPurchase] Exception");
 			e.printStackTrace();

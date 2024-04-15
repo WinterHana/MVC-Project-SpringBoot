@@ -19,4 +19,6 @@ public interface UserDAO {
 	public int getUserCount(SearchVO searchVO);
 	
 	public List<UserVO> getUserIdAndUserNames();
+	
+	public int updateMileage(UserVO user);
 }
