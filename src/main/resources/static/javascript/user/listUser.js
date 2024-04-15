@@ -92,6 +92,7 @@ function renderList(result) {
 				+ '<br />'
 				+ '<h5 class="card-title">아이디 : ' + result.userId + '</h5>'
 				+ '<h5 class="card-text">이름 : ' + result.userName + '</h5>'
+				+ '<h5 class="card-text">마일리지 : ' + result.mileage + '</h5>'
 				+ '<br /><br />'
 				+ '<form action = "/user/getUser/' +  result.userId +'" method = "post">'
 				+ '<button class="btn btn-danger">상세 보기</button>'

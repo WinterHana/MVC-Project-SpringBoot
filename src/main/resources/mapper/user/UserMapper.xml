@@ -61,7 +61,7 @@
   			<if test = "userName != null" >user_name = #{userName:VARCHAR},</if>
   			<if test = "phone != null"> cell_phone = #{phone:VARCHAR},</if>
   			<if test = "addr != null"> addr = #{addr:VARCHAR},</if>
-  			<if test = "email != null"> email = #{email:VARCHAR}</if>
+  			<if test = "email != null"> email = #{email:VARCHAR},</if>
   			<if test = "mileage != null"> mileage = #{mileage:NUMERIC}</if>
   		</set>
   		WHERE user_id = #{userId}

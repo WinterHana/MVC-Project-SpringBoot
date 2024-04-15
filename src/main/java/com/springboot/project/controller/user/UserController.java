@@ -105,14 +105,19 @@ public class UserController extends CommonController {
 		return "user/getUser";
 	}	
 	
-	// Error 방지 GetMapping
+	// Update Navigation
 	@GetMapping(value = "getUser/{userId}")
-	public String getUserMethodGet(@PathVariable("userId") String userId) {
+	public String getUserMethodGet(
+			@PathVariable("userId") String userId, 
+			Model model) {
+		
 		System.out.println("[UserController.getUser()] start");
+		
+		model.addAttribute("user", userService.getUser(userId));
 		
 		System.out.println("[UserController.getUser()] end");
 		
-		return "index";
+		return "user/getUser";
 	}	
 	
 	@PostMapping("addUser")
@@ -123,15 +128,13 @@ public class UserController extends CommonController {
 		
 		System.out.println("[UserController.addUser()] end");
 		
-		return "user/loginView";
+		return "redirect:/user/loginView";
 	}
 	
 	// Navigation
 	@GetMapping("listUser")
 	public String listUser() {
 		System.out.println("[UserController.listUser()] start");
-	
-		ModelAndView modelAndView = new ModelAndView("forward:/user/listUser.jsp");
 		
 		System.out.println("[UserController.listUser()] end");
 		
@@ -170,7 +173,7 @@ public class UserController extends CommonController {
 		
 		System.out.println("[UserController.updateUser()] end");
 		
-		return "user/getUser/" + user.getUserId();
+		return "redirect:/user/getUser/" + user.getUserId();
 	}
 	
 	@PostMapping(value = "deleteUser")
@@ -182,9 +185,9 @@ public class UserController extends CommonController {
 		String url = null;
 		String userRole=((UserVO)session.getAttribute("user")).getRole();
 		if(userRole.equals("admin")) {
-			url = "user/listUser";
+			url = "redirect:/user/listUser";
 		} else {
-			url = "user/loginView";
+			url = "redirect:/user/loginView";
 		}
 		
 		userService.deleteUser(user.getUserId());

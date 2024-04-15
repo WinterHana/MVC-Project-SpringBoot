@@ -60,12 +60,18 @@
                         <td width="104" class="ct_write">역할</td>
                         <td class="ct_write01">${user.role}</td>
                     </tr>
+                    <tr>
+                        <td width="104" class="ct_write">마일리지</td>
+                        <td class="ct_write01">${user.mileage}</td>
+                    </tr>
                 </table>
+				
+				<c:if test = "${not empty sessionScope.user && sessionScope.user.role eq 'admin'}">
+                	<button type="button" name = "update" class="btn btn-warning">수정하기</button>
 
-                <button type="button" name = "update" class="btn btn-warning">수정하기</button>
-
-                <button type="button" name = "delete" class="btn btn-danger">삭제하기</button>
-
+                	<button type="button" name = "delete" class="btn btn-danger">삭제하기</button>
+				</c:if>
+				
                 <button type="button" name = "back" class="btn btn-success">뒤로가기</button>
             </div>
         </div>
