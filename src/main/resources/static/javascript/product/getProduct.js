@@ -15,6 +15,7 @@ function updateTotalPrice() {
 	let price = Number($("#price").text());
 	let purchaseCount = Number($("input[name='prodCount']").val());
 	$("#totalPrice").text(price * purchaseCount);
+	$("input[name='totalPrice']").val(price * purchaseCount);
 }
 
 $("button[name='down']").on("click", function() {

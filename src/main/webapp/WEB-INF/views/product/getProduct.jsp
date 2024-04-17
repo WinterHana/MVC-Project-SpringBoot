@@ -108,7 +108,7 @@
 
 					<div class="col-md-4">
 						<h2>
-							총 <span id="totalPrice">0</span>원
+							총 <span id="totalPrice" >0</span>원
 						</h2>
 					</div>
 				</div>
@@ -164,6 +164,11 @@
 					<div class="input-group mb-3">
 						<span class="input-group-text">구매 개수</span> 
 						<input type="text" name="prodCount" class="form-control"
+							value="0"  readonly>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text">총 가격</span> 
+						<input type="text" name="totalPrice" class="form-control"
 							value="0"  readonly>
 					</div>
 					<div class="input-group mb-3">

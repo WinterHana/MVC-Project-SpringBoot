@@ -235,7 +235,7 @@ public class PurchaseController extends CommonController {
 		
 		System.out.println("[PurchaseController.addPurchase()] end");
 		
-		return "purchase/listPurchase";
+		return "redirect:/purchase/listPurchase/1";
 	}
 	
 	@RequestMapping(value = "/updateTranCode/{page}", method = RequestMethod.GET)
