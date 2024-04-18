@@ -54,7 +54,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		this.purchaseDAO = purchaseDAO;
 	}
 	
-	@Transactional
+	@Transactional(rollbackOn = {Exception.class})
 	@Override
 	public int addPurchase(PurchaseVO purchase) {	
 		// addPurchase
@@ -68,6 +68,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 		// updateMileage
 		UserVO user = userDAO.getUser(purchase.getBuyer().getUserId());
 		user.setMileage(user.getMileage() - purchase.getTotalPrice());
+		System.out.println("[addPurchse] user userId : " + user.getUserId());
+		System.out.println("[addPurchse] user mileage : " + user.getMileage());
 		
 		try {
 			result += purchaseDAO.addPurchase(purchase);
@@ -127,7 +129,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return result;
 	}
 
-	@Transactional
+	@Transactional(rollbackOn = Exception.class)
 	@Override
 	public int updatePurchase(PurchaseVO purchaseVO) {
 		int result = 0;
@@ -162,7 +164,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return result;
 	}
 
-	@Transactional
+	@Transactional(rollbackOn = Exception.class)
 	@Override
 	public int updateTranCode(PurchaseVO purchaseVO) {
 		int result = 0;
@@ -180,7 +182,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return result;
 	}
 
-	@Transactional
+	@Transactional(rollbackOn = Exception.class)
 	@Override
 	public int deletePurchase(PurchaseVO purchase) {
 		// addPurchase

@@ -24,8 +24,9 @@
                     <td width = "10%" align = "center">회원 ID</td>
                     <td width = "20%" align = "center">제품 이름</td>
                     <td width = "10%" align = "center">개수</td>
+                    <td width = "10%" align = "center">총 구매 금액</td>
                     <td width = "20%" align = "center">배송 현황</td>
-                    <td width = "40%" align = "center">메뉴</td>
+                    <td width = "30%" align = "center">메뉴</td>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,7 @@
 	                   </td>
 	                   <td width = "20%" align = "center">${purchase.purchaseProd.prodName}</td>
 	                   <td width = "10%" align = "center">${purchase.prodCount}</td>
+	                   <td width = "10%" align = "center">${purchase.totalPrice}</td>
 	                   <td width = "20%" align = "center">
 	                   <c:forEach var = "entry" items = "${messageMap}">
 	                   		<c:if test = "${entry.key == purchase.tranNo}">

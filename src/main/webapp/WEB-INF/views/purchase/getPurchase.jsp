@@ -66,6 +66,10 @@
                         <td class="ct_write01">${purchase.prodCount}</td>
                     </tr>
                     <tr>
+                        <td width="104" class="ct_write">총 구매 금액</td>
+                        <td class="ct_write01">${purchase.totalPrice}</td>
+                    </tr>
+                    <tr>
                         <td width="104" class="ct_write">구매 요청 사항</td>
                         <td class="ct_write01">${purchase.dlvyRequest}</td>
                     </tr>

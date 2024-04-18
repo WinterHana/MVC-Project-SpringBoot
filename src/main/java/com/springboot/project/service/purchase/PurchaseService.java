@@ -18,7 +18,7 @@ public interface PurchaseService {
 	public Map<Integer, String> getSalaList();
 	
 	// addPurchase
-	public int addPurchase(PurchaseVO purchaseVO);
+	public int addPurchase(PurchaseVO purchaseVO) throws Exception;
 	
 	// updatePurchase
 	public int updatePurchase(PurchaseVO purchaseVO);
