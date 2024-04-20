@@ -58,10 +58,23 @@ $("button[name='purchase']").on("click", function() {
 $("div[name='purchaseMenu']").css("display", "none");
 
 $("button[name='purchaseComplete']").on("click", function() {
-	let count = parseInt($("input[name='prodCount']").val());
-
-	if(count <= 0) {
+	let count = parseInt($("#count").text());
+	let prodCount = parseInt($("input[name='prodCount']").val());
+	let totalPrice = parseInt($("#totalPrice").text());
+	let userMileage = parseInt($("#userMileage").text());
+	
+	if(prodCount <= 0) {
 		alert("구매할 상품 개수를 입력해주세요!");
+		return;
+	}
+	
+	if(prodCount > count) {
+		alert("현재 있는 재고보다 많이 구입할 수 없습니다!");
+		return;
+	}
+	
+	if(totalPrice > userMileage) {
+		alert("잔액이 부족합니다!");
 		return;
 	}
 	

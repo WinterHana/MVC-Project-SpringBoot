@@ -50,10 +50,11 @@
 							</c:if>
 						</c:forEach>
 	                   </td>
-	                   <td width = "40%" align = "center">
+	                   <td width = "30%" align = "center">
 		                   <span class = "getPurchase text-primary" data-no ="${purchase.tranNo}">
 		                   자세히 보기
 		                   </span>
+		                   <p>
 		                   	<select name = "updateTranCode" id = "updateTranCode${purchase.tranNo}" >
 								<option value = "001"  ${not empty purchase.tranCode && purchase.tranCode eq "001" ? "selected" : "" }>
 								판매 완료</option>
@@ -62,6 +63,7 @@
 								<option value = "003"  ${not empty purchase.tranCode && purchase.tranCode eq "003" ? "selected" : "" }>
 								배송 완료</option>
 							</select>
+						   </p>
 							<span class = "tranCode text-primary" 
 									data-no = "${purchase.tranNo}" 
 									data-code ="updateTranCode${purchase.tranNo}"

@@ -72,7 +72,7 @@
 					</c:if>
 				
 				<li class="nav-item">
-					<a class="nav-link">현재 마일리지 : ${sessionScope.user.mileage}</a>
+					<a class="nav-link">현재 마일리지 : <span id="userMileage" >${sessionScope.user.mileage}</span></a>
 				</li>
 				
 				<li class="nav-item">

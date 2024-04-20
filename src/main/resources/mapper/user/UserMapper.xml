@@ -64,15 +64,15 @@
   			<if test = "email != null"> email = #{email:VARCHAR},</if>
   			<if test = "mileage != null"> mileage = #{mileage:NUMERIC}</if>
   		</set>
-  		WHERE user_id = #{userId}
+  		WHERE user_id = #{userId:VARCHAR}
   	</update>
   	
   	<update id = "updateMileage" parameterType = "userVO">
   		UPDATE users 
   		<set>
-  			<if test = "mileage != 0"> mileage = #{mileage:NUMERIC}</if>
+  			<if test = "mileage != null"> mileage = #{mileage:NUMERIC}</if>
   		</set>
-  		<if test = "userId != null">WHERE user_id = #{userId}</if>
+  		WHERE user_id = #{userId:VARCHAR}
   	</update>
   	
   	<delete id = "deleteUser" parameterType = "string">

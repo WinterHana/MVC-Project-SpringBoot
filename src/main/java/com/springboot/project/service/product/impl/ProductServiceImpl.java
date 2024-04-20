@@ -1,6 +1,7 @@
 package com.springboot.project.service.product.impl;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.model2.mvc.common.util.CommonUtil;
@@ -22,7 +24,6 @@ import com.springboot.project.service.product.ProductDAO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseDAO;
 
-import jakarta.transaction.Transactional;
 
 @Service("productServiceImpl")
 public class ProductServiceImpl implements ProductService {
@@ -131,12 +132,15 @@ public class ProductServiceImpl implements ProductService {
 		int result = 0;
 		
 		// 1. 제품 정보 추가
-		try {
-			result = productDAO.addProduct(productVO);
-		} catch (Exception e) {
-			System.out.println(getClass().getName() + ".addProduct Exception");
-			e.printStackTrace();
-		}
+		result = productDAO.addProduct(productVO);
+		
+//		// 1. 제품 정보 추가
+//		try {
+//			result = productDAO.addProduct(productVO);
+//		} catch (Exception e) {
+//			System.out.println(getClass().getName() + ".addProduct Exception");
+//			e.printStackTrace();
+//		}
 		
 		// 2. 제품 이미지 추가
 		// 0) 데이터 검증
@@ -148,24 +152,44 @@ public class ProductServiceImpl implements ProductService {
 				break;
 			}
 		}
-		try {
-			if(multipartFiles != null && multipartFiles.size() > 0) {
-				for(MultipartFile f : multipartFiles) {
-					String originalFileName = f.getOriginalFilename();
-					UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
-					String fileName = uuid + originalFileName;
-					
-					f.transferTo(new File(path + fileName));		
-					
-					FileVO file = new FileVO();
-					file.setFileName(fileName);
-					productDAO.addProductImage(file);
+		
+		if(multipartFiles != null && multipartFiles.size() > 0) {
+			for(MultipartFile f : multipartFiles) {
+				String originalFileName = f.getOriginalFilename();
+				UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
+				String fileName = uuid + originalFileName;
+				
+				try {
+					f.transferTo(new File(path + fileName));
+				} catch (IllegalStateException | IOException e) {
+					System.out.println(getClass().getName() + ".addProductImage Exception");
+					e.printStackTrace();
 				}
+	
+				FileVO file = new FileVO();
+				file.setFileName(fileName);
+				productDAO.addProductImage(file);
 			}
-		} catch (Exception e) {
-			System.out.println(getClass().getName() + ".addProductImage Exception");
-			e.printStackTrace();
 		}
+		
+//		try {
+//			if(multipartFiles != null && multipartFiles.size() > 0) {
+//				for(MultipartFile f : multipartFiles) {
+//					String originalFileName = f.getOriginalFilename();
+//					UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
+//					String fileName = uuid + originalFileName;
+//					
+//					f.transferTo(new File(path + fileName));		
+//					
+//					FileVO file = new FileVO();
+//					file.setFileName(fileName);
+//					productDAO.addProductImage(file);
+//				}
+//			}
+//		} catch (Exception e) {
+//			System.out.println(getClass().getName() + ".addProductImage Exception");
+//			e.printStackTrace();
+//		}
 		
 		return result;
 	}
@@ -175,13 +199,15 @@ public class ProductServiceImpl implements ProductService {
 	public int updateProduct(ProductVO productVO, List<MultipartFile> multipartFiles) {
 		int result = 0;
 		
+		result += productDAO.updateProduct(productVO);
+		
 		// 1. 제품 정보 업데이트
-		try {
-			result += productDAO.updateProduct(productVO);
-		} catch (Exception e) {
-			System.out.println(getClass().getName() + ".updateProduct Exception");
-			e.printStackTrace();
-		}
+//		try {
+//			result += productDAO.updateProduct(productVO);
+//		} catch (Exception e) {
+//			System.out.println(getClass().getName() + ".updateProduct Exception");
+//			e.printStackTrace();
+//		}
 		
 		// 2. 제품 이미지 수정 : 기존에 있는 정보 삭제 후 다시 추가하기
 		// 0) 데이터 검증
@@ -194,29 +220,53 @@ public class ProductServiceImpl implements ProductService {
 			}
 		}
 		
-		try {
-			if(multipartFiles != null && multipartFiles.size() > 0 && test) {
-				// 1) 삭제
-				result += productDAO.deleteProductImage(productVO.getProdNo());
+		if(multipartFiles != null && multipartFiles.size() > 0 && test) {
+			// 1) 삭제
+			result += productDAO.deleteProductImage(productVO.getProdNo());
+			
+			// 2) 다시 이미지 추가
+			for(MultipartFile f : multipartFiles) {
+				String originalFileName = f.getOriginalFilename();
+				UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
+				String fileName = uuid + originalFileName;
 				
-				// 2) 다시 이미지 추가
-				for(MultipartFile f : multipartFiles) {
-					String originalFileName = f.getOriginalFilename();
-					UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
-					String fileName = uuid + originalFileName;
-					
-					f.transferTo(new File(path + fileName));		
-					
-					FileVO file = new FileVO();
-					file.setFileName(fileName);
-					file.setProdNo(productVO.getProdNo());
-					productDAO.updateAddProductImage(file);
-				} 
-			}
-		} catch (Exception e) {
-			System.out.println(getClass().getName() + ".addProductImage Exception");
-			e.printStackTrace();
+				try {
+					f.transferTo(new File(path + fileName));
+				} catch (IllegalStateException | IOException e) {
+					System.out.println(getClass().getName() + ".addProductImage Exception");
+					e.printStackTrace();
+				}		
+				
+				FileVO file = new FileVO();
+				file.setFileName(fileName);
+				file.setProdNo(productVO.getProdNo());
+				productDAO.updateAddProductImage(file);
+			} 
 		}
+		
+//		try {
+//			if(multipartFiles != null && multipartFiles.size() > 0 && test) {
+//				// 1) 삭제
+//				result += productDAO.deleteProductImage(productVO.getProdNo());
+//				
+//				// 2) 다시 이미지 추가
+//				for(MultipartFile f : multipartFiles) {
+//					String originalFileName = f.getOriginalFilename();
+//					UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
+//					String fileName = uuid + originalFileName;
+//					
+//					f.transferTo(new File(path + fileName));		
+//					
+//					FileVO file = new FileVO();
+//					file.setFileName(fileName);
+//					file.setProdNo(productVO.getProdNo());
+//					productDAO.updateAddProductImage(file);
+//				} 
+//			}
+//		} catch (Exception e) {
+//			System.out.println(getClass().getName() + ".addProductImage Exception");
+//			e.printStackTrace();
+//		}
 		
 		return result;
 	}
@@ -225,28 +275,36 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int deleteProduct(ProductVO product) {
 		int result = 0;
-		try {
-			result += purchaseDAO.deletePurchaseProdNo(product.getProdNo());
-			result += productDAO.deleteProductImage(product.getProdNo());
-			result += productDAO.deleteProduct(product.getProdNo());
-		} catch (Exception e) {
-			System.out.println(getClass().getName() + ".deleteProduct Exception");
-			e.printStackTrace();
-		}
+		
+		result += purchaseDAO.deletePurchaseProdNo(product.getProdNo());
+		result += productDAO.deleteProductImage(product.getProdNo());
+		result += productDAO.deleteProduct(product.getProdNo());
+		
+//		try {
+//			result += purchaseDAO.deletePurchaseProdNo(product.getProdNo());
+//			result += productDAO.deleteProductImage(product.getProdNo());
+//			result += productDAO.deleteProduct(product.getProdNo());
+//		} catch (Exception e) {
+//			System.out.println(getClass().getName() + ".deleteProduct Exception");
+//			e.printStackTrace();
+//		}
 		
 		return result;
 	}
+
 
 	@Override
 	public int addProductImage(FileVO file) {
 		int result = 0;
 		
-		try {
-			result = productDAO.addProductImage(file);
-		} catch (Exception e) {
-			System.out.println(getClass().getName() + ".addProductImage Exception");
-			e.printStackTrace();
-		}
+		result = productDAO.addProductImage(file);
+		
+//		try {
+//			result = productDAO.addProductImage(file);
+//		} catch (Exception e) {
+//			System.out.println(getClass().getName() + ".addProductImage Exception");
+//			e.printStackTrace();
+//		}
 		
 		return result;
 	}

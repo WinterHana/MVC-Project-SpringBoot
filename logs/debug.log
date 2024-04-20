@@ -1,0 +1,521 @@
+2024-04-20 03:26:33  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 1940 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 03:26:33  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 03:26:34  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 03:26:34  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 14 ms. Found 0 JDBC repository interfaces.
+2024-04-20 03:26:34  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 03:26:34  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 03:26:34  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:26:34  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 03:26:34  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 03:26:34  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 03:26:34  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 03:26:34  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 1819 ms
+2024-04-20 03:26:35  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 03:26:36  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 03:26:36  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 03:26:36  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@8d5da7e
+2024-04-20 03:26:36  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 03:26:36  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 03:26:36  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:26:36  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 03:26:36  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 4.19 seconds (process running for 5.3)
+2024-04-20 03:26:37  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 03:26:37  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 03:26:37  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 3 ms
+2024-04-20 03:29:11  INFO [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] Application shutdown requested.
+2024-04-20 03:29:11  INFO [org.apache.coyote.http11.Http11NioProtocol] Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:29:11  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 03:29:11  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 03:29:14  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 9776 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 03:29:14  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 03:29:15  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 03:29:15  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 15 ms. Found 0 JDBC repository interfaces.
+2024-04-20 03:29:15  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 03:29:16  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 03:29:16  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:29:16  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 03:29:16  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 03:29:16  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 03:29:16  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 03:29:16  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 2036 ms
+2024-04-20 03:29:17  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 03:29:18  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 03:29:18  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 03:29:18  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@67593f7b
+2024-04-20 03:29:18  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 03:29:18  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 03:29:18  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:29:18  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 03:29:18  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 4.813 seconds (process running for 5.977)
+2024-04-20 03:29:18  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 03:29:18  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 03:29:18  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 2 ms
+2024-04-20 03:36:07  INFO [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] Application shutdown requested.
+2024-04-20 03:36:07  INFO [org.apache.coyote.http11.Http11NioProtocol] Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:36:07  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 03:36:07  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 03:36:12  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 18140 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 03:36:12  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 03:36:13  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 03:36:13  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 24 ms. Found 0 JDBC repository interfaces.
+2024-04-20 03:36:13  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 03:36:14  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 03:36:14  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:36:14  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 03:36:14  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 03:36:14  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 03:36:14  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 03:36:14  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 2272 ms
+2024-04-20 03:36:15  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 03:36:15  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 03:36:15  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 03:36:16  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@4ea48b2e
+2024-04-20 03:36:16  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 03:36:16  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 03:36:16  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:36:16  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 03:36:16  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 5.091 seconds (process running for 6.551)
+2024-04-20 03:36:16  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 03:36:16  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 03:36:16  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 6 ms
+2024-04-20 03:40:26 ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.springboot.project.service.domain.UserVO.getMileage()" because "user" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.springboot.project.service.domain.UserVO.getMileage()" because "user" is null
+	at com.springboot.project.service.purchase.impl.PurchaseServiceImpl.deletePurchase(PurchaseServiceImpl.java:196) ~[classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:351) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.5.jar:6.1.5]
+	at com.springboot.project.service.purchase.impl.PurchaseServiceImpl$$SpringCGLIB$$0.deletePurchase(<generated>) ~[classes/:?]
+	at com.springboot.project.controller.purchase.PurchaseController.deletePurchase(PurchaseController.java:299) ~[classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:925) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.19.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.19.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) [tomcat-embed-core-10.1.19.jar:10.1.19]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+2024-04-20 03:45:59  INFO [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] Application shutdown requested.
+2024-04-20 03:45:59  INFO [org.apache.coyote.http11.Http11NioProtocol] Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:45:59  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 03:45:59  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 03:46:03  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 17812 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 03:46:03  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 03:46:04  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 03:46:04  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 21 ms. Found 0 JDBC repository interfaces.
+2024-04-20 03:46:05  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 03:46:05  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 03:46:05  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:46:05  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 03:46:05  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 03:46:05  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 03:46:05  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 03:46:05  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 2111 ms
+2024-04-20 03:46:06  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 03:46:06  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 03:46:06  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 03:46:07  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@53918b5e
+2024-04-20 03:46:07  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 03:46:07  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 03:46:07  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:46:07  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 03:46:07  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 4.643 seconds (process running for 5.742)
+2024-04-20 03:46:08  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 03:46:08  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 03:46:08  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 1 ms
+2024-04-20 03:50:35  INFO [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] Application shutdown requested.
+2024-04-20 03:50:35  INFO [org.apache.coyote.http11.Http11NioProtocol] Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:50:35  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 03:50:35  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 03:50:38  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 1272 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 03:50:38  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 03:50:39  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 03:50:39  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 15 ms. Found 0 JDBC repository interfaces.
+2024-04-20 03:50:39  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 03:50:40  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 03:50:40  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:50:40  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 03:50:40  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 03:50:40  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 03:50:40  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 03:50:40  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 1845 ms
+2024-04-20 03:50:41  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 03:50:41  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 03:50:41  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 03:50:41  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@990b86b
+2024-04-20 03:50:41  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 03:50:42  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 03:50:42  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:50:42  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 03:50:42  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 4.094 seconds (process running for 5.204)
+2024-04-20 03:50:42  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 03:50:42  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 03:50:42  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 1 ms
+2024-04-20 03:51:34  INFO [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] Application shutdown requested.
+2024-04-20 03:51:34  INFO [org.apache.coyote.http11.Http11NioProtocol] Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:51:34  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 03:51:34  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 03:51:38  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 8340 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 03:51:38  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 03:51:39  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 03:51:39  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 17 ms. Found 0 JDBC repository interfaces.
+2024-04-20 03:51:39  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 03:51:39  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 03:51:39  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:51:39  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 03:51:39  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 03:51:40  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 03:51:40  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 03:51:40  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 2187 ms
+2024-04-20 03:51:41  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 03:51:41  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 03:51:41  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 03:51:42  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@1280bae3
+2024-04-20 03:51:42  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 03:51:42  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 03:51:42  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 03:51:42  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 03:51:42  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 4.975 seconds (process running for 6.126)
+2024-04-20 03:51:43  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 03:51:43  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 03:51:43  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 1 ms
+2024-04-20 07:40:55  INFO [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] Application shutdown requested.
+2024-04-20 07:40:55  INFO [org.apache.coyote.http11.Http11NioProtocol] Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-20 07:40:55  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 07:40:55  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 08:20:08  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 17116 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 08:20:08  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 08:20:11  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 08:20:11  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 65 ms. Found 0 JDBC repository interfaces.
+2024-04-20 08:20:11  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 08:20:12  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 08:20:12  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 08:20:12  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 08:20:12  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 08:20:13  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 08:20:13  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 08:20:13  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 4726 ms
+2024-04-20 08:20:14  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 08:20:15  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 08:20:15  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 08:20:16  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@1280bae3
+2024-04-20 08:20:16  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 08:20:16  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 08:20:16  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 08:20:16  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 08:20:16  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 8.911 seconds (process running for 10.142)
+2024-04-20 08:20:17  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 08:20:17  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 08:20:17  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 2 ms
+2024-04-20 08:23:59  INFO [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] Application shutdown requested.
+2024-04-20 08:23:59  INFO [org.apache.coyote.http11.Http11NioProtocol] Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-20 08:23:59  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 08:23:59  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 08:40:16  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 20700 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 08:40:16  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 08:40:18  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 08:40:18  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 15 ms. Found 0 JDBC repository interfaces.
+2024-04-20 08:40:18  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 08:40:18  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 08:40:18  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 08:40:18  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 08:40:18  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 08:40:19  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 08:40:19  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 08:40:19  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 2236 ms
+2024-04-20 08:40:19  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 08:40:20  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 08:40:20  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 08:40:20  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@2773504f
+2024-04-20 08:40:20  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 08:40:20  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 08:40:20  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 08:40:20  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 08:40:20  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 4.688 seconds (process running for 6.131)
+2024-04-20 08:40:22  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 08:40:22  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 08:40:22  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 3 ms
+2024-04-20 08:46:57  INFO [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] Application shutdown requested.
+2024-04-20 08:46:57  INFO [org.apache.coyote.http11.Http11NioProtocol] Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-20 08:46:57  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 08:46:57  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 08:47:00  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 16468 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 08:47:00  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 08:47:01  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 08:47:01  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 15 ms. Found 0 JDBC repository interfaces.
+2024-04-20 08:47:01  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 08:47:02  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 08:47:02  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 08:47:02  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 08:47:02  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 08:47:02  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 08:47:02  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 08:47:02  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 1762 ms
+2024-04-20 08:47:03  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 08:47:03  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 08:47:03  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 08:47:04  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@527d5e48
+2024-04-20 08:47:04  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 08:47:04  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 08:47:04  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 08:47:04  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 08:47:04  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 3.948 seconds (process running for 5.246)
+2024-04-20 08:47:05  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 08:47:05  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 08:47:05  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 1 ms
+2024-04-20 09:05:43  INFO [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] Application shutdown requested.
+2024-04-20 09:05:43  INFO [org.apache.coyote.http11.Http11NioProtocol] Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:05:43  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 09:05:43  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 09:05:46  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 6724 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 09:05:46  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 09:05:47  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 09:05:47  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 30 ms. Found 0 JDBC repository interfaces.
+2024-04-20 09:05:47  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 09:05:48  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 09:05:48  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:05:48  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 09:05:48  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 09:05:48  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 09:05:48  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 09:05:48  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 2081 ms
+2024-04-20 09:05:49  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 09:05:49  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 09:05:49  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 09:05:50  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@16ef1160
+2024-04-20 09:05:50  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 09:05:50  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 09:05:50  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:05:50  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 09:05:50  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 4.753 seconds (process running for 5.844)
+2024-04-20 09:05:50  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 09:05:50  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 09:05:50  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 2 ms
+2024-04-20 09:05:52  WARN [org.apache.catalina.util.SessionIdGeneratorBase] Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [173] milliseconds.
+2024-04-20 09:07:02  WARN [org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-04-20 09:09:35  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 18780 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 09:09:35  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 09:09:36  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 09:09:36  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 29 ms. Found 0 JDBC repository interfaces.
+2024-04-20 09:09:36  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 09:09:37  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 09:09:37  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:09:37  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 09:09:37  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 09:09:37  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 09:09:37  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 09:09:37  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 2442 ms
+2024-04-20 09:09:38  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 09:09:39  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 09:09:39  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 09:09:39  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@1b6cad77
+2024-04-20 09:09:39  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 09:09:39  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 09:09:39  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:09:39  WARN [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-04-20 09:09:39  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 09:09:39  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 09:09:39  INFO [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-04-20 09:09:39 ERROR [org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-04-20 09:09:55  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 22456 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 09:09:55  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 09:09:57  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 09:09:57  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 15 ms. Found 0 JDBC repository interfaces.
+2024-04-20 09:09:57  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 09:09:57  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 09:09:57  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:09:57  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 09:09:57  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 09:09:57  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 09:09:57  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 09:09:57  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 1814 ms
+2024-04-20 09:09:58  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 09:09:58  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 09:09:58  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 09:09:59  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@5366575d
+2024-04-20 09:09:59  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 09:09:59  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 09:09:59  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:09:59  WARN [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-04-20 09:09:59  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 09:09:59  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 09:09:59  INFO [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-04-20 09:09:59 ERROR [org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-04-20 09:10:25  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 20636 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 09:10:25  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 09:10:26  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 09:10:26  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 24 ms. Found 0 JDBC repository interfaces.
+2024-04-20 09:10:26  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 09:10:27  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 09:10:27  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:10:27  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 09:10:27  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 09:10:27  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 09:10:27  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 09:10:27  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 1936 ms
+2024-04-20 09:10:27  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 09:10:28  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 09:10:28  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 09:10:28  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@65a4b9d6
+2024-04-20 09:10:28  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 09:10:29  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 09:10:29  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:10:29  WARN [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-04-20 09:10:29  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 09:10:29  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 09:10:29  INFO [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-04-20 09:10:29 ERROR [org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-04-20 09:15:25  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 5320 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 09:15:25  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 09:15:27  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 09:15:27  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 26 ms. Found 0 JDBC repository interfaces.
+2024-04-20 09:15:27  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 09:15:27  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 09:15:27  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:15:27  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 09:15:27  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 09:15:28  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 09:15:28  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 09:15:28  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 2878 ms
+2024-04-20 09:15:29  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 09:15:29  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 09:15:29  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 09:15:30  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@65a4b9d6
+2024-04-20 09:15:30  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 09:15:30  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 09:15:30  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:15:30  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 09:15:30  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 7.518 seconds (process running for 10.425)
+2024-04-20 09:15:32  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 09:15:32  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 09:15:32  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 2 ms
+2024-04-20 09:18:26  WARN [org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-04-20 09:19:39  INFO [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] Application shutdown requested.
+2024-04-20 09:19:39  INFO [org.apache.coyote.http11.Http11NioProtocol] Stopping ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:19:39  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2024-04-20 09:19:39  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2024-04-20 09:34:18  INFO [com.springboot.project.MiniProjectApplication] Starting MiniProjectApplication using Java 17.0.9 with PID 18620 (C:\Project_Eclipse\MiniProject\target\classes started by haha9 in C:\Project_Eclipse\MiniProject)
+2024-04-20 09:34:18  INFO [com.springboot.project.MiniProjectApplication] No active profile set, falling back to 1 default profile: "default"
+2024-04-20 09:34:19  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-04-20 09:34:19  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 15 ms. Found 0 JDBC repository interfaces.
+2024-04-20 09:34:20  WARN [org.mybatis.spring.mapper.ClassPathMapperScanner] No MyBatis mapper was found in '[com.springboot.project]' package. Please check your configuration.
+2024-04-20 09:34:20  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+2024-04-20 09:34:20  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:34:20  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2024-04-20 09:34:20  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-20 09:34:20  INFO [org.apache.jasper.servlet.TldScanner] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-04-20 09:34:20  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2024-04-20 09:34:20  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 1974 ms
+2024-04-20 09:34:21  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2024-04-20 09:34:22  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2024-04-20 09:34:22  WARN [com.zaxxer.hikari.util.DriverDataSource] Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-04-20 09:34:22  INFO [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@40a7974
+2024-04-20 09:34:22  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2024-04-20 09:34:22  INFO [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-20 09:34:22  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-20 09:34:22  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+2024-04-20 09:34:22  INFO [com.springboot.project.MiniProjectApplication] Started MiniProjectApplication in 4.371 seconds (process running for 5.472)
+2024-04-20 09:34:23  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-20 09:34:23  INFO [org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+2024-04-20 09:34:23  INFO [org.springframework.web.servlet.DispatcherServlet] Completed initialization in 2 ms

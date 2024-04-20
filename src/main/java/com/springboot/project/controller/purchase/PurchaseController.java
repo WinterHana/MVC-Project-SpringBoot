@@ -21,6 +21,7 @@ import com.model2.mvc.common.util.PaymentOption;
 import com.model2.mvc.common.util.TranStatusCode;
 import com.model2.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
+import com.springboot.project.controller.product.ProductController;
 import com.springboot.project.service.domain.Page;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
@@ -31,7 +32,9 @@ import com.springboot.project.service.purchase.PurchaseService;
 import com.springboot.project.service.user.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Controller
 @RequestMapping("/purchase/*")
 public class PurchaseController extends CommonController {
@@ -218,6 +221,7 @@ public class PurchaseController extends CommonController {
 			@ModelAttribute("user") UserVO user,
 			@ModelAttribute("product") ProductVO product,
 			@ModelAttribute("purchase") PurchaseVO purchase,
+			HttpSession session,
 			Model model) {
 		System.out.println("[PurchaseController.addPurchase()] start");
 		
@@ -230,6 +234,9 @@ public class PurchaseController extends CommonController {
 		purchase.setPurchaseProd(productResult);
 		
 		purchaseService.addPurchase(purchase);
+		
+		// 갱신된 마일리지 반영
+		session.setAttribute("user",  userService.getUser(user.getUserId()));
 		
 		model.addAttribute("purchase", purchase);
 		
@@ -303,6 +310,9 @@ public class PurchaseController extends CommonController {
 		} else {
 			url = "redirect:/purchase/listPurchase/1";
 		}
+		
+		// 갱신된 마일리지 반영
+		session.setAttribute("user",  userService.getUser(loginUser.getUserId()));
 		
 		System.out.println("[PurchaseController.deletePurchase()] end");
 		

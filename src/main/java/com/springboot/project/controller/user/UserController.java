@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.project.controller.common.CommonController;
+import com.springboot.project.controller.product.ProductController;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.user.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Controller
 @RequestMapping("/user/*")
 public class UserController extends CommonController {
@@ -184,6 +187,7 @@ public class UserController extends CommonController {
 
 		String url = null;
 		String userRole=((UserVO)session.getAttribute("user")).getRole();
+		
 		if(userRole.equals("admin")) {
 			url = "redirect:/user/listUser";
 		} else {
