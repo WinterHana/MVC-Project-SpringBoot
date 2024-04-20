@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.model2.mvc.common.util.CommonUtil;
 import com.springboot.project.service.domain.SearchVO;
@@ -16,8 +17,6 @@ import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.purchase.PurchaseDAO;
 import com.springboot.project.service.user.UserDAO;
 import com.springboot.project.service.user.UserService;
-
-import jakarta.transaction.Transactional;
 
 @Service("userServiceImpl")
 public class UserServiceImpl implements UserService{
@@ -49,13 +48,15 @@ public class UserServiceImpl implements UserService{
 	public int addUser(UserVO userVO) {
 		int result = 0;
 		
-		try {
-			result = userDAO.addUser(userVO);
-			
-		} catch(Exception e) {
-			System.out.println("[" + getClass().getName() + ".addUser] Exception");
-			e.printStackTrace();
-		}
+		result = userDAO.addUser(userVO);
+		
+//		try {
+//			result = userDAO.addUser(userVO);
+//			
+//		} catch(Exception e) {
+//			System.out.println("[" + getClass().getName() + ".addUser] Exception");
+//			e.printStackTrace();
+//		}
 		
 		return result;
 	}
@@ -133,13 +134,15 @@ public class UserServiceImpl implements UserService{
 	public int updateUser(UserVO userVO) {
 		int result = 0;
 		
-		try {
-			result = userDAO.updateUser(userVO);
-			
-		} catch (Exception e) {
-			System.out.println("[" + getClass().getName() + ".updateUser] Exception");
-			e.printStackTrace();
-		}
+		result = userDAO.updateUser(userVO);
+		
+//		try {
+//			result = userDAO.updateUser(userVO);
+//			
+//		} catch (Exception e) {
+//			System.out.println("[" + getClass().getName() + ".updateUser] Exception");
+//			e.printStackTrace();
+//		}
 		
 		return result;
 	}
@@ -168,13 +171,16 @@ public class UserServiceImpl implements UserService{
 	public int deleteUser(String userId) {
 		int result = 0;
 		
-		try {
-			result += purchaseDAO.deletePurchaseBuyerId(userId);
-			result += userDAO.deleteUser(userId);
-		} catch (Exception e) {
-			System.out.println("[" + getClass().getName() + ".deleteUser] Exception");
-			e.printStackTrace();
-		}
+		result += purchaseDAO.deletePurchaseBuyerId(userId);
+		result += userDAO.deleteUser(userId);
+		
+//		try {
+//			result += purchaseDAO.deletePurchaseBuyerId(userId);
+//			result += userDAO.deleteUser(userId);
+//		} catch (Exception e) {
+//			System.out.println("[" + getClass().getName() + ".deleteUser] Exception");
+//			e.printStackTrace();
+//		}
 		
 		return result;
 	}
@@ -201,5 +207,5 @@ public class UserServiceImpl implements UserService{
 		}
 		
 		return result.stream().distinct().collect(Collectors.toList());
-	}	
+	}
 }

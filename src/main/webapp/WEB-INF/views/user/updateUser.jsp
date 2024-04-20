@@ -75,7 +75,12 @@
                     <span class="input-group-text" id="addon-wrapping">이메일</span>
                     <input type="text" name="email" value="${user.email}" class="form-control">
                 </div>
-
+                
+                <div class="input-group input-group-lg flex-nowrap mb-3">
+                    <span class="input-group-text" id="addon-wrapping">마일리지</span>
+                    <input type="text" name="mileage" value="${user.mileage}" class="form-control">
+                </div>
+                
                 <button type="button" name = "update" class="btn btn-warning">수정하기</button>
 
                 <button type="button" name = "back" class="btn btn-success">뒤로가기</button>

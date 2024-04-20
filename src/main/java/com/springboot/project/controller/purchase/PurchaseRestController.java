@@ -26,6 +26,7 @@ import com.model2.mvc.common.util.PaymentOption;
 import com.model2.mvc.common.util.TranStatusCode;
 import com.model2.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
+import com.springboot.project.controller.product.ProductController;
 import com.springboot.project.service.domain.Page;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
@@ -37,6 +38,9 @@ import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
 import com.springboot.project.service.user.UserService;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @RestController
 @RequestMapping("/rest/purchase/*")
 public class PurchaseRestController extends CommonController {

@@ -30,12 +30,22 @@ import com.springboot.project.controller.common.CommonController;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
+import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
+import com.springboot.project.service.user.UserService;
 
+import jakarta.servlet.http.HttpSession;
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Controller
 @RequestMapping("/product/*")
 public class ProductController extends CommonController  {
+	
+	@Autowired
+	@Qualifier("userServiceImpl")
+	UserService userService;
 	
 	@Autowired
 	@Qualifier("productServiceImpl")
@@ -82,7 +92,8 @@ public class ProductController extends CommonController  {
 	@PostMapping("/addProduct")
 	public String addProduct(
 			@ModelAttribute("product") ProductVO product,
-			@RequestParam("multipartFile") List<MultipartFile> multiFileLists) {
+			@RequestParam("multipartFile") List<MultipartFile> multiFileLists,
+			HttpSession session) {
 		System.out.println("[ProductController.addProduct()] start");
 		
 		// 제품 추가

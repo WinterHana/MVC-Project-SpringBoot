@@ -36,6 +36,9 @@ import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @RestController
 @RequestMapping("/rest/product/*")
 public class ProductRestController extends CommonController  {

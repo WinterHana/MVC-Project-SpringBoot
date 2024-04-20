@@ -15,6 +15,7 @@
   		<result property = "addr" column = "addr" jdbcType = "VARCHAR"/>
   		<result property = "email" column = "email" jdbcType = "VARCHAR"/>
   		<result property = "regDate" column = "reg_date"  jdbcType = "DATE"/>
+  		<result property = "mileage" column = "mileage" jdbcType="NUMERIC"/>
 	</resultMap>
 	
   	<sql id = "getUserListSelect">
@@ -32,7 +33,8 @@
   	
   	 <select id="addUser"  parameterType = "userVO">
   		INSERT
-  		INTO users
+  		INTO users 
+  		(user_id, user_name, password, role, ssn, cell_phone, addr, email, reg_date, mileage)
   		VALUES(
   			#{userId},
   			#{userName},
@@ -42,7 +44,8 @@
   			#{phone:VARCHAR},
   			#{addr:VARCHAR},
   			#{email:VARCHAR},
-  			SYSDATE
+  			SYSDATE,
+  			#{mileage:NUMERIC}
   		)					
   	</select>
   	
@@ -58,16 +61,25 @@
   			<if test = "userName != null" >user_name = #{userName:VARCHAR},</if>
   			<if test = "phone != null"> cell_phone = #{phone:VARCHAR},</if>
   			<if test = "addr != null"> addr = #{addr:VARCHAR},</if>
-  			<if test = "email != null"> email = #{email:VARCHAR}</if>
+  			<if test = "email != null"> email = #{email:VARCHAR},</if>
+  			<if test = "mileage != null"> mileage = #{mileage:NUMERIC}</if>
   		</set>
-  		WHERE user_id = #{userId}
+  		WHERE user_id = #{userId:VARCHAR}
   	</update>
   	
-  	<select id = "deleteUser" parameterType = "string">
+  	<update id = "updateMileage" parameterType = "userVO">
+  		UPDATE users 
+  		<set>
+  			<if test = "mileage != null"> mileage = #{mileage:NUMERIC}</if>
+  		</set>
+  		WHERE user_id = #{userId:VARCHAR}
+  	</update>
+  	
+  	<delete id = "deleteUser" parameterType = "string">
   		DELETE
   		FROM users
   		WHERE user_id = #{value}
-  	</select>
+  	</delete>
   	
   	<select id = "getUserList"  parameterType = "searchVO"  resultMap = "userSelectMap">
   		SELECT *

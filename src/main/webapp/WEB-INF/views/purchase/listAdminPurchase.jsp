@@ -24,8 +24,9 @@
                     <td width = "10%" align = "center">회원 ID</td>
                     <td width = "20%" align = "center">제품 이름</td>
                     <td width = "10%" align = "center">개수</td>
+                    <td width = "10%" align = "center">총 구매 금액</td>
                     <td width = "20%" align = "center">배송 현황</td>
-                    <td width = "40%" align = "center">메뉴</td>
+                    <td width = "30%" align = "center">메뉴</td>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,7 @@
 	                   </td>
 	                   <td width = "20%" align = "center">${purchase.purchaseProd.prodName}</td>
 	                   <td width = "10%" align = "center">${purchase.prodCount}</td>
+	                   <td width = "10%" align = "center">${purchase.totalPrice}</td>
 	                   <td width = "20%" align = "center">
 	                   <c:forEach var = "entry" items = "${messageMap}">
 	                   		<c:if test = "${entry.key == purchase.tranNo}">
@@ -48,10 +50,11 @@
 							</c:if>
 						</c:forEach>
 	                   </td>
-	                   <td width = "40%" align = "center">
+	                   <td width = "30%" align = "center">
 		                   <span class = "getPurchase text-primary" data-no ="${purchase.tranNo}">
 		                   자세히 보기
 		                   </span>
+		                   <p>
 		                   	<select name = "updateTranCode" id = "updateTranCode${purchase.tranNo}" >
 								<option value = "001"  ${not empty purchase.tranCode && purchase.tranCode eq "001" ? "selected" : "" }>
 								판매 완료</option>
@@ -60,6 +63,7 @@
 								<option value = "003"  ${not empty purchase.tranCode && purchase.tranCode eq "003" ? "selected" : "" }>
 								배송 완료</option>
 							</select>
+						   </p>
 							<span class = "tranCode text-primary" 
 									data-no = "${purchase.tranNo}" 
 									data-code ="updateTranCode${purchase.tranNo}"

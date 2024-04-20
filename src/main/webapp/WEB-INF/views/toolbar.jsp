@@ -23,7 +23,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/">이름 뭘로 하지</a>
+		<a class="navbar-brand" href="/">WinterHana's Shopping</a>
 		<button class="navbar-toggler" type="button"
 			data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -70,6 +70,10 @@
 							</ul>
 						</li>
 					</c:if>
+				
+				<li class="nav-item">
+					<a class="nav-link">현재 마일리지 : <span id="userMileage" >${sessionScope.user.mileage}</span></a>
+				</li>
 				
 				<li class="nav-item">
 					<a class="nav-link" href="/user/logout">로그아웃</a>
