@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.model2.mvc.common.util.HistoryUtil;
 import com.model2.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
+import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
@@ -67,12 +68,26 @@ public class ProductController extends CommonController  {
 	
 	@RequestMapping("getProduct/{prodNo}")
 	public String getProduct(
-			@PathVariable("prodNo") int prodNo, 
+			@PathVariable("prodNo") int prodNo,
+			HttpSession session,
 			Model model) {
 		System.out.println("[ProductController.getProduct()] start");
 		
+		boolean isCart = false;
+		
 		ProductVO product = productService.getProduct(prodNo);
+		
+		UserVO user = (UserVO) session.getAttribute("user");
+		
+		if(user != null) {
+			CartVO cart = new CartVO(user.getUserId(), prodNo);
+			isCart = productService.checkIsCart(cart);
+		}
+		
+		log.info(isCart);
+		
 		model.addAttribute("product", product);
+		model.addAttribute("isCart", isCart);
 		
 		System.out.println("[ProductController.getProduct()] end");
 		

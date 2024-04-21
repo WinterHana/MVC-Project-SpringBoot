@@ -7,8 +7,7 @@
 
 <head>
 <script defer type="text/javascript" src="/javascript/common.js"></script>
-<script defer type="text/javascript"
-	src="/javascript/product/getProduct.js"></script>
+<script defer type="text/javascript" src="/javascript/product/getProduct.js"></script>
 <jsp:include page="../toolbar.jsp" flush="true" />
 <title>Product Detail</title>
 </head>
@@ -120,10 +119,15 @@
 								class="btn  btn-warning btn-lg">수정하기</button>
 							<button type="button" name="delete" class="btn btn-danger btn-lg">삭제하기</button>
 						</c:if>
-						<button type="button" name="purchase"
-							class="btn btn-primary btn-lg"
+						<button type="button" name="purchase" class="btn btn-primary btn-lg"
 							${empty sessionScope.user ? ' disabled' : '' }>구매하기
 							${empty sessionScope.user ? ' (로그인 필요)' : '' }</button>
+						<c:if test="${not empty sessionScope.user}">
+							
+							<button type="button" name="cart" class="btn btn-success btn-lg">
+							${isCart eq false ? '찜하기' : '찜 취소하기' }
+							</button>
+						</c:if>
 						<button type="button" name="back" class="btn btn-secondary btn-lg">취소</button>
 					</div>
 				</div>

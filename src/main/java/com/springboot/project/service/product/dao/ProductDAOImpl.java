@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.SearchVO;
@@ -104,5 +105,23 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<ProductVO> getProductInfo() {
 		System.out.println("[" + getClass().getName() + ".getProductInfo] Call");
 		return sqlSession.selectList("ProductMapper.getProductInfo");
+	}
+
+	@Override
+	public int addCart(CartVO cart) {
+		System.out.println("[" + getClass().getName() + ".addCart] Call");
+		return sqlSession.insert("ProductMapper.addCart" , cart);
+	}
+
+	@Override
+	public int deleteCart(CartVO cart) {
+		System.out.println("[" + getClass().getName() + ".deleteCart] Call");
+		return sqlSession.delete("ProductMapper.deleteCart", cart);
+	}
+
+	@Override
+	public int checkIsCart(CartVO cart) {
+		System.out.println("[" + getClass().getName() + ".checkIsCart] Call");
+		return sqlSession.selectOne("ProductMapper.checkIsCart", cart);
 	}
 }

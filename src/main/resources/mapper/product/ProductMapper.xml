@@ -6,8 +6,6 @@
 				
 <mapper namespace="ProductMapper">
 	<resultMap id = "productSelectMap" type = "productVO">
-		<!-- <result property = "fileName" column = "image_file" jdbcType="VARCHAR"/> -->
-  		<!-- <result property = "manuDate" column = "manufacture_day" jdbcType="VARCHAR"/> -->
   		<result property = "manuDate" column = "manufacture_day" jdbcType="DATE"/>
   		<result property = "price" column = "price" jdbcType="NUMERIC"/>
   		<result property = "prodDetail" column = "prod_detail" jdbcType="VARCHAR"/>
@@ -21,6 +19,13 @@
 		<result property = "imageNo" column = "image_no" jdbcType="NUMERIC"/>
 		<result property = "prodNo" column = "prod_no" jdbcType="NUMERIC"/>
   		<result property = "fileName" column = "file_name" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id = "cartMap"  type = "CartVO">
+		<result property = "userId" column = "user_id" jdbcType="VARCHAR"/>
+		<result property = "prodNo" column = "prod_no" jdbcType="NUMERIC"/>
+  		<result property = "price" column = "price" jdbcType="VARCHAR"/>
+  		<result property = "count" column = "count" jdbcType="VARCHAR"/>
 	</resultMap>
 	
   	<sql id = "getProductListSelect">
@@ -145,5 +150,27 @@
   	
   	<select id = "getProductInfo" resultMap = "productSelectMap">
   		SELECT prod_no, prod_name FROM product
+  	</select>
+  	
+  	<insert id = "addCart" parameterType = "CartVO">
+  	  	INSERT
+  		INTO cart (user_id, prod_no, price, count)
+  		VALUES(
+  			#{userId:VARCHAR},
+  			#{prodNo:NUMERIC},
+  			#{price:NUMERIC},
+  			#{count:NUMERIC}
+  		)			
+  	</insert>
+  	
+  	<delete id = "deleteCart" parameterType = "CartVO">
+  		DELETE FROM Cart
+		WHERE user_id = #{userId:VARCHAR} AND prod_no = #{prodNo:NUMERIC}	
+  	</delete>
+  	
+  	<select id = "checkIsCart"  parameterType = "CartVO" resultType = "int">
+  		SELECT COUNT(*) FROM (
+  			SELECT * FROM cart WHERE user_id = #{userId:VARCHAR} AND prod_no = #{prodNo:NUMERIC}
+  		)
   	</select>
 </mapper>

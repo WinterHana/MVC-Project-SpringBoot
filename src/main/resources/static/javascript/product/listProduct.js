@@ -54,11 +54,11 @@ function getProductData(
 	searchCondition, searchKeyword, 
 	searchKeywordSub, searchKeywordThird, sortCondition) {
 	
-	console.log("searchCondition : " + searchCondition);
+/*	console.log("searchCondition : " + searchCondition);
 	console.log("searchKeyword : " + searchKeyword);
 	console.log("searchKeywordSub : " + searchKeywordSub);
 	console.log("searchKeywordThird : " + searchKeywordThird);
-	console.log("sortCondition : " + sortCondition);
+	console.log("sortCondition : " + sortCondition);*/
 	
 	let obj = {
 		"searchCondition" : searchCondition,
@@ -105,8 +105,8 @@ function getProductData(
 
 // 각 데이터마다 데이터 랜더링
 function renderList(result) {
-	let html = 	'<div class="col-sm-3">'
-				+ '<div class="card text-center" style="width: 20rem;">'
+	let html = 	'<div class="col-sm-4">'
+				+ '<div class="card text-center" style="width: 25rem;">'
 				+ '<img src="/img/uploadFiles/' + (result.fileName != null ? result.fileName[0] : '') +'" class="card-img-top">'
 				+ '<div class="card-body">'
 				+ '<h5 class="card-title">' + result.prodName +'</h5>'
@@ -114,6 +114,7 @@ function renderList(result) {
 				+ '<p class="card-text">가격 : ' + result.price + '</p>'
 				+ '<form action = "/product/getProduct/' +  result.prodNo +'" method = "post">'
 				+ '<button class="btn btn-danger">상세 보기</button>'
+				+ '</div>'
 				+ '</form>'
 				+ '</div></div></div>'
 	
@@ -135,10 +136,10 @@ $(document).scroll(function(){
 	
 	// 스크롤이 아래로 내려갔을 때
 	if(currentScroll > lastScroll) {
-		console.log("현재 스크롤 위치 : " + currentScroll);
+/*		console.log("현재 스크롤 위치 : " + currentScroll);
 		console.log("브라우저 창의 높이 : " + height);
 		console.log("전체 문서의 높이 : " +  documentHeight);
-		console.log("테스트 중입니다");
+		console.log("테스트 중입니다");*/
 		if(currentScroll + height + 1 >= documentHeight 
 			&& isGetList === true 
 			&& isGetDataFinish === true) {

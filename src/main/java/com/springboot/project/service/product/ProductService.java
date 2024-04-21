@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.SearchVO;
@@ -25,4 +26,10 @@ public interface ProductService {
 	public List<FileVO> getProductImage(int prodNo);
 	
 	public List<String> getProductInfo(String key);
+	
+	public int addCart(CartVO cart);
+	
+	public int deleteCart(CartVO cart);
+	
+	public boolean checkIsCart(CartVO cart);
 }

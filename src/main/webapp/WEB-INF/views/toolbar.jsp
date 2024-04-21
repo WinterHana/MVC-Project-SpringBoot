@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -38,6 +39,7 @@
 					<a class="nav-link" aria-current="page" href="/product/listProduct">제품 목록</a>
 				</li>
 				
+				
 				<c:if test = "${empty sessionScope.user}">
 				<li class="nav-item">
 					<a class="nav-link" href="/user/loginView">로그인</a>
@@ -48,12 +50,15 @@
 					<!-- getUser post -->
 					<form name ="getUser"  action = "/user/getUser/${sessionScope.user.userId}" method = "post"></form>
 					
+					<input type = "hidden"  name = "sessionUserId" value = "${sessionScope.user.userId}">
+					
 					<c:if test = "${sessionScope.user.role eq 'user'}">
 						<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">${sessionScope.user.userName}</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li class="dropdown-item" >내 정보 보기</li>
 								<li><a class="dropdown-item" href="/purchase/listPurchase/1">구매 내역 확인</a></li>
+								<li><a class="dropdown-item" href="#">찜 목록 확인</a></li>
 							</ul>
 						</li>
 					</c:if>
@@ -64,6 +69,7 @@
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li class = "dropdown-item" name="myInformation">내 정보 보기</a></li>
 								<li><a class="dropdown-item" href="/purchase/listPurchase/1">구매 내역 확인</a></li>
+								<li><a class="dropdown-item" href="#">찜 목록 확인</a></li>
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" href="/user/listUser">유저 관리</a></li>
 								<li><a class="dropdown-item" href="/purchase/listAdminPurchase/1">구매 관리</a></li>

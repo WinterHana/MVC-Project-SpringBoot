@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.model2.mvc.common.util.HistoryUtil;
 import com.model2.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
+import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.Page;
 import com.springboot.project.service.domain.ProductVO;
@@ -159,5 +160,27 @@ public class ProductRestController extends CommonController  {
 		productService.deleteProduct(product);
 		
 		System.out.println("[ProductController.deleteProduct()] end");
+	}
+	
+	@PostMapping(value = "/addCart")
+	public boolean addCart(@RequestBody CartVO cart) {
+		System.out.println("[ProductController.addCart()] start");
+		
+		productService.addCart(cart);
+		
+		System.out.println("[ProductController.addCart()] end");
+		
+		return true;
+	}
+	
+	@PostMapping(value = "/deleteCart")
+	public boolean deleteCart(@RequestBody CartVO cart) {
+		System.out.println("[ProductController.deleteCart()] start");
+		
+		productService.deleteCart(cart);
+		
+		System.out.println("[ProductController.deleteCart()] end");
+		
+		return true;
 	}
 }

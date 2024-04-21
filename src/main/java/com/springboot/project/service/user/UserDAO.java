@@ -2,6 +2,7 @@ package com.springboot.project.service.user;
 
 import java.util.List;
 
+import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.UserVO;
 

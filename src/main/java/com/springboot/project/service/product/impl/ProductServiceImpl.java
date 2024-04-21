@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.model2.mvc.common.util.CommonUtil;
+import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.SearchVO;
@@ -293,6 +294,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 
+	@Transactional
 	@Override
 	public int addProductImage(FileVO file) {
 		int result = 0;
@@ -346,5 +348,28 @@ public class ProductServiceImpl implements ProductService {
 		}
 		
 		return result.stream().distinct().collect(Collectors.toList());
+	}
+
+	@Transactional
+	@Override
+	public int addCart(CartVO cart) {
+		return productDAO.addCart(cart);
+	}
+
+	@Transactional
+	@Override
+	public int deleteCart(CartVO cart) {
+		return productDAO.deleteCart(cart);
+	}
+
+	@Override
+	public boolean checkIsCart(CartVO cart) {
+		int result = productDAO.checkIsCart(cart);
+		
+		if(result > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

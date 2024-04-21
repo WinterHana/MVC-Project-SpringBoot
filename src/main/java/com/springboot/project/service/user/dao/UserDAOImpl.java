@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.user.UserDAO;
@@ -77,8 +78,6 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int updateMileage(UserVO user) {
-		System.out.println("[updateMileage] user userId : " + user.getUserId());
-		System.out.println("[updateMileage] user mileage : " + user.getMileage());
 		System.out.println("[" + getClass().getName() + ".updateMileage] Call");
 		return sqlSession.update("UserMapper.updateMileage", user);
 	}

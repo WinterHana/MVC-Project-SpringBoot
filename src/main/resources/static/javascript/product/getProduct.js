@@ -80,3 +80,58 @@ $("button[name='purchaseComplete']").on("click", function() {
 	
 	$("form[ name = 'purchaseForm']").submit();
 });
+
+// Cart에 대한 상호작용
+// 1. addCart
+$("button[name='cart']").on('click', function() {
+	let prodNo = parseInt($("input[name='prodNo']").val());
+	let prodCount = parseInt($("input[name='prodCount']").val());
+	let userId = $("input[name='userId']").val();
+	let price = parseInt($("#price").text());
+	
+/*	console.log("price : " + price);
+	console.log("userId : " + userId);
+	console.log("prodCount : " + prodCount);
+	console.log("prodNo : " + prodNo);*/
+	
+	let obj = {
+		'userId' : userId,
+		'prodNo' : prodNo,
+		'price' : price,
+		'count' : prodCount
+	};
+	
+	if($(this).text().includes("찜하기")) {
+		let success = false;
+		
+		$.ajax({
+			url : "/rest/product/addCart",
+			method : "POST",
+			dataType : "json",		
+			contentType : "application/json",		
+			data : JSON.stringify(obj),
+			
+
+		});
+		
+		alert("찜 등록이 완료되었습니다!");
+		$(this).text("찜 취소하기");
+		
+	} else {
+		$.ajax({
+			url : "/rest/product/deleteCart",
+			method : "POST",
+			dataType : "json",
+			contentType : "application/json",
+			data : JSON.stringify(obj),
+			
+			error : function() {
+				alert("찜 삭제에 실패했습니다..");
+				return;
+			}
+		});
+		
+		alert("찜 등록이 해제되었습니다!");
+		$(this).text("찜하기");
+	}
+});

@@ -3,6 +3,7 @@ package com.springboot.project.service.product;
 import java.util.List;
 import java.util.Map;
 
+import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.SearchVO;
@@ -36,4 +37,10 @@ public interface ProductDAO {
 	public int deleteProductImage(int prodNo);
 	
 	public List<ProductVO> getProductInfo();
+	
+	public int addCart(CartVO cart);
+	
+	public int deleteCart(CartVO cart);
+	
+	public int checkIsCart(CartVO cart);
 }
