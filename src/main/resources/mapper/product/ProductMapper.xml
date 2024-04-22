@@ -173,4 +173,8 @@
   			SELECT * FROM cart WHERE user_id = #{userId:VARCHAR} AND prod_no = #{prodNo:NUMERIC}
   		)
   	</select>
+  	
+  	<select id = "getCartList" parameterType = "string"  resultMap = "cartMap">
+  		SELECT * FROM CART WHERE user_id = #{userId:VARCHAR}
+  	</select>
 </mapper>

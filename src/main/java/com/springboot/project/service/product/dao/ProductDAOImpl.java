@@ -124,4 +124,10 @@ public class ProductDAOImpl implements ProductDAO {
 		System.out.println("[" + getClass().getName() + ".checkIsCart] Call");
 		return sqlSession.selectOne("ProductMapper.checkIsCart", cart);
 	}
+
+	@Override
+	public List<CartVO> getCartList(String userId) {
+		System.out.println("[" + getClass().getName() + ".getCartList] Call");
+		return sqlSession.selectList("ProductMapper.getCartList", userId);
+	}
 }

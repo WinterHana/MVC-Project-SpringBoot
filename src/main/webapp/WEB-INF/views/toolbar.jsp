@@ -58,7 +58,7 @@
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li class="dropdown-item" >내 정보 보기</li>
 								<li><a class="dropdown-item" href="/purchase/listPurchase/1">구매 내역 확인</a></li>
-								<li><a class="dropdown-item" href="#">찜 목록 확인</a></li>
+								<li><a class="dropdown-item" href="/product/getCartList/${sessionScope.user.userId}">찜 목록 확인</a></li>
 							</ul>
 						</li>
 					</c:if>
@@ -69,7 +69,7 @@
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li class = "dropdown-item" name="myInformation">내 정보 보기</a></li>
 								<li><a class="dropdown-item" href="/purchase/listPurchase/1">구매 내역 확인</a></li>
-								<li><a class="dropdown-item" href="#">찜 목록 확인</a></li>
+								<li><a class="dropdown-item" href="/product/getCartList/${sessionScope.user.userId}">찜 목록 확인</a></li>
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" href="/user/listUser">유저 관리</a></li>
 								<li><a class="dropdown-item" href="/purchase/listAdminPurchase/1">구매 관리</a></li>

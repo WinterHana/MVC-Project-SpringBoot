@@ -32,4 +32,6 @@ public interface ProductService {
 	public int deleteCart(CartVO cart);
 	
 	public boolean checkIsCart(CartVO cart);
+	
+	public Map<String, Object> getCartList(String userId);
 }
