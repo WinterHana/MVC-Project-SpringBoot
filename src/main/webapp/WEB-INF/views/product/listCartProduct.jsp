@@ -21,13 +21,14 @@
                 <tr>
                     <td width = "30%" align = "center">제품 이름</td>
                     <td width = "20%" align = "center">가격</td>
-                    <td width = "20%" align = "center">개수</td>
+                    <td width = "15%" align = "center">개수</td>
+                    <td width = "15%" align = "center">남은 개수</td>
                     <td width = "20%" align = "center">총 구매 금액</td>
                 </tr>
             </thead>
             <tbody>
             	<c:forEach var = "product" items = "${map.productList}">
-            	<form name = "addTransactionList" action = "/purchase/addTransactionList" method = "POST">
+            	<form name = "addTransactionList" action = "/rest/purchase/addTransactionList" method = "POST">
             		<tr>
 	                   <td class="align-middle text-center" width = "30%" >
 	                   		<a href = "/product/getProduct/${product.prodNo}">${product.prodName}</a>
@@ -37,9 +38,10 @@
 	                   ${product.price}
 	                   <input type="hidden" name = "price" value = "${product.price}">
 	                   </td>
-	                   <td class="align-middle text-center" width = "20%" >
+	                   <td class="align-middle text-center" width = "15%" >
   							<input type="text"  name = "count" placeholder="개수 입력" >
 	                   </td>
+	                   	<td class="align-middle text-center" width = "15%" >${product.count}</td>
 	                   <td class="align-middle text-center" width = "20%" ><span id = "${product.prodNo}totalPrice">0</span></td>
 	               </tr>  
             	</form>
@@ -49,7 +51,7 @@
      </div>
      
      <div class="container">
-		<form name = "purchaseForm" action = "/purchase/addPurchase" method = "POST">
+		<form name = "purchaseForm" action = "/rest/purchase/addPurchase" method = "POST">
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
@@ -58,6 +60,11 @@
 					<div class="input-group mb-3">
 						<span class="input-group-text">구매자 ID</span> <input type="text"
 							class="form-control" value="${sessionScope.user.userId}" readonly />
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text">구매 시 이름</span> <input type="text"
+							class="form-control" name="tranName" class="ct_input_g"
+							value="${sessionScope.user.userName}님의 구매" />
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">구매자 이름</span> <input type="text"
@@ -75,7 +82,7 @@
 							<option value="1" selected="selected">현금구매</option>
 							<option value="2">신용구매</option>
 						</select>
-					</div>
+					</div>					
 					<div class="input-group mb-3">
 						<span class="input-group-text">구매 개수</span> 
 						<input type="text" name="prodCount" class="form-control"

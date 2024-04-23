@@ -142,11 +142,15 @@
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
 					<h2>구매 정보 입력</h2>
-					<input type="hidden" name="prodNo" value="${product.prodNo}" /> <input
-						type="hidden" name="userId" value="${sessionScope.user.userId}" />
+					<input type="hidden" name="userId" value="${sessionScope.user.userId}" />
 					<div class="input-group mb-3">
 						<span class="input-group-text">구매자 ID</span> <input type="text"
 							class="form-control" value="${sessionScope.user.userId}" readonly />
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text">구매 시 이름</span> <input type="text"
+							class="form-control" name="tranName" class="ct_input_g"
+							value="${sessionScope.user.userName}님의 구매" />
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">구매자 이름</span> <input type="text"

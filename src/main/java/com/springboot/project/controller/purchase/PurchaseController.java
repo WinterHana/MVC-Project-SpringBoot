@@ -216,34 +216,34 @@ public class PurchaseController extends CommonController {
 		
 	}
 	
-	@RequestMapping(value = "/addPurchase")
-	public String addPurchase(
-			@ModelAttribute("user") UserVO user,
-			@ModelAttribute("product") ProductVO product,
-			@ModelAttribute("purchase") PurchaseVO purchase,
-			HttpSession session,
-			Model model) {
-		System.out.println("[PurchaseController.addPurchase()] start");
-		
-		purchase.setTranCode(TranStatusCode.PURCHASED.getNumber());
-		
-		UserVO userResult = userService.getUser(user.getUserId());
-		purchase.setBuyer(userResult);
-		
-		ProductVO productResult = productService.getProduct(product.getProdNo());
-		purchase.setPurchaseProd(productResult);
-		
-		purchaseService.addPurchase(purchase);
-		
-		// 갱신된 마일리지 반영
-		session.setAttribute("user",  userService.getUser(user.getUserId()));
-		
-		model.addAttribute("purchase", purchase);
-		
-		System.out.println("[PurchaseController.addPurchase()] end");
-		
-		return "redirect:/purchase/listPurchase/1";
-	}
+//	@RequestMapping(value = "/addPurchase")
+//	public String addPurchase(
+//			@ModelAttribute("user") UserVO user,
+//			@ModelAttribute("product") ProductVO product,
+//			@ModelAttribute("purchase") PurchaseVO purchase,
+//			HttpSession session,
+//			Model model) {
+//		System.out.println("[PurchaseController.addPurchase()] start");
+//		
+//		purchase.setTranCode(TranStatusCode.PURCHASED.getNumber());
+//		
+//		UserVO userResult = userService.getUser(user.getUserId());
+//		purchase.setBuyer(userResult);
+//		
+//		ProductVO productResult = productService.getProduct(product.getProdNo());
+//		purchase.setPurchaseProd(productResult);
+//		
+//		purchaseService.addPurchase(purchase);
+//		
+//		// 갱신된 마일리지 반영
+//		session.setAttribute("user",  userService.getUser(user.getUserId()));
+//		
+//		model.addAttribute("purchase", purchase);
+//		
+//		System.out.println("[PurchaseController.addPurchase()] end");
+//		
+//		return "redirect:/purchase/listPurchase/1";
+//	}
 	
 	@RequestMapping(value = "/updateTranCode/{page}", method = RequestMethod.GET)
 	public String updateTranCode(

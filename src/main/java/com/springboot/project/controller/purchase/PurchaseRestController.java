@@ -32,6 +32,7 @@ import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
 import com.springboot.project.service.domain.RestApiCommonVO;
 import com.springboot.project.service.domain.SearchVO;
+import com.springboot.project.service.domain.TransactionListVO;
 import com.springboot.project.service.domain.UpdateTranCodeVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.product.ProductService;
@@ -219,9 +220,6 @@ public class PurchaseRestController extends CommonController {
 		UserVO userResult = userService.getUser(user.getUserId());
 		purchase.setBuyer(userResult);
 		
-		ProductVO productResult = productService.getProduct(product.getProdNo());
-		purchase.setPurchaseProd(productResult);
-		
 		purchaseService.addPurchase(purchase);
 		
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -272,6 +270,18 @@ public class PurchaseRestController extends CommonController {
 		
 		restApiCommon.getPurchase().setPurchaseProd(restApiCommon.getProduct());
 		purchaseService.deletePurchase(restApiCommon.getPurchase());
+		
+		System.out.println("[PurchaseController.deletePurchase()] end");
+		
+		return "success";
+	}
+	
+	// 물건의 개수 조절은 여기서 하기
+	@PostMapping(value = "/addTransactionList")
+	public String addTransactionList(@RequestBody TransactionListVO transactionList) {
+		System.out.println("[PurchaseController.deletePurchase()] start");
+		
+		purchaseService.addTransactionList(transactionList);
 		
 		System.out.println("[PurchaseController.deletePurchase()] end");
 		

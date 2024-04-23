@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.springboot.project.service.domain.PurchaseVO;
+import com.springboot.project.service.domain.TransactionListVO;
 import com.springboot.project.service.domain.UserVO;
 
 public interface PurchaseDAO {
@@ -26,4 +27,6 @@ public interface PurchaseDAO {
 	public int updatePurchase(PurchaseVO purchaseVO);
 	
 	public int updateTranCode(Map<String,Object> map);
+	
+	public int addTransactionList(TransactionListVO transactionList);
 }

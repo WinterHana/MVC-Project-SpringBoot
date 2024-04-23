@@ -15,16 +15,16 @@ import lombok.ToString;
 public class PurchaseVO {
 	
 	private UserVO buyer;
+	private ProductVO purchaseProd;
 	private String dlvyAddr;
 	private Date dlvyDate;
 	private String dlvyRequest;
 	private Date orderDate;
 	private String paymentOption;
-	private ProductVO purchaseProd;
 	private String receiverName;
 	private String receiverPhone;
 	private String tranCode;
 	private int tranNo;
-	private int prodCount;
 	private int totalPrice;
+	private String tranName;
 }
