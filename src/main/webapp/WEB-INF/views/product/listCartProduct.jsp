@@ -27,17 +27,23 @@
             </thead>
             <tbody>
             	<c:forEach var = "product" items = "${map.productList}">
-	               <tr>
+            	<form name = "addTransactionList" action = "/purchase/addTransactionList" method = "POST">
+            		<tr>
 	                   <td class="align-middle text-center" width = "30%" >
 	                   		<a href = "/product/getProduct/${product.prodNo}">${product.prodName}</a>
+	                   		<input type="hidden" name = "prodNo" value = "${product.prodNo}">
 	                   </td>
-	                   <td class="align-middle text-center" width = "20%" >${product.price}</td>
 	                   <td class="align-middle text-center" width = "20%" >
-  							<input type="text" class="form-control" name = "count" placeholder="개수 입력" >
+	                   ${product.price}
+	                   <input type="hidden" name = "price" value = "${product.price}">
+	                   </td>
+	                   <td class="align-middle text-center" width = "20%" >
+  							<input type="text"  name = "count" placeholder="개수 입력" >
 	                   </td>
 	                   <td class="align-middle text-center" width = "20%" ><span id = "${product.prodNo}totalPrice">0</span></td>
-	               </tr>
-	            </c:forEach>
+	               </tr>  
+            	</form>
+	           </c:forEach>
             </tbody>
           </table>
      </div>
@@ -48,8 +54,7 @@
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
 					<h2>구매 정보 입력</h2>
-					<input type="hidden" name="prodNo" value="${product.prodNo}" /> <input
-						type="hidden" name="userId" value="${sessionScope.user.userId}" />
+					<input type="hidden" name="userId" value="${sessionScope.user.userId}" />
 					<div class="input-group mb-3">
 						<span class="input-group-text">구매자 ID</span> <input type="text"
 							class="form-control" value="${sessionScope.user.userId}" readonly />
@@ -78,16 +83,15 @@
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">총 가격</span> 
-						<input type="text" name="totalPrice" class="form-control"
-							value="0"  readonly>
+						<input type="text" name="totalPrice" class="form-control" value="0"  readonly>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text">구매자 주소</span> <input type="text"
-							class="form-control" name="dlvyAddr" />
+						<span class="input-group-text">구매자 주소</span> <input type="text" 
+						 class="form-control" name="dlvyAddr" />
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text">구매 요청 사항</span> <input type="text"
-							class="form-control" name="dlvyRequest" />
+						<span class="input-group-text">구매 요청 사항</span> <input type="text" 
+						 class="form-control" name="dlvyRequest" />
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text">배송 일자</span> <input type="date"
