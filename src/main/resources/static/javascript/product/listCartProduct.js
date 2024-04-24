@@ -1,3 +1,24 @@
+// form을 jquery로 변환
+$.fn.serializeObject = function(){
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+    	var name = $.trim(this.name),
+    		value = $.trim(this.value);
+    	
+        if (o[name]) {
+            if (!o[name].push) {
+                o[name] = [o[name]];
+            }
+            o[name].push(value || '');
+        } else {
+            o[name] = value || '';
+        }
+    });
+    return o;
+};
+	
+
 $(document).ready(function() {
     $('input[name="count"]').on('input', function() {
         let count = parseInt($(this).val());
@@ -76,9 +97,40 @@ $("button[name='purchaseComplete']").on("click", function() {
 		return;
 	}
 	
-	$("form[name = 'purchaseForm']").submit();
+	// 구매 정보 로직 저장 시작
+	// 1. 구매 정보 저장
+	let purchaseFormData = $("form[name='purchaseForm']").serializeObject();
 	
+	let addTransactionListData = []
 	$("form[name='addTransactionList']").each(function() {
-		$(this).submit();
+		console.log($(this).serializeObject())
+		addTransactionListData.push($(this).serializeObject());
 	});
+	
+	console.log(purchaseFormData);
+	console.log(addTransactionListData);
+	
+	let requestData = {
+		"purchase" : purchaseFormData,
+		"transactionLists" :  addTransactionListData
+	}
+	
+	// 2. 전송
+	$.ajax({
+		url : "/rest/purchase/addPurchase",
+		method : "POST",
+		dataType : "json",
+		contentType : "application/json",
+		data : JSON.stringify(requestData),
+		success : function(JSONData) {
+			alert("구매 정보 저장에 성공했습니다!");
+			console.log(requestData);
+		}, 
+		error : function() {
+			alert("구매 정보 저장에 실패했습니다..");
+		}
+	});
+	
+	// 3. 새로고침
+	location.reload(true);
 });

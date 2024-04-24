@@ -16,6 +16,7 @@
 		<result property = "tranCode" column = "tran_status_code"  jdbcType="VARCHAR"/>
 		<result property = "tranNo" column = "tran_no"  jdbcType="NUMERIC"/>
 		<result property = "totalPrice" column = "total_price"  jdbcType="NUMERIC"/>
+		<result property = "tranName" column = "tran_name"  jdbcType="VARCHAR"/>
 		<association property="buyer" resultMap="userSelectMap" />
 	</resultMap>
 	
@@ -45,7 +46,7 @@
 		<result property = "tranNo" column = "tran_no"  jdbcType = "NUMERIC"/>
 		<result property = "prodNo" column = "prod_no"  jdbcType = "NUMERIC"/>
 		<result property = "price" column = "price"  jdbcType = "NUMERIC"/>
-		<result property = "prodCount" column = "prod_count"  jdbcType = "NUMERIC"/>
+		<result property = "count" column = "prod_count"  jdbcType = "NUMERIC"/>
 	</resultMap>
 	
   	<sql id = "getPurchaseListSelect">
@@ -63,7 +64,7 @@
   		INTO transaction
   		(tran_no, buyer_id, payment_option, receiver_name, 
   		receiver_phone, dlvy_addr, dlvy_request, tran_status_code, order_date, 
-  		dlvy_date, total_price)
+  		dlvy_date, total_price, tran_name)
   		VALUES(
   			seq_transaction_tran_no.nextval,
   			#{buyer.userId:VARCHAR},
@@ -75,7 +76,8 @@
   			#{tranCode:VARCHAR},
   			SYSDATE,
   			#{dlvyDate:DATE},
-  			#{totalPrice:NUMERIC}
+  			#{totalPrice:NUMERIC},
+  			#{tranName:VARCHAR}
   		)					
   	</select>
   	
@@ -149,6 +151,6 @@
 		INSERT INTO transactionList
 		(tran_no, prod_no, price, prod_count)
 		VALUES 
-		(seq_transaction_tran_no.currval, #{prodNo:NUMERIC}, #{price:NUMERIC}, #{prodCount:NUMERIC})
+		(seq_transaction_tran_no.currval, #{prodNo:NUMERIC}, #{price:NUMERIC}, #{count:NUMERIC})
 	</update>
 </mapper>

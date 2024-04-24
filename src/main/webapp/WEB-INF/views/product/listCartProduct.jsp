@@ -28,7 +28,7 @@
             </thead>
             <tbody>
             	<c:forEach var = "product" items = "${map.productList}">
-            	<form name = "addTransactionList" action = "/rest/purchase/addTransactionList" method = "POST">
+            	<form name = "addTransactionList" method = "POST">
             		<tr>
 	                   <td class="align-middle text-center" width = "30%" >
 	                   		<a href = "/product/getProduct/${product.prodNo}">${product.prodName}</a>
@@ -51,7 +51,7 @@
      </div>
      
      <div class="container">
-		<form name = "purchaseForm" action = "/rest/purchase/addPurchase" method = "POST">
+		<form name = "purchaseForm"  method = "POST">
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
@@ -109,5 +109,6 @@
 				</div>
 			</div>
 		</form>
+		</div>
 </body>
 </html>

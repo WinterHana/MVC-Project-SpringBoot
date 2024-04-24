@@ -13,5 +13,5 @@ public class TransactionListVO {
 	int tranNo;
 	int prodNo;
 	int price;
-	int prodCount;
+	int count;
 }

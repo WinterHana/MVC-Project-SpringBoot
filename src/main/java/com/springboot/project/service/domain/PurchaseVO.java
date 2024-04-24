@@ -3,6 +3,7 @@ package com.springboot.project.service.domain;
 import java.sql.Date;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class PurchaseVO {
 	
 	private UserVO buyer;
@@ -19,7 +21,7 @@ public class PurchaseVO {
 	private String dlvyAddr;
 	private Date dlvyDate;
 	private String dlvyRequest;
-	private Date orderDate;
+	private Date orderDate; 
 	private String paymentOption;
 	private String receiverName;
 	private String receiverPhone;
@@ -27,4 +29,5 @@ public class PurchaseVO {
 	private int tranNo;
 	private int totalPrice;
 	private String tranName;
+	private String userId;
 }

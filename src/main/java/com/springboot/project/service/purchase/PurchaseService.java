@@ -2,6 +2,7 @@ package com.springboot.project.service.purchase;
 
 import java.util.Map;
 
+import com.springboot.project.service.domain.AddPurchaseDataVO;
 import com.springboot.project.service.domain.PurchaseVO;
 import com.springboot.project.service.domain.SearchVO;
 import com.springboot.project.service.domain.TransactionListVO;
@@ -15,7 +16,7 @@ public interface PurchaseService {
 	
 	public Map<Integer, String> getSalaList();
 	
-	public int addPurchase(PurchaseVO purchaseVO);
+	public int addPurchase(AddPurchaseDataVO addPurchaseData);
 	
 	public int updatePurchase(PurchaseVO purchaseVO);
 	
