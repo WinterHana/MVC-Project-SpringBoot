@@ -89,11 +89,6 @@ $("button[name='cart']").on('click', function() {
 	let userId = $("input[name='userId']").val();
 	let price = parseInt($("#price").text());
 	
-/*	console.log("price : " + price);
-	console.log("userId : " + userId);
-	console.log("prodCount : " + prodCount);
-	console.log("prodNo : " + prodNo);*/
-	
 	let obj = {
 		'userId' : userId,
 		'prodNo' : prodNo,

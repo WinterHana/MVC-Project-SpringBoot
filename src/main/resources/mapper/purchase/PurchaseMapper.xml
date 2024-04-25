@@ -15,10 +15,9 @@
 		<result property = "receiverPhone" column = "receiver_phone"  jdbcType="VARCHAR"/>
 		<result property = "tranCode" column = "tran_status_code"  jdbcType="VARCHAR"/>
 		<result property = "tranNo" column = "tran_no"  jdbcType="NUMERIC"/>
-		<result property = "prodCount" column = "prod_count"  jdbcType="NUMERIC"/>
 		<result property = "totalPrice" column = "total_price"  jdbcType="NUMERIC"/>
+		<result property = "tranName" column = "tran_name"  jdbcType="VARCHAR"/>
 		<association property="buyer" resultMap="userSelectMap" />
-		<association property="purchaseProd" resultMap="productSelectMap" />
 	</resultMap>
 	
 	<resultMap id = "productSelectMap" type = "productVO">
@@ -43,6 +42,13 @@
   		<result property = "regDate" column = "reg_date"  jdbcType = "DATE"/>
 	</resultMap>
 	
+	<resultMap id = "transactionListMap" type = "TransactionListVO">
+		<result property = "tranNo" column = "tran_no"  jdbcType = "NUMERIC"/>
+		<result property = "prodNo" column = "prod_no"  jdbcType = "NUMERIC"/>
+		<result property = "price" column = "price"  jdbcType = "NUMERIC"/>
+		<result property = "count" column = "prod_count"  jdbcType = "NUMERIC"/>
+	</resultMap>
+	
   	<sql id = "getPurchaseListSelect">
   		 SELECT * FROM transaction 
   			<if test = "userVO.role != 'admin' ">
@@ -56,12 +62,11 @@
   	<select id="addPurchase"  parameterType = "purchaseVO">
   		INSERT
   		INTO transaction
-  		(tran_no, prod_no, buyer_id, payment_option, receiver_name, 
+  		(tran_no, buyer_id, payment_option, receiver_name, 
   		receiver_phone, dlvy_addr, dlvy_request, tran_status_code, order_date, 
-  		dlvy_date, prod_count, total_price)
+  		dlvy_date, total_price, tran_name)
   		VALUES(
   			seq_transaction_tran_no.nextval,
-  			#{purchaseProd.prodNo:NUMERIC},
   			#{buyer.userId:VARCHAR},
   			#{paymentOption:VARCHAR},
   			#{receiverName:VARCHAR},
@@ -71,8 +76,8 @@
   			#{tranCode:VARCHAR},
   			SYSDATE,
   			#{dlvyDate:DATE},
-  			#{prodCount:NUMERIC},
-  			#{totalPrice:NUMERIC}
+  			#{totalPrice:NUMERIC},
+  			#{tranName:VARCHAR}
   		)					
   	</select>
   	
@@ -95,7 +100,6 @@
   		WHERE tran_no = #{tranNo:NUMERIC}
   	</update>
   	
-  	<!-- DAO 단위에서까지 만들고 나중에 필요할 때 사용하기 -->
   	<delete id = "deletePurchase" parameterType = "int">
   		DELETE
   		FROM transaction
@@ -141,5 +145,16 @@
 			tran_status_code = #{tranCode}
 		</set>
 			WHERE tran_no = #{tranNo}
+	</select>
+	
+	<update id = "addTransactionList" parameterType = "TransactionListVO">
+		INSERT INTO transactionList
+		(tran_no, prod_no, price, prod_count)
+		VALUES 
+		(seq_transaction_tran_no.currval, #{prodNo:NUMERIC}, #{price:NUMERIC}, #{count:NUMERIC})
+	</update>
+	
+	<select id = "getTransactionList" parameterType = "int"  resultMap = "transactionListMap">
+		SELECT * FROM transactionList WHERE tran_no = #{tranNo}
 	</select>
 </mapper>

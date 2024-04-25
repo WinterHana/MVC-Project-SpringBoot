@@ -43,4 +43,6 @@ public interface ProductDAO {
 	public int deleteCart(CartVO cart);
 	
 	public int checkIsCart(CartVO cart);
+	
+	public List<CartVO> getCartList(String userId);
 }

@@ -84,8 +84,6 @@ public class ProductController extends CommonController  {
 			isCart = productService.checkIsCart(cart);
 		}
 		
-		log.info(isCart);
-		
 		model.addAttribute("product", product);
 		model.addAttribute("isCart", isCart);
 		
@@ -155,5 +153,19 @@ public class ProductController extends CommonController  {
 		System.out.println("[ProductController.deleteProduct()] end");
 		
 		return "redirect:/product/listProduct";
+	}
+	
+	@GetMapping(value = "/getCartList/{userId}")
+	public String getCartList(
+			@PathVariable("userId") String userId,
+			Model model){
+		System.out.println("[ProductController.getCartList()] start");
+		
+		Map<String, Object> map = productService.getCartList(userId);
+		model.addAttribute("map", map);
+		
+		System.out.println("[ProductController.getCartList()] end");
+		
+		return "/product/listCartProduct";
 	}
 }

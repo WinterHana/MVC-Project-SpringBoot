@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.springboot.project.service.domain.PurchaseVO;
+import com.springboot.project.service.domain.TransactionListVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.purchase.PurchaseDAO;
 
@@ -91,5 +92,17 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 	public int deletePurchaseBuyerId(String buyerId) {
 		System.out.println("[" + getClass().getName() + ".deletePurchaseBuyerId] Call");
 		return sqlSession.update("PurchaseMapper.deletePurchaseBuyerId", buyerId);
+	}
+
+	@Override
+	public int addTransactionList(TransactionListVO transactionList) {
+		System.out.println("[" + getClass().getName() + ".addTransactionList] Call");
+		return sqlSession.update("PurchaseMapper.addTransactionList", transactionList);
+	}
+	
+	@Override
+	public List<TransactionListVO> getTransactionList(int tranNo) {
+		System.out.println("[" + getClass().getName() + ".getTransactionList] Call");
+		return sqlSession.selectList("PurchaseMapper.getTransactionList", tranNo);
 	}
 }

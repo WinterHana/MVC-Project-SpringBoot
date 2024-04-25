@@ -372,4 +372,20 @@ public class ProductServiceImpl implements ProductService {
 			return false;
 		}
 	}
+
+	@Override
+	public Map<String, Object> getCartList(String userId) {
+		List<CartVO> cartList = productDAO.getCartList(userId);
+		List<ProductVO> productList = new ArrayList<ProductVO>();
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
+		cartList.stream().forEach(s -> {
+			productList.add(productDAO.getProduct(s.getProdNo()));
+		});
+		
+		resultMap.put("cartList", cartList);
+		resultMap.put("productList", productList);
+		
+		return resultMap;
+	}
 }

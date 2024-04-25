@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,17 +26,20 @@ import com.model2.mvc.common.util.TranStatusCode;
 import com.model2.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
 import com.springboot.project.controller.product.ProductController;
+import com.springboot.project.service.domain.AddPurchaseDataVO;
 import com.springboot.project.service.domain.Page;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
 import com.springboot.project.service.domain.RestApiCommonVO;
 import com.springboot.project.service.domain.SearchVO;
+import com.springboot.project.service.domain.TransactionListVO;
 import com.springboot.project.service.domain.UpdateTranCodeVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
 import com.springboot.project.service.user.UserService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -188,14 +190,15 @@ public class PurchaseRestController extends CommonController {
 	public Map<String, Object> getPurchase(@PathVariable("tranNo") int tranNo) {
 		System.out.println("[PurchaseController.getPurchase()] start");
 		
-		PurchaseVO result = purchaseService.getPurchase(tranNo);
+		Map<String, Object> resultMap =purchaseService.getPurchase(tranNo);
 		
-		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("path", "forward:/purchase/getPurchase.jsp");
-		resultMap.put("purchase", result);
+		PurchaseVO purchase = (PurchaseVO) resultMap.get("purchase");
+		resultMap.put("purchase", purchase);
+		resultMap.put("TransactionLists", (List<TransactionListVO>) resultMap.get("TransactionLists"));
 		
 		for(PaymentOption po : PaymentOption.values()) {
-			if(result.getPaymentOption().trim().equals(po.getNumber())) {
+			if(purchase.getPaymentOption().trim().equals(po.getNumber())) {
 				resultMap.put("paymentOption",  po.getOption());
 			}
 		}	
@@ -207,25 +210,26 @@ public class PurchaseRestController extends CommonController {
 	
 	@RequestMapping(value = "/addPurchase")
 	public Map<String, Object> addPurchase(
-			@RequestBody RestApiCommonVO restApiCommon) {
+			@RequestBody AddPurchaseDataVO addPurchaseData,
+			HttpSession session) {
 		System.out.println("[PurchaseController.addPurchase()] start");
 		
-		UserVO user = restApiCommon.getUser();
-		ProductVO product = restApiCommon.getProduct();
-		PurchaseVO purchase = restApiCommon.getPurchase();
+		// addPurchaseData의 TranCode Setting
+		addPurchaseData.getPurchase().setTranCode(TranStatusCode.PURCHASED.getNumber());
 		
-		purchase.setTranCode(TranStatusCode.PURCHASED.getNumber());
+		//addPurchaseData의 Buyer Setting
+		PurchaseVO purchase = addPurchaseData.getPurchase();
+		UserVO userResult = userService.getUser(purchase.getUserId());
+		addPurchaseData.getPurchase().setBuyer(userResult);
 		
-		UserVO userResult = userService.getUser(user.getUserId());
-		purchase.setBuyer(userResult);
+		// addPurchase
+		purchaseService.addPurchase(addPurchaseData);
 		
-		ProductVO productResult = productService.getProduct(product.getProdNo());
-		purchase.setPurchaseProd(productResult);
-		
-		purchaseService.addPurchase(purchase);
+		// 갱신된 마일리지 반영
+		session.setAttribute("user",  userService.getUser(purchase.getUserId()));
 		
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("purchase", purchase);
+		result.put("addPurchaseData", addPurchaseData);
 		
 		System.out.println("[PurchaseController.addPurchase()] end");
 		
@@ -272,6 +276,18 @@ public class PurchaseRestController extends CommonController {
 		
 		restApiCommon.getPurchase().setPurchaseProd(restApiCommon.getProduct());
 		purchaseService.deletePurchase(restApiCommon.getPurchase());
+		
+		System.out.println("[PurchaseController.deletePurchase()] end");
+		
+		return "success";
+	}
+	
+	// 물건의 개수 조절은 여기서 하기
+	@PostMapping(value = "/addTransactionList")
+	public String addTransactionList(@RequestBody TransactionListVO transactionList) {
+		System.out.println("[PurchaseController.deletePurchase()] start");
+		
+		purchaseService.addTransactionList(transactionList);
 		
 		System.out.println("[PurchaseController.deletePurchase()] end");
 		
