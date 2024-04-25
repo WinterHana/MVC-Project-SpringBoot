@@ -10,7 +10,7 @@ import com.springboot.project.service.domain.UserVO;
 
 public interface PurchaseService {
 	
-	public PurchaseVO getPurchase(int tranNo);
+	public Map<String, Object> getPurchase(int tranNo);
 	
 	public Map<String, Object> getPurchaseList(SearchVO searchVO, UserVO userVO);
 	

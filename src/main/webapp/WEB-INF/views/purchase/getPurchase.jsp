@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +19,8 @@
 	<input type ="hidden" name = "tranCode" value = "${purchase.tranCode}"/>
 	<input type ="hidden" name = "totalPrice" value = "${purchase.totalPrice}"/>
 	
-	<input type ="hidden" name = "prodNo" value = "${purchase.purchaseProd.prodNo}"/>
-	<input type ="hidden" name = "prodCount" value = "${purchase.prodCount}">
+<%-- 	<input type ="hidden" name = "prodNo" value = "${purchase.purchaseProd.prodNo}"/>
+	<input type ="hidden" name = "prodCount" value = "${purchase.prodCount}"> --%>
 	
 	<input type ="hidden" name = "userId" value = "${purchase.buyer.userId}"/>
 </form>
@@ -32,6 +34,26 @@
         <div class="row">
             <div class="col-md-7">
                 <br /><br />
+                <table class="table table-hover">
+				  <thead>
+				    <tr>
+				      <th scope="col">제품 이름</th>
+				      <th scope="col">구입 개수</th>
+				      <th scope="col">가격</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+	                 <c:forEach var = "transactionList" items = "${TransactionLists}">
+		              <tr>
+		                    <td width="150" class="ct_write">${transactionList.prodName}</td>
+		                    <td width="150" class="ct_write">${transactionList.count}</td>
+		                    <td width="150" class="ct_write">${transactionList.price}</td>
+		              </tr>
+	                 </c:forEach>
+				  </tbody>
+				</table>
+
+                    
                 <table class="table table-hover">
                     <tr>
                         <td>제목</td>
@@ -59,14 +81,6 @@
                     <tr>
                         <td width="104" class="ct_write">구매 방법</td>
                         <td class="ct_write01">${paymentOption}</td>
-                    </tr>
-                    <tr>
-                        <td width="104" class="ct_write">제품 이름</td>
-                        <td class="ct_write01">${purchase.purchaseProd.prodName}</td>
-                    </tr>
-                     <tr>
-                        <td width="104" class="ct_write">개수</td>
-                        <td class="ct_write01">${purchase.prodCount}</td>
                     </tr>
                     <tr>
                         <td width="104" class="ct_write">총 구매 금액</td>

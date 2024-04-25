@@ -99,4 +99,10 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 		System.out.println("[" + getClass().getName() + ".addTransactionList] Call");
 		return sqlSession.update("PurchaseMapper.addTransactionList", transactionList);
 	}
+	
+	@Override
+	public List<TransactionListVO> getTransactionList(int tranNo) {
+		System.out.println("[" + getClass().getName() + ".getTransactionList] Call");
+		return sqlSession.selectList("PurchaseMapper.getTransactionList", tranNo);
+	}
 }

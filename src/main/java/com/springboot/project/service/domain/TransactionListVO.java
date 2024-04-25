@@ -14,4 +14,5 @@ public class TransactionListVO {
 	int prodNo;
 	int price;
 	int count;
+	String prodName;
 }

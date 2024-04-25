@@ -123,14 +123,12 @@ $("button[name='purchaseComplete']").on("click", function() {
 		contentType : "application/json",
 		data : JSON.stringify(requestData),
 		success : function(JSONData) {
-			alert("구매 정보 저장에 성공했습니다!");
+			alert("구매에 성공했습니다!");
 			console.log(requestData);
+			window.location.reload();
 		}, 
 		error : function() {
 			alert("구매 정보 저장에 실패했습니다..");
 		}
 	});
-	
-	// 3. 새로고침
-	location.reload(true);
 });

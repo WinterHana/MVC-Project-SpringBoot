@@ -153,4 +153,8 @@
 		VALUES 
 		(seq_transaction_tran_no.currval, #{prodNo:NUMERIC}, #{price:NUMERIC}, #{count:NUMERIC})
 	</update>
+	
+	<select id = "getTransactionList" parameterType = "int"  resultMap = "transactionListMap">
+		SELECT * FROM transactionList WHERE tran_no = #{tranNo}
+	</select>
 </mapper>

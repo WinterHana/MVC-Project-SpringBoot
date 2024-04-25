@@ -29,4 +29,6 @@ public interface PurchaseDAO {
 	public int updateTranCode(Map<String,Object> map);
 	
 	public int addTransactionList(TransactionListVO transactionList);
+	
+	public List<TransactionListVO> getTransactionList(int tranNo);
 }

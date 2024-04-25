@@ -114,11 +114,11 @@ public class PurchaseServiceImpl implements PurchaseService {
 			list = purchaseDAO.getPurchaseList(tmp);
 			totalCount = purchaseDAO.getPurchaseCount(tmp);
 			
-			if(list != null) {
-				list.stream().forEach(e -> {
-					e.getPurchaseProd().setProdName(productDAO.getProduct(e.getPurchaseProd().getProdNo()).getProdName());
-				});
-			}
+//			if(list != null) {
+//				list.stream().forEach(e -> {
+//					e.getPurchaseProd().setProdName(productDAO.getProduct(e.getPurchaseProd().getProdNo()).getProdName());
+//				});
+//			}
 			
 		} catch (Exception e) {
 			System.out.println("[" + getClass().getName() + " .getPurchaseList] Exception");
@@ -132,18 +132,26 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 
 	@Override
-	public PurchaseVO getPurchase(int tranNo) {		
-		PurchaseVO result = null;
+	public Map<String, Object> getPurchase(int tranNo) {		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
 		
 		try {
-			result = purchaseDAO.getPurchase(tranNo);
-			result.getPurchaseProd().setProdName(productDAO.getProduct(result.getPurchaseProd().getProdNo()).getProdName());
+			resultMap.put("purchase", purchaseDAO.getPurchase(tranNo)); 
+			List<TransactionListVO> transactionLists = purchaseDAO.getTransactionList(tranNo);
+			
+			for(TransactionListVO t : transactionLists) {
+				ProductVO tmp = productDAO.getProduct(t.getProdNo());
+				t.setProdName(tmp.getProdName());
+				t.setPrice(tmp.getPrice());
+			}
+			resultMap.put("TransactionLists", transactionLists);
+			
 		} catch (Exception e){
 			System.out.println("[" + getClass().getName() + " .getPurchase] Exception");
 			e.printStackTrace();
 		}
 		
-		return result;
+		return resultMap;
 	}
 
 	@Transactional
@@ -211,15 +219,15 @@ public class PurchaseServiceImpl implements PurchaseService {
 		
 		// updateProductCount
 		Map<String, Integer> requestMap = new HashMap<String, Integer>();
-		int prodNo = purchase.getPurchaseProd().getProdNo();
+//		int prodNo = purchase.getPurchaseProd().getProdNo();
 		
 		// updateMileage
 		UserVO user = userDAO.getUser(purchase.getBuyer().getUserId());
 		System.out.println("[deletePurchase] : " + user);
 		user.setMileage(user.getMileage() + purchase.getTotalPrice());
 		
-		requestMap.put("prodNo", prodNo);
-		ProductVO product = productDAO.getProduct(prodNo);
+//		requestMap.put("prodNo", prodNo);
+//		ProductVO product = productDAO.getProduct(prodNo);
 		
 		// 제품이 삭제되어 더 이상 갯수를 Update할 필요가 없을 때의 예외 처리
 //		if(product != null) {

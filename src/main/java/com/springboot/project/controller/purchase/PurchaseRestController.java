@@ -190,14 +190,15 @@ public class PurchaseRestController extends CommonController {
 	public Map<String, Object> getPurchase(@PathVariable("tranNo") int tranNo) {
 		System.out.println("[PurchaseController.getPurchase()] start");
 		
-		PurchaseVO result = purchaseService.getPurchase(tranNo);
+		Map<String, Object> resultMap =purchaseService.getPurchase(tranNo);
 		
-		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("path", "forward:/purchase/getPurchase.jsp");
-		resultMap.put("purchase", result);
+		PurchaseVO purchase = (PurchaseVO) resultMap.get("purchase");
+		resultMap.put("purchase", purchase);
+		resultMap.put("TransactionLists", (List<TransactionListVO>) resultMap.get("TransactionLists"));
 		
 		for(PaymentOption po : PaymentOption.values()) {
-			if(result.getPaymentOption().trim().equals(po.getNumber())) {
+			if(purchase.getPaymentOption().trim().equals(po.getNumber())) {
 				resultMap.put("paymentOption",  po.getOption());
 			}
 		}	

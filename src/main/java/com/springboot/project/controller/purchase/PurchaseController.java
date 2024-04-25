@@ -26,6 +26,7 @@ import com.springboot.project.service.domain.Page;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
 import com.springboot.project.service.domain.SearchVO;
+import com.springboot.project.service.domain.TransactionListVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
@@ -183,11 +184,14 @@ public class PurchaseController extends CommonController {
 			Model model) {
 		System.out.println("[PurchaseController.getPurchase()] start");
 		
-		PurchaseVO result = purchaseService.getPurchase(tranNo);
+		Map<String,Object> resultMap = purchaseService.getPurchase(tranNo);
 		
-		model.addAttribute("purchase", result);
+		PurchaseVO purchase = (PurchaseVO) resultMap.get("purchase");
+		model.addAttribute("purchase", purchase);
+		model.addAttribute("TransactionLists", resultMap.get("TransactionLists"));
+		
 		for(PaymentOption po : PaymentOption.values()) {
-			if(result.getPaymentOption().trim().equals(po.getNumber())) {
+			if(purchase.getPaymentOption().trim().equals(po.getNumber())) {
 				model.addAttribute("paymentOption", po.getOption());
 			}
 		}	
@@ -271,7 +275,9 @@ public class PurchaseController extends CommonController {
 			Model model) {
 		System.out.println("[PurchaseController.updatePurchaseView()] start");
 		
-		PurchaseVO purchaseResult = purchaseService.getPurchase(tranNo);
+		Map<String,Object> resultMap = purchaseService.getPurchase(tranNo);
+		PurchaseVO purchaseResult = (PurchaseVO) resultMap.get("purchase");
+		
 		model.addAttribute("purchase", purchaseResult);
 		
 		System.out.println("[PurchaseController.updatePurchaseView()] end");
