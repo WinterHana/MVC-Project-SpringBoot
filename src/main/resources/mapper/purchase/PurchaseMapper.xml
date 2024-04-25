@@ -148,13 +148,13 @@
 	</select>
 	
 	<update id = "addTransactionList" parameterType = "TransactionListVO">
-		INSERT INTO transactionList
+		INSERT INTO transaction_list
 		(tran_no, prod_no, price, prod_count)
 		VALUES 
 		(seq_transaction_tran_no.currval, #{prodNo:NUMERIC}, #{price:NUMERIC}, #{count:NUMERIC})
 	</update>
 	
 	<select id = "getTransactionList" parameterType = "int"  resultMap = "transactionListMap">
-		SELECT * FROM transactionList WHERE tran_no = #{tranNo}
+		SELECT * FROM transaction_list WHERE tran_no = #{tranNo}
 	</select>
 </mapper>

@@ -118,13 +118,13 @@
 	
 	<select id = "getProductImage" parameterType = "int" resultMap = "fileSelectMap">
 		SELECT * 
-		FROM productImage 
+		FROM product_image 
 		WHERE prod_no = #{prodNo:NUMERIC}
 	</select>
 	
 	<insert id = "addProductImage" parameterType = "FileVO">
 		INSERT 
-		INTO productImage
+		INTO product_image
 		VALUES(
   			seq_product_image_no.nextval,
  			seq_product_prod_no.currval,
@@ -134,7 +134,7 @@
 	
 	<insert id = "updateAddProductImage" parameterType = "FileVO">
 		INSERT 
-		INTO productImage
+		INTO product_image
 		VALUES(
   			seq_product_image_no.nextval,
  			#{prodNo:NUMERIC},
@@ -145,7 +145,7 @@
 	<delete id = "deleteProductImage"  parameterType = "int">
   		DELETE 
   		FROM 
-  		productImage WHERE prod_no = #{prodNo:NUMERIC}
+  		product_image WHERE prod_no = #{prodNo:NUMERIC}
   	</delete>
   	
   	<select id = "getProductInfo" resultMap = "productSelectMap">
