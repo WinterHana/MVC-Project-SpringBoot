@@ -137,6 +137,13 @@
 
 	<!-- Purchase Menu -->
 	<div class="container" name = "purchaseMenu">
+	
+       	<form name = "addTransactionList" method = "POST">
+            <input type="hidden" name = "prodNo" value = "${product.prodNo}">
+            <input type="hidden" name = "price" value = "${product.price}">
+			<input type="hidden"  name = "count" placeholder="개수 입력" > 
+    	</form>
+    	  	
 		<form name = "purchaseForm" action = "/purchase/addPurchase" method = "POST">
 			<div class="row">
 				<div class="col-md-3"></div>
@@ -195,7 +202,7 @@
 					<button type="button" name="purchaseComplete" class="btn btn-primary btn-lg">구매 완료</button>
 				</div>
 			</div>
-		</form>
+		</form>     	
 	</div>
 </body>
 </html>

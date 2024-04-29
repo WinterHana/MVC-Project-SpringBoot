@@ -21,6 +21,8 @@
  		<typeAlias alias = "FileVO" type = "com.springboot.project.service.domain.FileVO"/>
  		<typeAlias alias = "CartVO" type = "com.springboot.project.service.domain.CartVO"/>
  		<typeAlias alias = "TransactionListVO" type = "com.springboot.project.service.domain.TransactionListVO"/>
+ 		<typeAlias alias = "TagVO" type = "com.springboot.project.service.domain.TagVO"/>
+ 		<typeAlias alias = "ProductTagVO" type = "com.springboot.project.service.domain.ProductTagVO"/>
  	</typeAliases>
 	 
 	<!-- SQL mapping -->

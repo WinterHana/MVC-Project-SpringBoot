@@ -28,6 +28,17 @@
   		<result property = "count" column = "count" jdbcType="VARCHAR"/>
 	</resultMap>
 	
+	<resultMap id = "tagMap" type = "TagVO">
+		<result property = "tagNo" column = "tag_no" jdbcType = "NUMERIC"/>
+		<result property = "tagName" column = "tag_name" jdbcType = "VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id = "productTagMap" type = "ProductTagVO">
+		<result property = "prodNo" column = "prod_no" jdbcType = "NUMERIC"/>
+		<result property = "tagNo" column = "tag_no" jdbcType = "NUMERIC"/>
+	</resultMap>
+	
+	<!-- product -->
   	<sql id = "getProductListSelect">
   		 SELECT * FROM product 
   		<where>
@@ -152,6 +163,7 @@
   		SELECT prod_no, prod_name FROM product
   	</select>
   	
+  	<!-- Cart -->
   	<insert id = "addCart" parameterType = "CartVO">
   	  	INSERT
   		INTO cart (user_id, prod_no, price, count)
@@ -176,5 +188,35 @@
   	
   	<select id = "getCartList" parameterType = "string"  resultMap = "cartMap">
   		SELECT * FROM CART WHERE user_id = #{userId:VARCHAR}
+  	</select>
+  	
+  	<!-- Tag -->
+  	<select id = "getTag" parameterType = "string" resultMap = "tagMap">
+  		SELECT * FROM tag WHERE tag_name = #{tagName:VARCHAR}
+  	</select>
+  	
+  	<insert id = "addTag" parameterType = "string">
+  		INSERT INTO tag (tag_no, tag_name) VALUES
+		(seq_product_tag_no.nextval, #{tagName:VARCHAR})
+  	</insert>
+  	
+  	<insert id = "addProductTag" parameterType = "ProductTagVO">
+  		INSERT INTO product_tag (prod_no, tag_no) VALUES
+		(#{prodNo:NUMERIC}, #{tagNo:NUMERIC})
+  	</insert>
+  	
+  	<delete id = "deleteTag" parameterType = "string">
+  		DELETE FROM tag WHERE tag_name = #{tagName:VARCHAR}
+  	</delete>
+  	
+  	<delete id = "deleteProductTag" parameterType = "string">
+  		DELETE FROM product_tag WHERE tag_name =#{tagName:VARCHAR}
+  	</delete>
+  	
+  	<select id = "getTagFromProduct"  parameterType = "int" resultMap = 'tagMap'>
+  		SELECT t.* 
+  		FROM product_tag p 
+  		INNER JOIN tag t ON p.tag_no = t.tag_no 
+  		WHERE prod_no = #{prodNo:NUMERIC}
   	</select>
 </mapper>

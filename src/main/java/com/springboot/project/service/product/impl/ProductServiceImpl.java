@@ -18,8 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.model2.mvc.common.util.CommonUtil;
 import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
+import com.springboot.project.service.domain.ProductTagVO;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.SearchVO;
+import com.springboot.project.service.domain.TagDataVO;
+import com.springboot.project.service.domain.TagVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.product.ProductDAO;
 import com.springboot.project.service.product.ProductService;
@@ -387,5 +390,44 @@ public class ProductServiceImpl implements ProductService {
 		resultMap.put("productList", productList);
 		
 		return resultMap;
+	}
+	
+	@Transactional
+	@Override
+	public int addTag(TagDataVO tagData) {
+		int result = 0;
+		String tagName = tagData.getTagName();
+		
+		TagVO tag = productDAO.getTag(tagName); result++;
+
+		// 새로운 태그라면 tag 테이블에 추가
+		if(tag == null) {
+			productDAO.addTag(tagName); result++;
+			tag = productDAO.getTag(tagName); result++;
+		}
+		
+		// product_tag 테이블에 추가
+		ProductTagVO productTag = new ProductTagVO(tagData.getProdNo(), tag.getTagNo()); 
+		productDAO.addProductTag(productTag); result++;
+		
+		return result;
+	}
+
+	@Transactional
+	@Override
+	public int deleteProductTag(TagDataVO tagData) {
+		int result = 0;
+		
+		productDAO.deleteProductTag(tagData.getTagName()); result++;
+		
+		return result;
+	}
+
+	@Override
+	public List<TagVO> getTagFromProduct(int prodNo) {
+		
+		List<TagVO> resultList = productDAO.getTagFromProduct(prodNo);
+		
+		return resultList;
 	}
 }

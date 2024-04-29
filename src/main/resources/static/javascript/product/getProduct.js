@@ -1,3 +1,23 @@
+// form을 jquery로 변환
+$.fn.serializeObject = function(){
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+    	var name = $.trim(this.name),
+    		value = $.trim(this.value);
+    	
+        if (o[name]) {
+            if (!o[name].push) {
+                o[name] = [o[name]];
+            }
+            o[name].push(value || '');
+        } else {
+            o[name] = value || '';
+        }
+    });
+    return o;
+};
+
 function purchaseMenu() {
 	// 유효성 확인
 	let count = parseInt($("#count").text());
@@ -22,6 +42,7 @@ $("button[name='down']").on("click", function() {
 	previousNum = Number($("input[name='prodCount']").val());
 	if(previousNum > 0) {
 		$("input[name='prodCount']").val(previousNum - 1);
+		$("input[name='count']").val(previousNum - 1);
 	}
 	
 	updateTotalPrice();
@@ -30,6 +51,7 @@ $("button[name='down']").on("click", function() {
 $("button[name='up']").on("click", function() {
 	previousNum = Number($("input[name='prodCount']").val());
 	$("input[name='prodCount']").val(previousNum + 1);
+	$("input[name='count']").val(previousNum + 1);
 	
 	updateTotalPrice();
 });
@@ -78,7 +100,42 @@ $("button[name='purchaseComplete']").on("click", function() {
 		return;
 	}
 	
-	$("form[ name = 'purchaseForm']").submit();
+	// 구매 정보 로직 저장 시작
+	// 1. 구매 정보 저장
+	let purchaseFormData = $("form[name='purchaseForm']").serializeObject();
+	
+	let addTransactionListData = []
+	$("form[name='addTransactionList']").each(function() {
+		console.log($(this).serializeObject())
+		addTransactionListData.push($(this).serializeObject());
+	});
+	
+	console.log(purchaseFormData);
+	console.log(addTransactionListData);
+	
+	let requestData = {
+		"purchase" : purchaseFormData,
+		"transactionLists" :  addTransactionListData
+	}
+	
+	// 2. 전송
+	$.ajax({
+		url : "/rest/purchase/addPurchase",
+		method : "POST",
+		dataType : "json",
+		contentType : "application/json",
+		data : JSON.stringify(requestData),
+		success : function(JSONData) {
+			alert("구매에 성공했습니다!");
+			console.log(requestData);
+			window.location.reload();
+		}, 
+		error : function() {
+			alert("구매 정보 저장에 실패했습니다..");
+		}
+	});
+	
+	// $("form[ name = 'purchaseForm']").submit();
 });
 
 // Cart에 대한 상호작용

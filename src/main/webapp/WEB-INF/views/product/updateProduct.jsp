@@ -47,9 +47,19 @@
                         <span class="input-group-text" id="addon-wrapping">상품 이미지</span>
                         <input class="form-control" type="file" name="multipartFile" id="formFileMultiple" multiple/>
                     </div>
-
+                    
+                    <div class="input-group input-group-lg flex-nowrap mb-3">
+                        <span class="input-group-text" id="addon-wrapping">태그</span>	
+                        <input class="form-control" type="text" name ="inputTag" size="10" placeholder="엔터로 해시태그 등록" />
+                    </div>
+                    
+                    <div class="input-group input-group-lg flex-nowrap mb-3">
+<!--                         <input type="hidden"  value=""  name="tag" id="rdTag" /> -->
+                    	<div id="tag-list"></div>
+                    </div>
+                    
                     <button type="button" name="update" class="btn btn-warning">수정하기</button>
-
+                    
                     <button type="button" name="back" class="btn btn-success">뒤로가기</button>
                 </div>
             </div>

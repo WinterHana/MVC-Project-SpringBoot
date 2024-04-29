@@ -34,6 +34,8 @@ import com.springboot.project.service.domain.Page;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
 import com.springboot.project.service.domain.SearchVO;
+import com.springboot.project.service.domain.TagDataVO;
+import com.springboot.project.service.domain.TagVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
 
@@ -182,5 +184,38 @@ public class ProductRestController extends CommonController  {
 		System.out.println("[ProductController.deleteCart()] end");
 		
 		return true;
+	}
+	
+	@PostMapping(value = "/addTag")
+	public int addTag(@RequestBody TagDataVO tagData) {
+		System.out.println("[ProductController.addTag()] start");
+		
+		int result = productService.addTag(tagData);
+		
+		System.out.println("[ProductController.addTag()] end");
+		
+		return result;
+	}
+	
+	@PostMapping(value = "/deleteProductTag")
+	public int deleteProductTag(@RequestBody TagDataVO tagData) {
+		System.out.println("[ProductController.deleteProductTag()] start");
+		
+		int result = productService.deleteProductTag(tagData);
+		
+		System.out.println("[ProductController.deleteProductTag()] end");
+		
+		return result;
+	}
+	
+	@PostMapping(value = "/getTagFromProduct/{prodNo}")
+	public List<TagVO> getTagFromProduct(@PathVariable("prodNo") int prodNo) {
+		System.out.println("[ProductController.getTagFromProduct()] start");
+		
+		List<TagVO> resultList = productService.getTagFromProduct(prodNo);
+		
+		System.out.println("[ProductController.getTagFromProduct()] end");
+		
+		return resultList;
 	}
 }
