@@ -1,4 +1,4 @@
-package com.model2.mvc.common.util;
+package com.mvc.common.util;
 
 /**
  * 배송 상태에 대한 정의

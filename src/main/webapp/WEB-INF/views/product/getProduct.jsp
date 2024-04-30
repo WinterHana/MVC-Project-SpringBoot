@@ -86,6 +86,9 @@
 			</div>
 			<div class="col-md-6"></div>
 			<div class="col-md-6">
+				<div class="input-group input-group-lg flex-nowrap mb-3">
+            		Tag &nbsp; <div id="tag-list"></div>
+           		</div>
 				<br />
 				<h4 class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;개수</h4>
 

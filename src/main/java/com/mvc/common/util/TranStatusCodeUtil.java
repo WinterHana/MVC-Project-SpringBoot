@@ -1,4 +1,4 @@
-package com.model2.mvc.common.util;
+package com.mvc.common.util;
 
 public class TranStatusCodeUtil {
 	

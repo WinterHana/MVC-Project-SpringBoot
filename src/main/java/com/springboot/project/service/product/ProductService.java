@@ -18,7 +18,7 @@ public interface ProductService {
 	
 	public Map<String, Object> getProductList(SearchVO searchVO);
 	
-	public int addProduct(ProductVO productVO, List<MultipartFile> multipartFiles);
+	public int addProduct(ProductVO productVO, List<MultipartFile> multipartFiles, String tagList);
 	
 	public int updateProduct(ProductVO productVO, List<MultipartFile> multipartFiles);
 	

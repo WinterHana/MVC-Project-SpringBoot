@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.model2.mvc.common.util.HistoryUtil;
-import com.model2.mvc.common.util.TranStatusCodeUtil;
+import com.mvc.common.util.HistoryUtil;
+import com.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
 import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
@@ -93,7 +93,7 @@ public class ProductController extends CommonController  {
 	}
 	
 	// Navigation
-	@PostMapping("addProductView")
+	@PostMapping("/addProductView")
 	public String addProductView() {
 		System.out.println("[ProductController.addProductView()] start");
 		
@@ -106,11 +106,14 @@ public class ProductController extends CommonController  {
 	public String addProduct(
 			@ModelAttribute("product") ProductVO product,
 			@RequestParam("multipartFile") List<MultipartFile> multiFileLists,
+			@RequestParam("tagList") String tagList,
 			HttpSession session) {
 		System.out.println("[ProductController.addProduct()] start");
 		
+		System.out.println("tagList : " + tagList);
+		
 		// 제품 추가
-		productService.addProduct(product, multiFileLists);
+		productService.addProduct(product, multiFileLists, tagList);
 		
 		System.out.println("[ProductController.addProduct()] end");
 		

@@ -52,9 +52,13 @@ public interface ProductDAO {
 	
 	public int addProductTag(ProductTagVO productTag);
 	
+	public int addProductTagWithSeq(int tagNo);
+	
 	public int deleteTag(String tagName);
 	
 	public int deleteProductTag(String tagName);
 	
 	public List<TagVO> getTagFromProduct(int prodNo);
+	
+	
 }

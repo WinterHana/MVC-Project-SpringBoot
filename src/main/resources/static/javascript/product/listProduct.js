@@ -116,13 +116,34 @@ function renderList(result) {
 				+ '<button class="btn btn-danger">상세 보기</button>'
 				+ '</div>'
 				+ '</form>'
+				+ '<div id="tag-list' + result.prodNo + '"></div>'
 				+ '</div></div></div>'
 	
 	$("div[name='productList']").append(html);
+	addProductTag(result.prodNo);
 	
 	imageDefault();
 }
 
+function addProductTag(prodNo) {
+	let count = 0;
+     $.ajax({
+		url : "/rest/product/getTagFromProduct/" + prodNo,
+		method : "POST",
+		dataType : "json",
+		contentType : "application/json",
+		success : function(JSONData) {	
+			$(JSONData).each( function() {
+				$("#tag-list" + prodNo).append("<span class='badge bg-primary'>"+this.tagName+"</span> ");
+				count++;
+				console.log(count);
+				if (count >= 3) {
+					return false;
+				}
+			});
+		}
+	}); 
+}
 // 스크롤 감지
 $(document).scroll(function(){
 	// 현재 스크롤 위치

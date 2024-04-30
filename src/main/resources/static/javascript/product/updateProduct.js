@@ -75,7 +75,7 @@ $(document).ready(function(){
 		success : function(JSONData) {
 			$(JSONData).each( function() {
 				console.log(this);
-				$("#tag-list").append("<li class='badge rounded-pill bg-info text-dark'>"+this.tagName+"<span class='del-btn' idx='"+counter+"'> x </span></li>");
+				$("#tag-list").append("<li class='badge bg-primary'>"+this.tagName+"<span class='del-btn' idx='"+counter+"'> x </span></li> ");
 				addTag(this.tagName);
 			});
 		}
@@ -104,7 +104,7 @@ $(document).ready(function(){
             
             // 해시태그가 중복되었는지 확인 : result
             if (result.length == 0) { 
-                $("#tag-list").append("<li class='badge rounded-pill bg-info text-dark'>"+tagValue+"<span class='del-btn' idx='"+counter+"'> x </span></li>");
+                $("#tag-list").append("<li class='badge bg-primary'>"+tagValue+"<span class='del-btn' idx='"+counter+"'> x </span></li> ");
                 addTag(tagValue);
                 self.val("");
             } else {
@@ -138,8 +138,9 @@ $(document).ready(function(){
 
 // 삭제 버튼 
 // 인덱스 검사 후 삭제
-$(document).on("click", ".del-btn", function (e) {
-	let tagValue = $(this).text(); // 값 가져오기
+$(document).on("click", ".del-btn", function () {
+	let tagValue = $(this).closest("li").text().trim().split(" ")[0]; // 값 가져오기
+	console.log(tagValue);
 	
      let obj = {
 		"tagName" : tagValue
@@ -152,14 +153,12 @@ $(document).on("click", ".del-btn", function (e) {
 		contentType : "application/json",
 		data : JSON.stringify(obj),
 		success : function(JSONData) {
-			console.log("태그 저장 : " + tagValue);
+			console.log("태그 삭제 : " + tagValue);
 		}
 	}); 
-			
-    var index = $(this).attr("idx");
+	
+	var index = $(this).attr("idx");
     tag[index] = "";
-    $(this).parent().remove();
-    
-    
+    $(this).closest("li").remove();
 });
 

@@ -54,7 +54,6 @@
                     </div>
                     
                     <div class="input-group input-group-lg flex-nowrap mb-3">
-<!--                         <input type="hidden"  value=""  name="tag" id="rdTag" /> -->
                     	<div id="tag-list"></div>
                     </div>
                     

@@ -205,12 +205,19 @@
 		(#{prodNo:NUMERIC}, #{tagNo:NUMERIC})
   	</insert>
   	
+  	<insert id = "addProductTagWithSeq" parameterType = "int">
+  		INSERT INTO product_tag (prod_no, tag_no) VALUES
+		(seq_product_prod_no.currval, #{tagNo:NUMERIC})
+  	</insert>
+  	
   	<delete id = "deleteTag" parameterType = "string">
   		DELETE FROM tag WHERE tag_name = #{tagName:VARCHAR}
   	</delete>
   	
   	<delete id = "deleteProductTag" parameterType = "string">
-  		DELETE FROM product_tag WHERE tag_name =#{tagName:VARCHAR}
+  		DELETE FROM product_tag WHERE tag_no = (
+			SELECT tag_no FROM tag WHERE tag_name = #{tagName:VARCHAR}
+		)
   	</delete>
   	
   	<select id = "getTagFromProduct"  parameterType = "int" resultMap = 'tagMap'>

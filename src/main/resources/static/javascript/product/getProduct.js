@@ -187,3 +187,34 @@ $("button[name='cart']").on('click', function() {
 		$(this).text("찜하기");
 	}
 });
+
+var tag = {};
+var counter = 0;
+
+// 입력한 값을 태그로 생성한다.
+function addTag (value) {
+    tag[counter] = value;
+    counter++; // del-btn 의 고유 id 가 된다.
+}
+
+// 시작 시, 본래 태그를 가져온다. (ajax)
+$(document).ready(function(){
+	 let prodNo = $("input[name='prodNo']").val();
+	 
+	 console.log(prodNo);
+	 
+     $.ajax({
+		url : "/rest/product/getTagFromProduct/" + prodNo,
+		method : "POST",
+		dataType : "json",
+		contentType : "application/json",
+		success : function(JSONData) {
+			$(JSONData).each( function() {
+				console.log(this);
+				$("#tag-list").append("<span class='badge bg-primary'>"+this.tagName+"</span> ");
+				addTag(this.tagName);
+			});
+		}
+	}); 
+});
+

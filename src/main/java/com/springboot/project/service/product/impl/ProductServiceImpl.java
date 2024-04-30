@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.model2.mvc.common.util.CommonUtil;
+import com.mvc.common.util.CommonUtil;
 import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductTagVO;
@@ -132,19 +132,11 @@ public class ProductServiceImpl implements ProductService {
 
 	@Transactional
 	@Override
-	public int addProduct(ProductVO productVO, List<MultipartFile> multipartFiles) {
+	public int addProduct(ProductVO productVO, List<MultipartFile> multipartFiles, String tagList) {
 		int result = 0;
 		
 		// 1. 제품 정보 추가
 		result = productDAO.addProduct(productVO);
-		
-//		// 1. 제품 정보 추가
-//		try {
-//			result = productDAO.addProduct(productVO);
-//		} catch (Exception e) {
-//			System.out.println(getClass().getName() + ".addProduct Exception");
-//			e.printStackTrace();
-//		}
 		
 		// 2. 제품 이미지 추가
 		// 0) 데이터 검증
@@ -176,24 +168,20 @@ public class ProductServiceImpl implements ProductService {
 			}
 		}
 		
-//		try {
-//			if(multipartFiles != null && multipartFiles.size() > 0) {
-//				for(MultipartFile f : multipartFiles) {
-//					String originalFileName = f.getOriginalFilename();
-//					UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
-//					String fileName = uuid + originalFileName;
-//					
-//					f.transferTo(new File(path + fileName));		
-//					
-//					FileVO file = new FileVO();
-//					file.setFileName(fileName);
-//					productDAO.addProductImage(file);
-//				}
-//			}
-//		} catch (Exception e) {
-//			System.out.println(getClass().getName() + ".addProductImage Exception");
-//			e.printStackTrace();
-//		}
+		// 3. 태그 정보 추가
+		String[] tags = tagList.split(",");
+		for(String tagName : tags) {
+			TagVO tag = productDAO.getTag(tagName); result++;
+
+			// 새로운 태그라면 tag 테이블에 추가
+			if(tag == null) {
+				productDAO.addTag(tagName); result++;
+				tag = productDAO.getTag(tagName); result++;
+			}
+			
+			// product_tag 테이블에 추가
+			productDAO.addProductTagWithSeq(tag.getTagNo()); result++;
+		}
 		
 		return result;
 	}

@@ -168,4 +168,10 @@ public class ProductDAOImpl implements ProductDAO {
 		System.out.println("[" + getClass().getName() + ".getTagFromProduct] Call");
 		return sqlSession.selectList("ProductMapper.getTagFromProduct", prodNo);
 	}
+
+	@Override
+	public int addProductTagWithSeq(int tagNo) {
+		System.out.println("[" + getClass().getName() + ".addProductTagWithSeq] Call");
+		return sqlSession.insert("ProductMapper.addProductTagWithSeq", tagNo);
+	}
 }

@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.model2.mvc.common.util.HistoryUtil;
-import com.model2.mvc.common.util.TranStatusCodeUtil;
+import com.mvc.common.util.HistoryUtil;
+import com.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
 import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
@@ -134,11 +134,12 @@ public class ProductRestController extends CommonController  {
 	@PostMapping("/addProduct")
 	public void addProduct(
 			@ModelAttribute("product") ProductVO product,
-			@RequestParam("multipartFile") List<MultipartFile> multiFileLists) {
+			@RequestParam("multipartFile") List<MultipartFile> multiFileLists,
+			@RequestParam("tagList") String tagList) {
 		System.out.println("[ProductController.addProduct()] start");
 		
 		// 제품 추가
-		productService.addProduct(product, multiFileLists);
+		productService.addProduct(product, multiFileLists, tagList);
 		
 		System.out.println("[ProductController.addProduct()] end");
 	}
