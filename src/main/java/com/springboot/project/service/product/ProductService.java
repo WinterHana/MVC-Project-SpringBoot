@@ -46,4 +46,7 @@ public interface ProductService {
 	
 	public List<TagVO> getTagFromProduct(int prodNo);
 	
+	// Recommend
+	public Map<String, Object> getWeatherRecommendProduct(int size);
+	
 }

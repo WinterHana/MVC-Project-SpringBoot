@@ -3,6 +3,7 @@ package com.springboot.project.service.product.impl;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mvc.common.util.CommonUtil;
+import com.mvc.common.util.WeatherCode;
+import com.mvc.common.util.WeatherUtill;
 import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.ProductTagVO;
@@ -417,5 +420,50 @@ public class ProductServiceImpl implements ProductService {
 		List<TagVO> resultList = productDAO.getTagFromProduct(prodNo);
 		
 		return resultList;
+	}
+
+	@Override
+	public Map<String, Object> getWeatherRecommendProduct(int size) {
+		WeatherCode todayWeather = WeatherCode.DEFAULT;
+		
+		try {
+			todayWeather = new WeatherUtill().getTodayWeather();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// Error Defending
+		if(todayWeather.equals(WeatherCode.DEFAULT)) {
+			return null;
+		}
+		
+		List<ProductVO> resultList = productDAO.getWeatherRecommendProduct(todayWeather.getTagNo());
+		
+		Collections.shuffle(resultList);
+		resultList = resultList.subList(0, size);
+		System.out.println(resultList);
+		
+		// productImage 관련 데이터를 가져옴
+		List<String> fileName = new ArrayList<String>();
+		try {
+			for(ProductVO p : resultList) {
+				// fileName을 가져와서 productVO에 따로 저장
+				List<FileVO> fileList = productDAO.getProductImage(p.getProdNo());
+				if(fileList != null) {
+					fileName.add(fileList.get(0).getFileName());
+					p.setFileName(fileName);
+					fileName = new ArrayList<String>();
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(getClass().getName() + ".getProduct Exception");
+			e.printStackTrace();
+		}
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("weather", todayWeather.getContent());
+		resultMap.put("resultList", resultList);
+		
+		return resultMap;
 	}
 }

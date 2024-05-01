@@ -60,5 +60,5 @@ public interface ProductDAO {
 	
 	public List<TagVO> getTagFromProduct(int prodNo);
 	
-	
+	public List<ProductVO> getWeatherRecommendProduct(int tagNo);
 }

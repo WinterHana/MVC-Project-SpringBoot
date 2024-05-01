@@ -174,4 +174,10 @@ public class ProductDAOImpl implements ProductDAO {
 		System.out.println("[" + getClass().getName() + ".addProductTagWithSeq] Call");
 		return sqlSession.insert("ProductMapper.addProductTagWithSeq", tagNo);
 	}
+
+	@Override
+	public List<ProductVO> getWeatherRecommendProduct(int tagNo) {
+		System.out.println("[" + getClass().getName() + ".getWeatherRecommendProduct] Call");
+		return sqlSession.selectList("ProductMapper.getWeatherRecommendProduct", tagNo);
+	}
 }
