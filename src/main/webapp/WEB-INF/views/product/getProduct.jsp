@@ -135,9 +135,14 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
-
+	<br/><br/><br/>
+	<div class="container" name = "productRecommend">
+			<h2>이 제품도 한 번 보세요!</h2>
+			<div class="row" name="productList">
+			</div>
+	</div>
+	<br/><br/><br/>
 	<!-- Purchase Menu -->
 	<div class="container" name = "purchaseMenu">
 	

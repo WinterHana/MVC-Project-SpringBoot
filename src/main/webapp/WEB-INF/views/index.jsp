@@ -19,7 +19,7 @@
 		</div>
 		
 		<div class="container">
-		     <h1>오늘의 추천 목록</h1>
+		     <h1>오늘의 추천 제품</h1>
 		     <h3>오늘의 날씨는 '<span id = "weather"></span>'입니다</h3>
 		     <div class="row" name="productList">
 		     </div>

@@ -61,4 +61,8 @@ public interface ProductDAO {
 	public List<TagVO> getTagFromProduct(int prodNo);
 	
 	public List<ProductVO> getWeatherRecommendProduct(int tagNo);
+	
+	public List<Integer> getTagListByProdNo(int prodNo);
+	
+	public List<ProductVO> getProductListByTagNo(int tagNo);
 }

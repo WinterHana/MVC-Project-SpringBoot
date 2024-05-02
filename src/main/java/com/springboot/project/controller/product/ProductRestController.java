@@ -230,4 +230,17 @@ public class ProductRestController extends CommonController  {
 		
 		return resultList;
 	}
+	
+	@PostMapping(value = "/getCartRecommendProduct/{size}")
+	public List<ProductVO> getCartRecommendProduct(
+			@RequestBody ProductVO product,
+			@PathVariable("size") int size) {
+		System.out.println("[ProductController.getWeatherRecommendProduct()] start");
+		
+		List<ProductVO> resultList = productService.getCartRecommendProduct(product.getProdNo(), size);
+		
+		System.out.println("[ProductController.getWeatherRecommendProduct()] end");
+		
+		return resultList;
+	}
 }

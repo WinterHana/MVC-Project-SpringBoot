@@ -49,4 +49,5 @@ public interface ProductService {
 	// Recommend
 	public Map<String, Object> getWeatherRecommendProduct(int size);
 	
+	public List<ProductVO> getCartRecommendProduct(int prodNo, int size);
 }

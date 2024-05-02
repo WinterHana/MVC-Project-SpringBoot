@@ -231,6 +231,18 @@
   		SELECT p.* FROM product p
 		INNER JOIN product_tag pt ON p.prod_no = pt.prod_no
 		INNER JOIN tag t ON pt.tag_no = t.tag_no
-		WHERE t.tag_no = #{tag_no}
+		WHERE t.tag_no = #{tag_no:NUMERIC}
+  	</select>
+  	
+  	<select id = "getTagListByProdNo" parameterType = "int" resultType = "int">
+  		SELECT pt.tag_no FROM product_tag pt
+		INNER JOIN product p ON p.prod_no = pt.prod_no
+		WHERE p.prod_no = #{prod_no:NUMERIC}
+  	</select>
+  	
+  	<select id = "getProductListByTagNo" parameterType = "int" resultMap = "productSelectMap">
+  		SELECT p.* FROM product p
+		INNER JOIN product_tag pt ON pt.prod_no = p.prod_no
+		WHERE pt.tag_no = #{tag_no:NUMERIC}
   	</select>
 </mapper>

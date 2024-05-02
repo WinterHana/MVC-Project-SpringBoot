@@ -466,4 +466,40 @@ public class ProductServiceImpl implements ProductService {
 		
 		return resultMap;
 	}
+
+	@Override
+	public List<ProductVO> getCartRecommendProduct(int prodNo, int size) {
+		
+		List<Integer> tagList = productDAO.getTagListByProdNo(prodNo);
+		
+		// 태그가 없으면 null 반환하기
+		if(tagList == null || tagList.size() <= 0) {
+			return null;
+		}
+		
+		Collections.shuffle(tagList);
+		
+		List<ProductVO> resultList = productDAO.getProductListByTagNo(tagList.get(0));
+		Collections.shuffle(resultList);
+		resultList = resultList.subList(0, size);
+		
+		// productImage 관련 데이터를 가져옴
+		List<String> fileName = new ArrayList<String>();
+		try {
+			for(ProductVO p : resultList) {
+				// fileName을 가져와서 productVO에 따로 저장
+				List<FileVO> fileList = productDAO.getProductImage(p.getProdNo());
+				if(fileList != null) {
+					fileName.add(fileList.get(0).getFileName());
+					p.setFileName(fileName);
+					fileName = new ArrayList<String>();
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(getClass().getName() + ".getProduct Exception");
+			e.printStackTrace();
+		}
+		
+		return resultList;
+	}
 }

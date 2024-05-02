@@ -180,4 +180,16 @@ public class ProductDAOImpl implements ProductDAO {
 		System.out.println("[" + getClass().getName() + ".getWeatherRecommendProduct] Call");
 		return sqlSession.selectList("ProductMapper.getWeatherRecommendProduct", tagNo);
 	}
+
+	@Override
+	public List<Integer> getTagListByProdNo(int prodNo) {
+		System.out.println("[" + getClass().getName() + ".getTagListByProdNo] Call");
+		return sqlSession.selectList("ProductMapper.getTagListByProdNo", prodNo);
+	}
+
+	@Override
+	public List<ProductVO> getProductListByTagNo(int tagNo) {
+		System.out.println("[" + getClass().getName() + ".getProductListByTagNo] Call");
+		return sqlSession.selectList("ProductMapper.getProductListByTagNo", tagNo);
+	}
 }
