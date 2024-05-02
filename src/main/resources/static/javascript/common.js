@@ -18,7 +18,7 @@ window.imageDefault = function() {
 $("#toolbar").load("../toolbar.jsp");
 
 // font setting
-$("body").css("font-family", "DungGeunMo, Arial, Helvetica, sans-serif");
+$("body").css("font-family", "GyeonggiTitle, DungGeunMo, Arial, Helvetica, sans-serif");
 
 // Default Image 설정
 imageDefault();

@@ -3,6 +3,7 @@ package com.springboot.project.service.product.impl;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,11 +16,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.model2.mvc.common.util.CommonUtil;
+import com.mvc.common.util.CommonUtil;
+import com.mvc.common.util.WeatherCode;
+import com.mvc.common.util.WeatherUtill;
 import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
+import com.springboot.project.service.domain.ProductTagVO;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.SearchVO;
+import com.springboot.project.service.domain.TagDataVO;
+import com.springboot.project.service.domain.TagVO;
 import com.springboot.project.service.domain.UserVO;
 import com.springboot.project.service.product.ProductDAO;
 import com.springboot.project.service.product.ProductService;
@@ -129,19 +135,11 @@ public class ProductServiceImpl implements ProductService {
 
 	@Transactional
 	@Override
-	public int addProduct(ProductVO productVO, List<MultipartFile> multipartFiles) {
+	public int addProduct(ProductVO productVO, List<MultipartFile> multipartFiles, String tagList) {
 		int result = 0;
 		
 		// 1. 제품 정보 추가
 		result = productDAO.addProduct(productVO);
-		
-//		// 1. 제품 정보 추가
-//		try {
-//			result = productDAO.addProduct(productVO);
-//		} catch (Exception e) {
-//			System.out.println(getClass().getName() + ".addProduct Exception");
-//			e.printStackTrace();
-//		}
 		
 		// 2. 제품 이미지 추가
 		// 0) 데이터 검증
@@ -173,24 +171,20 @@ public class ProductServiceImpl implements ProductService {
 			}
 		}
 		
-//		try {
-//			if(multipartFiles != null && multipartFiles.size() > 0) {
-//				for(MultipartFile f : multipartFiles) {
-//					String originalFileName = f.getOriginalFilename();
-//					UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
-//					String fileName = uuid + originalFileName;
-//					
-//					f.transferTo(new File(path + fileName));		
-//					
-//					FileVO file = new FileVO();
-//					file.setFileName(fileName);
-//					productDAO.addProductImage(file);
-//				}
-//			}
-//		} catch (Exception e) {
-//			System.out.println(getClass().getName() + ".addProductImage Exception");
-//			e.printStackTrace();
-//		}
+		// 3. 태그 정보 추가
+		String[] tags = tagList.split(",");
+		for(String tagName : tags) {
+			TagVO tag = productDAO.getTag(tagName); result++;
+
+			// 새로운 태그라면 tag 테이블에 추가
+			if(tag == null) {
+				productDAO.addTag(tagName); result++;
+				tag = productDAO.getTag(tagName); result++;
+			}
+			
+			// product_tag 테이블에 추가
+			productDAO.addProductTagWithSeq(tag.getTagNo()); result++;
+		}
 		
 		return result;
 	}
@@ -387,5 +381,125 @@ public class ProductServiceImpl implements ProductService {
 		resultMap.put("productList", productList);
 		
 		return resultMap;
+	}
+	
+	@Transactional
+	@Override
+	public int addTag(TagDataVO tagData) {
+		int result = 0;
+		String tagName = tagData.getTagName();
+		
+		TagVO tag = productDAO.getTag(tagName); result++;
+
+		// 새로운 태그라면 tag 테이블에 추가
+		if(tag == null) {
+			productDAO.addTag(tagName); result++;
+			tag = productDAO.getTag(tagName); result++;
+		}
+		
+		// product_tag 테이블에 추가
+		ProductTagVO productTag = new ProductTagVO(tagData.getProdNo(), tag.getTagNo()); 
+		productDAO.addProductTag(productTag); result++;
+		
+		return result;
+	}
+
+	@Transactional
+	@Override
+	public int deleteProductTag(TagDataVO tagData) {
+		int result = 0;
+		
+		productDAO.deleteProductTag(tagData.getTagName()); result++;
+		
+		return result;
+	}
+
+	@Override
+	public List<TagVO> getTagFromProduct(int prodNo) {
+		
+		List<TagVO> resultList = productDAO.getTagFromProduct(prodNo);
+		
+		return resultList;
+	}
+
+	@Override
+	public Map<String, Object> getWeatherRecommendProduct(int size) {
+		WeatherCode todayWeather = WeatherCode.DEFAULT;
+		
+		try {
+			todayWeather = new WeatherUtill().getTodayWeather();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// Error Defending
+		if(todayWeather.equals(WeatherCode.DEFAULT)) {
+			return null;
+		}
+		
+		List<ProductVO> resultList = productDAO.getWeatherRecommendProduct(todayWeather.getTagNo());
+		
+		Collections.shuffle(resultList);
+		resultList = resultList.subList(0, size);
+		System.out.println(resultList);
+		
+		// productImage 관련 데이터를 가져옴
+		List<String> fileName = new ArrayList<String>();
+		try {
+			for(ProductVO p : resultList) {
+				// fileName을 가져와서 productVO에 따로 저장
+				List<FileVO> fileList = productDAO.getProductImage(p.getProdNo());
+				if(fileList != null) {
+					fileName.add(fileList.get(0).getFileName());
+					p.setFileName(fileName);
+					fileName = new ArrayList<String>();
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(getClass().getName() + ".getProduct Exception");
+			e.printStackTrace();
+		}
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("weather", todayWeather.getContent());
+		resultMap.put("resultList", resultList);
+		
+		return resultMap;
+	}
+
+	@Override
+	public List<ProductVO> getCartRecommendProduct(int prodNo, int size) {
+		
+		List<Integer> tagList = productDAO.getTagListByProdNo(prodNo);
+		
+		// 태그가 없으면 null 반환하기
+		if(tagList == null || tagList.size() <= 0) {
+			return null;
+		}
+		
+		Collections.shuffle(tagList);
+		
+		List<ProductVO> resultList = productDAO.getProductListByTagNo(tagList.get(0));
+		Collections.shuffle(resultList);
+		resultList = resultList.subList(0, size);
+		
+		// productImage 관련 데이터를 가져옴
+		List<String> fileName = new ArrayList<String>();
+		try {
+			for(ProductVO p : resultList) {
+				// fileName을 가져와서 productVO에 따로 저장
+				List<FileVO> fileList = productDAO.getProductImage(p.getProdNo());
+				if(fileList != null) {
+					fileName.add(fileList.get(0).getFileName());
+					p.setFileName(fileName);
+					fileName = new ArrayList<String>();
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(getClass().getName() + ".getProduct Exception");
+			e.printStackTrace();
+		}
+		
+		return resultList;
 	}
 }

@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.model2.mvc.common.util.TranStatusCodeUtil;
+import com.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.service.domain.AddPurchaseDataVO;
 import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.ProductVO;

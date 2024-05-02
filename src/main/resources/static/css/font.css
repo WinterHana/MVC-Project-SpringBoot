@@ -1,4 +1,11 @@
 @font-face {
+    font-family: 'GyeonggiTitle';
+    src: url('/font/Title_Medium.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
     font-family: 'DungGeunMo';
     src: url('/font/DungGeunMo.woff') format('woff');
     font-style: normal;

@@ -10,8 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
+import com.springboot.project.service.domain.ProductTagVO;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.SearchVO;
+import com.springboot.project.service.domain.TagVO;
 import com.springboot.project.service.product.ProductDAO;
 
 @Repository("productDAOImpl")
@@ -129,5 +131,65 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<CartVO> getCartList(String userId) {
 		System.out.println("[" + getClass().getName() + ".getCartList] Call");
 		return sqlSession.selectList("ProductMapper.getCartList", userId);
+	}
+
+	@Override
+	public TagVO getTag(String tagName) {
+		System.out.println("[" + getClass().getName() + ".getTag] Call");
+		return sqlSession.selectOne("ProductMapper.getTag", tagName);
+	}
+
+	@Override
+	public int addTag(String tagName) {
+		System.out.println("[" + getClass().getName() + ".addTag] Call");
+		return sqlSession.insert("ProductMapper.addTag", tagName);
+	}
+
+	@Override
+	public int addProductTag(ProductTagVO productTag) {
+		System.out.println("[" + getClass().getName() + ".addProductTag] Call");
+		return sqlSession.insert("ProductMapper.addProductTag", productTag);
+	}
+
+	@Override
+	public int deleteTag(String tagName) {
+		System.out.println("[" + getClass().getName() + ".deleteTag] Call");
+		return sqlSession.delete("ProductMapper.deleteTag", tagName);
+	}
+
+	@Override
+	public int deleteProductTag(String tagName) {
+		System.out.println("[" + getClass().getName() + ".deleteProductTag] Call");
+		return sqlSession.delete("ProductMapper.deleteProductTag", tagName);
+	}
+
+	@Override
+	public List<TagVO> getTagFromProduct(int prodNo) {
+		System.out.println("[" + getClass().getName() + ".getTagFromProduct] Call");
+		return sqlSession.selectList("ProductMapper.getTagFromProduct", prodNo);
+	}
+
+	@Override
+	public int addProductTagWithSeq(int tagNo) {
+		System.out.println("[" + getClass().getName() + ".addProductTagWithSeq] Call");
+		return sqlSession.insert("ProductMapper.addProductTagWithSeq", tagNo);
+	}
+
+	@Override
+	public List<ProductVO> getWeatherRecommendProduct(int tagNo) {
+		System.out.println("[" + getClass().getName() + ".getWeatherRecommendProduct] Call");
+		return sqlSession.selectList("ProductMapper.getWeatherRecommendProduct", tagNo);
+	}
+
+	@Override
+	public List<Integer> getTagListByProdNo(int prodNo) {
+		System.out.println("[" + getClass().getName() + ".getTagListByProdNo] Call");
+		return sqlSession.selectList("ProductMapper.getTagListByProdNo", prodNo);
+	}
+
+	@Override
+	public List<ProductVO> getProductListByTagNo(int tagNo) {
+		System.out.println("[" + getClass().getName() + ".getProductListByTagNo] Call");
+		return sqlSession.selectList("ProductMapper.getProductListByTagNo", tagNo);
 	}
 }

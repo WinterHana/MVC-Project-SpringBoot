@@ -86,6 +86,9 @@
 			</div>
 			<div class="col-md-6"></div>
 			<div class="col-md-6">
+				<div class="input-group input-group-lg flex-nowrap mb-3">
+            		Tag &nbsp; <div id="tag-list"></div>
+           		</div>
 				<br />
 				<h4 class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;개수</h4>
 
@@ -132,11 +135,23 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
-
+	<br/><br/><br/>
+	<div class="container" name = "productRecommend">
+			<h2>이 제품도 한 번 보세요!</h2>
+			<div class="row" name="productList">
+			</div>
+	</div>
+	<br/><br/><br/>
 	<!-- Purchase Menu -->
 	<div class="container" name = "purchaseMenu">
+	
+       	<form name = "addTransactionList" method = "POST">
+            <input type="hidden" name = "prodNo" value = "${product.prodNo}">
+            <input type="hidden" name = "price" value = "${product.price}">
+			<input type="hidden"  name = "count" placeholder="개수 입력" > 
+    	</form>
+    	  	
 		<form name = "purchaseForm" action = "/purchase/addPurchase" method = "POST">
 			<div class="row">
 				<div class="col-md-3"></div>
@@ -195,7 +210,7 @@
 					<button type="button" name="purchaseComplete" class="btn btn-primary btn-lg">구매 완료</button>
 				</div>
 			</div>
-		</form>
+		</form>     	
 	</div>
 </body>
 </html>

@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.model2.mvc.common.util.HistoryUtil;
-import com.model2.mvc.common.util.TranStatusCodeUtil;
+import com.mvc.common.util.HistoryUtil;
+import com.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
 import com.springboot.project.service.domain.CartVO;
 import com.springboot.project.service.domain.FileVO;
@@ -34,6 +34,8 @@ import com.springboot.project.service.domain.Page;
 import com.springboot.project.service.domain.ProductVO;
 import com.springboot.project.service.domain.PurchaseVO;
 import com.springboot.project.service.domain.SearchVO;
+import com.springboot.project.service.domain.TagDataVO;
+import com.springboot.project.service.domain.TagVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
 
@@ -132,11 +134,12 @@ public class ProductRestController extends CommonController  {
 	@PostMapping("/addProduct")
 	public void addProduct(
 			@ModelAttribute("product") ProductVO product,
-			@RequestParam("multipartFile") List<MultipartFile> multiFileLists) {
+			@RequestParam("multipartFile") List<MultipartFile> multiFileLists,
+			@RequestParam("tagList") String tagList) {
 		System.out.println("[ProductController.addProduct()] start");
 		
 		// 제품 추가
-		productService.addProduct(product, multiFileLists);
+		productService.addProduct(product, multiFileLists, tagList);
 		
 		System.out.println("[ProductController.addProduct()] end");
 	}
@@ -182,5 +185,62 @@ public class ProductRestController extends CommonController  {
 		System.out.println("[ProductController.deleteCart()] end");
 		
 		return true;
+	}
+	
+	@PostMapping(value = "/addTag")
+	public int addTag(@RequestBody TagDataVO tagData) {
+		System.out.println("[ProductController.addTag()] start");
+		
+		int result = productService.addTag(tagData);
+		
+		System.out.println("[ProductController.addTag()] end");
+		
+		return result;
+	}
+	
+	@PostMapping(value = "/deleteProductTag")
+	public int deleteProductTag(@RequestBody TagDataVO tagData) {
+		System.out.println("[ProductController.deleteProductTag()] start");
+		
+		int result = productService.deleteProductTag(tagData);
+		
+		System.out.println("[ProductController.deleteProductTag()] end");
+		
+		return result;
+	}
+	
+	@PostMapping(value = "/getTagFromProduct/{prodNo}")
+	public List<TagVO> getTagFromProduct(@PathVariable("prodNo") int prodNo) {
+		System.out.println("[ProductController.getTagFromProduct()] start");
+		
+		List<TagVO> resultList = productService.getTagFromProduct(prodNo);
+		
+		System.out.println("[ProductController.getTagFromProduct()] end");
+		
+		return resultList;
+	}
+	
+	@PostMapping(value = "/getWeatherRecommendProduct/{size}")
+	public Map<String, Object> getWeatherRecommendProduct(@PathVariable("size") int size) {
+		System.out.println("[ProductController.getWeatherRecommendProduct()] start");
+		
+		Map<String, Object> resultList = productService.getWeatherRecommendProduct(size);
+		
+		System.out.println("[ProductController.getWeatherRecommendProduct()] end");
+		
+		return resultList;
+	}
+	
+	@PostMapping(value = "/getCartRecommendProduct/{size}")
+	public List<ProductVO> getCartRecommendProduct(
+			@RequestBody ProductVO product,
+			@PathVariable("size") int size) {
+		System.out.println("[ProductController.getWeatherRecommendProduct()] start");
+		
+		List<ProductVO> resultList = productService.getCartRecommendProduct(product.getProdNo(), size);
+		
+		System.out.println("[ProductController.getWeatherRecommendProduct()] end");
+		
+		return resultList;
 	}
 }

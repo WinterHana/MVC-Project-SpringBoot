@@ -28,6 +28,17 @@
   		<result property = "count" column = "count" jdbcType="VARCHAR"/>
 	</resultMap>
 	
+	<resultMap id = "tagMap" type = "TagVO">
+		<result property = "tagNo" column = "tag_no" jdbcType = "NUMERIC"/>
+		<result property = "tagName" column = "tag_name" jdbcType = "VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id = "productTagMap" type = "ProductTagVO">
+		<result property = "prodNo" column = "prod_no" jdbcType = "NUMERIC"/>
+		<result property = "tagNo" column = "tag_no" jdbcType = "NUMERIC"/>
+	</resultMap>
+	
+	<!-- product -->
   	<sql id = "getProductListSelect">
   		 SELECT * FROM product 
   		<where>
@@ -118,13 +129,13 @@
 	
 	<select id = "getProductImage" parameterType = "int" resultMap = "fileSelectMap">
 		SELECT * 
-		FROM productImage 
+		FROM product_image 
 		WHERE prod_no = #{prodNo:NUMERIC}
 	</select>
 	
 	<insert id = "addProductImage" parameterType = "FileVO">
 		INSERT 
-		INTO productImage
+		INTO product_image
 		VALUES(
   			seq_product_image_no.nextval,
  			seq_product_prod_no.currval,
@@ -134,7 +145,7 @@
 	
 	<insert id = "updateAddProductImage" parameterType = "FileVO">
 		INSERT 
-		INTO productImage
+		INTO product_image
 		VALUES(
   			seq_product_image_no.nextval,
  			#{prodNo:NUMERIC},
@@ -145,13 +156,14 @@
 	<delete id = "deleteProductImage"  parameterType = "int">
   		DELETE 
   		FROM 
-  		productImage WHERE prod_no = #{prodNo:NUMERIC}
+  		product_image WHERE prod_no = #{prodNo:NUMERIC}
   	</delete>
   	
   	<select id = "getProductInfo" resultMap = "productSelectMap">
   		SELECT prod_no, prod_name FROM product
   	</select>
   	
+  	<!-- Cart -->
   	<insert id = "addCart" parameterType = "CartVO">
   	  	INSERT
   		INTO cart (user_id, prod_no, price, count)
@@ -176,5 +188,61 @@
   	
   	<select id = "getCartList" parameterType = "string"  resultMap = "cartMap">
   		SELECT * FROM CART WHERE user_id = #{userId:VARCHAR}
+  	</select>
+  	
+  	<!-- Tag -->
+  	<select id = "getTag" parameterType = "string" resultMap = "tagMap">
+  		SELECT * FROM tag WHERE tag_name = #{tagName:VARCHAR}
+  	</select>
+  	
+  	<insert id = "addTag" parameterType = "string">
+  		INSERT INTO tag (tag_no, tag_name) VALUES
+		(seq_product_tag_no.nextval, #{tagName:VARCHAR})
+  	</insert>
+  	
+  	<insert id = "addProductTag" parameterType = "ProductTagVO">
+  		INSERT INTO product_tag (prod_no, tag_no) VALUES
+		(#{prodNo:NUMERIC}, #{tagNo:NUMERIC})
+  	</insert>
+  	
+  	<insert id = "addProductTagWithSeq" parameterType = "int">
+  		INSERT INTO product_tag (prod_no, tag_no) VALUES
+		(seq_product_prod_no.currval, #{tagNo:NUMERIC})
+  	</insert>
+  	
+  	<delete id = "deleteTag" parameterType = "string">
+  		DELETE FROM tag WHERE tag_name = #{tagName:VARCHAR}
+  	</delete>
+  	
+  	<delete id = "deleteProductTag" parameterType = "string">
+  		DELETE FROM product_tag WHERE tag_no = (
+			SELECT tag_no FROM tag WHERE tag_name = #{tagName:VARCHAR}
+		)
+  	</delete>
+  	
+  	<select id = "getTagFromProduct"  parameterType = "int" resultMap = 'tagMap'>
+  		SELECT t.* 
+  		FROM product_tag p 
+  		INNER JOIN tag t ON p.tag_no = t.tag_no 
+  		WHERE prod_no = #{prodNo:NUMERIC}
+  	</select>
+  	
+  	<select id = "getWeatherRecommendProduct" parameterType = "int"  resultMap = "productSelectMap">
+  		SELECT p.* FROM product p
+		INNER JOIN product_tag pt ON p.prod_no = pt.prod_no
+		INNER JOIN tag t ON pt.tag_no = t.tag_no
+		WHERE t.tag_no = #{tag_no:NUMERIC}
+  	</select>
+  	
+  	<select id = "getTagListByProdNo" parameterType = "int" resultType = "int">
+  		SELECT pt.tag_no FROM product_tag pt
+		INNER JOIN product p ON p.prod_no = pt.prod_no
+		WHERE p.prod_no = #{prod_no:NUMERIC}
+  	</select>
+  	
+  	<select id = "getProductListByTagNo" parameterType = "int" resultMap = "productSelectMap">
+  		SELECT p.* FROM product p
+		INNER JOIN product_tag pt ON pt.prod_no = p.prod_no
+		WHERE pt.tag_no = #{tag_no:NUMERIC}
   	</select>
 </mapper>
