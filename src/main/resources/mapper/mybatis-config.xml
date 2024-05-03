@@ -14,15 +14,18 @@
  	
  	<!-- Bean Type Aliases -->
  	<typeAliases>
- 		<typeAlias alias = "userVO" type = "com.springboot.project.service.domain.UserVO"/>
- 		<typeAlias alias = "searchVO" type = "com.springboot.project.service.domain.SearchVO"/>
- 		<typeAlias alias = "productVO" type = "com.springboot.project.service.domain.ProductVO"/>
- 		<typeAlias alias = "purchaseVO" type = "com.springboot.project.service.domain.PurchaseVO"/>
- 		<typeAlias alias = "FileVO" type = "com.springboot.project.service.domain.FileVO"/>
- 		<typeAlias alias = "CartVO" type = "com.springboot.project.service.domain.CartVO"/>
- 		<typeAlias alias = "TransactionListVO" type = "com.springboot.project.service.domain.TransactionListVO"/>
- 		<typeAlias alias = "TagVO" type = "com.springboot.project.service.domain.TagVO"/>
- 		<typeAlias alias = "ProductTagVO" type = "com.springboot.project.service.domain.ProductTagVO"/>
+ 		<typeAlias alias = "userVO" type = "com.springboot.project.service.domain.user.UserVO"/>
+ 		<typeAlias alias = "searchVO" type = "com.springboot.project.service.domain.product.SearchVO"/>
+ 		<typeAlias alias = "productVO" type = "com.springboot.project.service.domain.product.ProductVO"/>
+ 		<typeAlias alias = "purchaseVO" type = "com.springboot.project.service.domain.purchase.PurchaseVO"/>
+ 		<typeAlias alias = "FileVO" type = "com.springboot.project.service.domain.product.FileVO"/>
+ 		<typeAlias alias = "CartVO" type = "com.springboot.project.service.domain.product.CartVO"/>
+ 		<typeAlias alias = "TransactionListVO" type = "com.springboot.project.service.domain.purchase.TransactionListVO"/>
+ 		<typeAlias alias = "TagVO" type = "com.springboot.project.service.domain.product.TagVO"/>
+ 		<typeAlias alias = "ProductTagVO" type = "com.springboot.project.service.domain.product.ProductTagVO"/>
+ 		<typeAlias alias = "ProductCountByTagVO" type = "com.springboot.project.service.domain.statistics.ProductCountByTagVO"/>
+ 		<typeAlias alias = "ProductCountByTransactionVO" type = "com.springboot.project.service.domain.statistics.ProductCountByTransactionVO"/>
+ 		<typeAlias alias = "TransactionTotalPriceByOrderDateVO" type = "com.springboot.project.service.domain.statistics.TransactionTotalPriceByOrderDateVO"/>
  	</typeAliases>
 	 
 	<!-- SQL mapping -->

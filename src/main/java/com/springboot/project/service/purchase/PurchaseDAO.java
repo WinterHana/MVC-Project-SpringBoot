@@ -3,9 +3,10 @@ package com.springboot.project.service.purchase;
 import java.util.List;
 import java.util.Map;
 
-import com.springboot.project.service.domain.PurchaseVO;
-import com.springboot.project.service.domain.TransactionListVO;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.purchase.PurchaseVO;
+import com.springboot.project.service.domain.purchase.TransactionListVO;
+import com.springboot.project.service.domain.statistics.TransactionTotalPriceByOrderDateVO;
+import com.springboot.project.service.domain.user.UserVO;
 
 public interface PurchaseDAO {
 	public PurchaseVO getPurchase(int tranNo);
@@ -31,4 +32,6 @@ public interface PurchaseDAO {
 	public int addTransactionList(TransactionListVO transactionList);
 	
 	public List<TransactionListVO> getTransactionList(int tranNo);
+
+	public List<TransactionTotalPriceByOrderDateVO> getTransactionTotalPriceByOrderDate();
 }

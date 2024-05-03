@@ -187,6 +187,7 @@ $("button[name='cart']").on('click', function() {
 		
 		alert("찜 등록이 해제되었습니다!");
 		$(this).text("찜하기");
+		$("div[name='productRecommend']").css("display", "none");
 	}
 });
 
@@ -239,6 +240,7 @@ function getProductDataIndex() {
 		success : function(JSONData) {
 			console.log(JSONData);
 			
+			$("div[name='productList']").text("");
 			$("div[name='productRecommend']").css("display", "block");
 			
 			resultList = JSONData;

@@ -26,15 +26,16 @@ import com.mvc.common.util.TranStatusCode;
 import com.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
 import com.springboot.project.controller.product.ProductController;
-import com.springboot.project.service.domain.AddPurchaseDataVO;
 import com.springboot.project.service.domain.Page;
-import com.springboot.project.service.domain.ProductVO;
-import com.springboot.project.service.domain.PurchaseVO;
 import com.springboot.project.service.domain.RestApiCommonVO;
-import com.springboot.project.service.domain.SearchVO;
-import com.springboot.project.service.domain.TransactionListVO;
-import com.springboot.project.service.domain.UpdateTranCodeVO;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.product.ProductVO;
+import com.springboot.project.service.domain.product.SearchVO;
+import com.springboot.project.service.domain.purchase.AddPurchaseDataVO;
+import com.springboot.project.service.domain.purchase.PurchaseVO;
+import com.springboot.project.service.domain.purchase.TransactionListVO;
+import com.springboot.project.service.domain.purchase.UpdateTranCodeVO;
+import com.springboot.project.service.domain.statistics.TransactionTotalPriceByOrderDateVO;
+import com.springboot.project.service.domain.user.UserVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
 import com.springboot.project.service.user.UserService;
@@ -292,5 +293,17 @@ public class PurchaseRestController extends CommonController {
 		System.out.println("[PurchaseController.deletePurchase()] end");
 		
 		return "success";
+	}
+	
+	@PostMapping(value = "/getTransactionTotalPriceByOrderDate")
+	public List<TransactionTotalPriceByOrderDateVO> getTransactionTotalPriceByOrderDate() {
+		System.out.println("[PurchaseController.deletePurchase()] start");
+		
+		List<TransactionTotalPriceByOrderDateVO> resultList = purchaseService.getTransactionTotalPriceByOrderDate();
+		
+		System.out.println("[PurchaseController.deletePurchase()] end");
+		
+		return resultList;
+		
 	}
 }

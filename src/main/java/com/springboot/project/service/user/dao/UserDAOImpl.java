@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.project.service.domain.CartVO;
-import com.springboot.project.service.domain.SearchVO;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.product.CartVO;
+import com.springboot.project.service.domain.product.SearchVO;
+import com.springboot.project.service.domain.user.UserVO;
 import com.springboot.project.service.user.UserDAO;
 
 @Repository("userDAOImpl")

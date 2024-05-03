@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.project.controller.common.CommonController;
 import com.springboot.project.controller.product.ProductController;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.user.UserVO;
 import com.springboot.project.service.user.UserService;
 
 import jakarta.servlet.http.HttpSession;

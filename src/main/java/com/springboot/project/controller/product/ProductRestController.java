@@ -28,14 +28,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mvc.common.util.HistoryUtil;
 import com.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
-import com.springboot.project.service.domain.CartVO;
-import com.springboot.project.service.domain.FileVO;
 import com.springboot.project.service.domain.Page;
-import com.springboot.project.service.domain.ProductVO;
-import com.springboot.project.service.domain.PurchaseVO;
-import com.springboot.project.service.domain.SearchVO;
-import com.springboot.project.service.domain.TagDataVO;
-import com.springboot.project.service.domain.TagVO;
+import com.springboot.project.service.domain.product.CartVO;
+import com.springboot.project.service.domain.product.FileVO;
+import com.springboot.project.service.domain.product.ProductVO;
+import com.springboot.project.service.domain.product.SearchVO;
+import com.springboot.project.service.domain.product.TagDataVO;
+import com.springboot.project.service.domain.product.TagVO;
+import com.springboot.project.service.domain.purchase.PurchaseVO;
+import com.springboot.project.service.domain.statistics.ProductCountByTagVO;
+import com.springboot.project.service.domain.statistics.ProductCountByTransactionVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
 
@@ -242,5 +244,29 @@ public class ProductRestController extends CommonController  {
 		System.out.println("[ProductController.getWeatherRecommendProduct()] end");
 		
 		return resultList;
+	}
+	
+	@PostMapping(value = "/getProductCountByTagName")
+	public List<ProductCountByTagVO> getProductCountByTagName() {
+		System.out.println("[ProductController.getWeatherRecommendProduct()] start");
+		
+		List<ProductCountByTagVO> resultList = productService.getProductCountByTagName();
+		
+		System.out.println("[ProductController.getWeatherRecommendProduct()] end");
+		
+		return resultList;
+		
+	}
+	
+	@PostMapping(value = "/getProductCountByTransaction")
+	public List<ProductCountByTransactionVO> getProductCountByTransaction() {
+		System.out.println("[ProductController.getProductCountByTransaction()] start");
+		
+		List<ProductCountByTransactionVO> resultList = productService.getProductCountByTransaction();
+		
+		System.out.println("[ProductController.getProductCountByTransaction()] end");
+		
+		return resultList;
+		
 	}
 }

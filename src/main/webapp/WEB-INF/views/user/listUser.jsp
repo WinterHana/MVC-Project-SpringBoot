@@ -16,7 +16,7 @@
 
     <div class="container">
     	<br/>
-    	<h1>유저 목록</h1>
+    	<h1 style = "text-align: center">유저 목록</h1>
     	<div class = "row">
     		<div class = "col-sm-3"></div>
     		<div class = "col-sm-3">
@@ -36,7 +36,7 @@
 		   </div>
        </div>
        		<!-- List 출력 -->
-      		<div class = "userList"></div>
+      		<div class="row"  name = "userList"></div>
        </div>
        
 </body>

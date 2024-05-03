@@ -13,13 +13,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mvc.common.util.TranStatusCodeUtil;
-import com.springboot.project.service.domain.AddPurchaseDataVO;
-import com.springboot.project.service.domain.CartVO;
-import com.springboot.project.service.domain.ProductVO;
-import com.springboot.project.service.domain.PurchaseVO;
-import com.springboot.project.service.domain.SearchVO;
-import com.springboot.project.service.domain.TransactionListVO;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.product.CartVO;
+import com.springboot.project.service.domain.product.ProductVO;
+import com.springboot.project.service.domain.product.SearchVO;
+import com.springboot.project.service.domain.purchase.AddPurchaseDataVO;
+import com.springboot.project.service.domain.purchase.PurchaseVO;
+import com.springboot.project.service.domain.purchase.TransactionListVO;
+import com.springboot.project.service.domain.statistics.TransactionTotalPriceByOrderDateVO;
+import com.springboot.project.service.domain.user.UserVO;
 import com.springboot.project.service.product.ProductDAO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseDAO;
@@ -275,5 +276,18 @@ public class PurchaseServiceImpl implements PurchaseService {
 		result += purchaseDAO.addTransactionList(transactionList);
 		
 		return result;
+	}
+
+	@Override
+	public List<TransactionTotalPriceByOrderDateVO> getTransactionTotalPriceByOrderDate() {
+		
+		List<TransactionTotalPriceByOrderDateVO> resultList = purchaseDAO.getTransactionTotalPriceByOrderDate();
+		
+		// 최근 7개의 자료만 가지고 오기
+		if(resultList.size() > 7) {
+			resultList = resultList.subList(resultList.size() - 7, resultList.size());
+		}
+		
+		return resultList;
 	}
 }

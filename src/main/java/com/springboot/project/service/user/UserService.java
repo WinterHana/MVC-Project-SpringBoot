@@ -3,8 +3,8 @@ package com.springboot.project.service.user;
 import java.util.List;
 import java.util.Map;
 
-import com.springboot.project.service.domain.SearchVO;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.product.SearchVO;
+import com.springboot.project.service.domain.user.UserVO;
 
 
 public interface UserService {

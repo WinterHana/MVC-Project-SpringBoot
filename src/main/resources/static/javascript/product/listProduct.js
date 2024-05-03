@@ -54,12 +54,6 @@ function getProductData(
 	searchCondition, searchKeyword, 
 	searchKeywordSub, searchKeywordThird, sortCondition) {
 	
-/*	console.log("searchCondition : " + searchCondition);
-	console.log("searchKeyword : " + searchKeyword);
-	console.log("searchKeywordSub : " + searchKeywordSub);
-	console.log("searchKeywordThird : " + searchKeywordThird);
-	console.log("sortCondition : " + sortCondition);*/
-	
 	let obj = {
 		"searchCondition" : searchCondition,
    		"searchKeyword" : searchKeyword,

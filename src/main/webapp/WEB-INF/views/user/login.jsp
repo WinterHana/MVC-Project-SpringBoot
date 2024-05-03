@@ -17,9 +17,7 @@
 	<br/>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
-				<img src="#" class="img-rounded" width="100%" />
-			</div>
+			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				<br />
 				<div class="jumbotron">
@@ -49,6 +47,7 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-3"></div>
 		</div>
 	</div>
 </body>

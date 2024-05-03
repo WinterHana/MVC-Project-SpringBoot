@@ -23,8 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.springboot.project.controller.common.CommonController;
 import com.springboot.project.controller.product.ProductController;
 import com.springboot.project.service.domain.Page;
-import com.springboot.project.service.domain.SearchVO;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.product.SearchVO;
+import com.springboot.project.service.domain.user.UserVO;
 import com.springboot.project.service.user.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -102,14 +102,14 @@ public class UserRestController extends CommonController {
 		}
 		
 		search.setPageUnit(PAGE_UNIT); 
-		search.setPageSize(5);
+		search.setPageSize(9);
 		Map<String, Object> map = userService.getUserList(search);
 		 
 		Page resultPage	= new Page (
 				search.getPage(), 
 				((Integer)map.get("totalCount")).intValue(), 
 				PAGE_UNIT,
-				5
+				9
 		);
 		
 		Map<String, Object> result = new HashMap<String, Object>();

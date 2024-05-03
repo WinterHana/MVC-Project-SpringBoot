@@ -1,4 +1,4 @@
-package com.springboot.project.service.domain;
+package com.springboot.project.service.domain.purchase;
 
 public class UpdateTranCodeVO {
 	private int tranNo;

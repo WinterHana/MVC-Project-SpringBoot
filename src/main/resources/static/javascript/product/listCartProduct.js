@@ -33,6 +33,12 @@ $(document).ready(function() {
 			count = 0;
 		}
 		
+		if(count < 0) {
+			alert("양수를 입력해주세요!");
+			$(this).val(0);
+			count = 0;
+		}
+		
 		let totalPrice = count * price;
 		
 		if(isNaN(totalPrice)) {

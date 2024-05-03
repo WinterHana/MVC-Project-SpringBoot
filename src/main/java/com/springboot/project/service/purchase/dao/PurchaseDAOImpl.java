@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.project.service.domain.PurchaseVO;
-import com.springboot.project.service.domain.TransactionListVO;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.purchase.PurchaseVO;
+import com.springboot.project.service.domain.purchase.TransactionListVO;
+import com.springboot.project.service.domain.statistics.TransactionTotalPriceByOrderDateVO;
+import com.springboot.project.service.domain.user.UserVO;
 import com.springboot.project.service.purchase.PurchaseDAO;
 
 @Repository("purchaseDAOImpl")
@@ -104,5 +105,11 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 	public List<TransactionListVO> getTransactionList(int tranNo) {
 		System.out.println("[" + getClass().getName() + ".getTransactionList] Call");
 		return sqlSession.selectList("PurchaseMapper.getTransactionList", tranNo);
+	}
+
+	@Override
+	public List<TransactionTotalPriceByOrderDateVO> getTransactionTotalPriceByOrderDate() {
+		System.out.println("[" + getClass().getName() + ".getTransactionTotalPriceByOrderDate] Call");
+		return sqlSession.selectList("PurchaseMapper.getTransactionTotalPriceByOrderDate");
 	}
 }

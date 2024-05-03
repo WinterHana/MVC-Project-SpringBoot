@@ -21,12 +21,10 @@
 
     <div class="container">
     <br/>
-    <h1>사용자 확인</h1>
+    <h1 style = "text-align: center">유저 정보</h1>
         <div class="row">
-            <div class="col-md-5">
-                <img src="#" class="img-rounded" width="100%" />
-            </div>
-            <div class="col-md-7">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
                 <br /><br />
                 <table class="table table-hover">
                     <tr>
@@ -74,6 +72,7 @@
 				
                 <button type="button" name = "back" class="btn btn-success">뒤로가기</button>
             </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
 </body>
