@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mvc.common.util.CommonUtil;
-import com.springboot.project.service.domain.SearchVO;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.product.SearchVO;
+import com.springboot.project.service.domain.user.UserVO;
 import com.springboot.project.service.purchase.PurchaseDAO;
 import com.springboot.project.service.user.UserDAO;
 import com.springboot.project.service.user.UserService;

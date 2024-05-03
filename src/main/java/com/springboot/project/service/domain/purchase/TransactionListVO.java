@@ -1,4 +1,4 @@
-package com.springboot.project.service.domain;
+package com.springboot.project.service.domain.purchase;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

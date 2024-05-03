@@ -2,10 +2,13 @@ package com.springboot.project.service.product.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.ReadOnlyFileSystemException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -19,14 +22,16 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mvc.common.util.CommonUtil;
 import com.mvc.common.util.WeatherCode;
 import com.mvc.common.util.WeatherUtill;
-import com.springboot.project.service.domain.CartVO;
-import com.springboot.project.service.domain.FileVO;
-import com.springboot.project.service.domain.ProductTagVO;
-import com.springboot.project.service.domain.ProductVO;
-import com.springboot.project.service.domain.SearchVO;
-import com.springboot.project.service.domain.TagDataVO;
-import com.springboot.project.service.domain.TagVO;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.product.CartVO;
+import com.springboot.project.service.domain.product.FileVO;
+import com.springboot.project.service.domain.product.ProductTagVO;
+import com.springboot.project.service.domain.product.ProductVO;
+import com.springboot.project.service.domain.product.SearchVO;
+import com.springboot.project.service.domain.product.TagDataVO;
+import com.springboot.project.service.domain.product.TagVO;
+import com.springboot.project.service.domain.statistics.ProductCountByTagVO;
+import com.springboot.project.service.domain.statistics.ProductCountByTransactionVO;
+import com.springboot.project.service.domain.user.UserVO;
 import com.springboot.project.service.product.ProductDAO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseDAO;
@@ -194,15 +199,8 @@ public class ProductServiceImpl implements ProductService {
 	public int updateProduct(ProductVO productVO, List<MultipartFile> multipartFiles) {
 		int result = 0;
 		
-		result += productDAO.updateProduct(productVO);
-		
 		// 1. 제품 정보 업데이트
-//		try {
-//			result += productDAO.updateProduct(productVO);
-//		} catch (Exception e) {
-//			System.out.println(getClass().getName() + ".updateProduct Exception");
-//			e.printStackTrace();
-//		}
+		result += productDAO.updateProduct(productVO);
 		
 		// 2. 제품 이미지 수정 : 기존에 있는 정보 삭제 후 다시 추가하기
 		// 0) 데이터 검증
@@ -239,30 +237,6 @@ public class ProductServiceImpl implements ProductService {
 			} 
 		}
 		
-//		try {
-//			if(multipartFiles != null && multipartFiles.size() > 0 && test) {
-//				// 1) 삭제
-//				result += productDAO.deleteProductImage(productVO.getProdNo());
-//				
-//				// 2) 다시 이미지 추가
-//				for(MultipartFile f : multipartFiles) {
-//					String originalFileName = f.getOriginalFilename();
-//					UUID uuid  = UUID.randomUUID();			// 유일자 식별은 java.util.UUID를 이용한다.
-//					String fileName = uuid + originalFileName;
-//					
-//					f.transferTo(new File(path + fileName));		
-//					
-//					FileVO file = new FileVO();
-//					file.setFileName(fileName);
-//					file.setProdNo(productVO.getProdNo());
-//					productDAO.updateAddProductImage(file);
-//				} 
-//			}
-//		} catch (Exception e) {
-//			System.out.println(getClass().getName() + ".addProductImage Exception");
-//			e.printStackTrace();
-//		}
-		
 		return result;
 	}
 
@@ -271,18 +245,7 @@ public class ProductServiceImpl implements ProductService {
 	public int deleteProduct(ProductVO product) {
 		int result = 0;
 		
-		result += purchaseDAO.deletePurchaseProdNo(product.getProdNo());
-		result += productDAO.deleteProductImage(product.getProdNo());
 		result += productDAO.deleteProduct(product.getProdNo());
-		
-//		try {
-//			result += purchaseDAO.deletePurchaseProdNo(product.getProdNo());
-//			result += productDAO.deleteProductImage(product.getProdNo());
-//			result += productDAO.deleteProduct(product.getProdNo());
-//		} catch (Exception e) {
-//			System.out.println(getClass().getName() + ".deleteProduct Exception");
-//			e.printStackTrace();
-//		}
 		
 		return result;
 	}
@@ -477,11 +440,29 @@ public class ProductServiceImpl implements ProductService {
 			return null;
 		}
 		
-		Collections.shuffle(tagList);
+		List<ProductVO> resultList = null;
+		while(resultList == null || resultList.size() == 0) {
+			Collections.shuffle(tagList);
+			resultList = productDAO.getProductListByTagNo(tagList.get(0));
+			
+			// 같은 제품은 걸러내기
+			ListIterator<ProductVO> iterator = resultList.listIterator();
+			while(iterator.hasNext()) {
+				ProductVO p = iterator.next();
+				if(p.getProdNo() == prodNo) {
+					System.out.println(p);
+					iterator.remove();
+				}
+			}
+		}
+
 		
-		List<ProductVO> resultList = productDAO.getProductListByTagNo(tagList.get(0));
+
+		
 		Collections.shuffle(resultList);
-		resultList = resultList.subList(0, size);
+		if(resultList.size() > size) {
+			resultList = resultList.subList(0, size);
+		}
 		
 		// productImage 관련 데이터를 가져옴
 		List<String> fileName = new ArrayList<String>();
@@ -501,5 +482,15 @@ public class ProductServiceImpl implements ProductService {
 		}
 		
 		return resultList;
+	}
+
+	@Override
+	public List<ProductCountByTagVO> getProductCountByTagName() {
+		return productDAO.getProductCountByTagName();
+	}
+
+	@Override
+	public List<ProductCountByTransactionVO> getProductCountByTransaction() {
+		return productDAO.getProductCountByTransaction();
 	}
 }

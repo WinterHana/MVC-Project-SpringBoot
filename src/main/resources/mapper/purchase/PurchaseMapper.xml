@@ -49,6 +49,11 @@
 		<result property = "count" column = "prod_count"  jdbcType = "NUMERIC"/>
 	</resultMap>
 	
+		<resultMap id = "TransactionTotalPriceByOrderDateMap" type = "TransactionTotalPriceByOrderDateVO">
+		<result property = "orderDate" column = "order_date"  jdbcType = "DATE"/>
+		<result property = "totalPrice" column = "total_price"  jdbcType = "NUMERIC"/>
+	</resultMap>
+	
   	<sql id = "getPurchaseListSelect">
   		 SELECT * FROM transaction 
   			<if test = "userVO.role != 'admin' ">
@@ -157,4 +162,10 @@
 	<select id = "getTransactionList" parameterType = "int"  resultMap = "transactionListMap">
 		SELECT * FROM transaction_list WHERE tran_no = #{tranNo}
 	</select>
+	
+	 <select id = "getTransactionTotalPriceByOrderDate" resultMap = "TransactionTotalPriceByOrderDateMap">
+		SELECT TRUNC(order_date) order_date, SUM(total_price) total_price 
+		FROM transaction GROUP BY TRUNC(order_date) 
+		ORDER BY order_date
+  	</select>
 </mapper>

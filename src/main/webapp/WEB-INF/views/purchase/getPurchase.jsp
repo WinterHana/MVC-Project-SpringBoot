@@ -30,9 +30,10 @@
 
     <div class="container">
     <br/>
-    <h1>구매 내역 확인</h1>
-        <div class="row">
-            <div class="col-md-7">
+    <h1 style = "text-align: center">구매 내역 확인</h1>
+        <div class="row" >
+        	<div class = "col-md-2"></div>
+            <div class="col-md-8">
                 <br /><br />
                 <table class="table table-hover">
 				  <thead>
@@ -106,9 +107,6 @@
 
                 <button type="button" name = "back" class="btn btn-success">뒤로가기</button>
             </div>
-            <div class="col-md-5">
-                <img src="/img/sleep.jpg" class="img-rounded" width="100%" />
-         	</div>
          </div>
 
      </div>

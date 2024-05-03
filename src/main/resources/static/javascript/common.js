@@ -8,7 +8,7 @@ window.imageDefault = function() {
 		    images[i].height = 500;
 		    images[i].onerror = function() {
 		        this.onerror = null;
-		        this.src = "/img/faker.webp";
+		        this.src = "/img/ProductBasic.png";
 		    };
 		}
 	}

@@ -38,6 +38,17 @@
 		<result property = "tagNo" column = "tag_no" jdbcType = "NUMERIC"/>
 	</resultMap>
 	
+	<resultMap id = "productCountByTagMap" type = "ProductCountByTagVO">
+		<result property = "tagName" column = "tag_name" jdbcType = "VARCHAR"/>
+		<result property = "count" column = "count" jdbcType = "NUMERIC"/>
+	</resultMap>
+	
+	<resultMap id = "productCountByTransactionMap" type = "ProductCountByTransactionVO">
+		<result property = "prodName" column = "prod_name" jdbcType = "VARCHAR"/>
+		<result property = "count" column = "count" jdbcType = "NUMERIC"/>
+	</resultMap>
+	
+	
 	<!-- product -->
   	<sql id = "getProductListSelect">
   		 SELECT * FROM product 
@@ -220,6 +231,7 @@
 		)
   	</delete>
   	
+  	<!-- Recommend -->
   	<select id = "getTagFromProduct"  parameterType = "int" resultMap = 'tagMap'>
   		SELECT t.* 
   		FROM product_tag p 
@@ -244,5 +256,21 @@
   		SELECT p.* FROM product p
 		INNER JOIN product_tag pt ON pt.prod_no = p.prod_no
 		WHERE pt.tag_no = #{tag_no:NUMERIC}
+  	</select>
+  	
+  	<!-- Product statistics -->
+  	<select id = "getProductCountByTagName"  resultMap = "productCountByTagMap">
+  		SELECT result.tag_name, COUNT(*) count FROM
+			( SELECT p.prod_name, t.tag_name FROM product p
+			INNER JOIN product_tag pt ON pt.prod_no = p.prod_no
+			INNER JOIN tag t ON t.tag_no = pt.tag_no ) result
+		GROUP BY result.tag_name
+  	</select>
+  	
+  	<select id = "getProductCountByTransaction" resultMap = "productCountByTransactionMap">
+  		SELECT p.prod_name, result.count FROM product p
+		INNER JOIN 
+		( SELECT prod_no, COUNT(*) count FROM transaction_list GROUP BY prod_no ) result
+		ON result.prod_no = p.prod_no
   	</select>
 </mapper>

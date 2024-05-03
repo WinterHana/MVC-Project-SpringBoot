@@ -1,7 +1,10 @@
-package com.springboot.project.service.domain;
+package com.springboot.project.service.domain.purchase;
 
 import java.sql.Date;
 import java.util.List;
+
+import com.springboot.project.service.domain.product.ProductVO;
+import com.springboot.project.service.domain.user.UserVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

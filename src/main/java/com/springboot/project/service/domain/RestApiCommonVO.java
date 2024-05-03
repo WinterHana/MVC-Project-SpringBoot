@@ -1,5 +1,9 @@
 package com.springboot.project.service.domain;
 
+import com.springboot.project.service.domain.product.ProductVO;
+import com.springboot.project.service.domain.purchase.PurchaseVO;
+import com.springboot.project.service.domain.user.UserVO;
+
 public class RestApiCommonVO {
 	private ProductVO product;
 	private UserVO user;

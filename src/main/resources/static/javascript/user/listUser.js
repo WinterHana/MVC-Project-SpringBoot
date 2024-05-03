@@ -81,28 +81,20 @@ function getUserData(searchCondition, searchKeyword) {
 
 // 각 데이터마다 데이터 랜더링
 function renderList(result) {
-	let html = '<div class="row">'
-				+ '<div class = "col-md-3"></div>'
-				+ '<div class="col-md-2 bg-primary p-2 text-dark bg-opacity-25 border border-dark">'
-				+ '<div class="card" style="width: 12rem; height: 12rem;">'
-				+ '<img src="#" class="card-img-top" alt="" width="200" height="150" />'
-				+ '</div></div>'
-				+ '<div class="col-md-4 bg-primary p-2 text-dark bg-opacity-25 border border-dark">'
-				+ '<div class="card-body">'
+	let html =  '<div class="col-sm-4 bg-primary p-2 text-dark bg-opacity-25 border border-dark">'
 				+ '<br />'
-				+ '<h5 class="card-title">아이디 : ' + result.userId + '</h5>'
-				+ '<h5 class="card-text">이름 : ' + result.userName + '</h5>'
-				+ '<h5 class="card-text">마일리지 : ' + result.mileage + '</h5>'
-				+ '<br /><br />'
+				+ '<h5 class="card-title" style = "text-align: center">아이디 : ' + result.userId + '</h5>'
+				+ '<h5 class="card-text" style = "text-align: center">이름 : ' + result.userName + '</h5>'
+				+ '<h5 class="card-text" style = "text-align: center">마일리지 : ' + result.mileage + '</h5>'
+				+ '<br />'
 				+ '<form action = "/user/getUser/' +  result.userId +'" method = "post">'
-				+ '<button class="btn btn-danger">상세 보기</button>'
+				+ '<div style = "text-align: center"><button class="btn btn-danger">상세 보기</button></div>'
 				+ '</form>'
-				+ '</div></div></div><br/>'
-				
+				+ '</div>'
 	// Debug
 	// console.log(html);
 	
-	$("div.userList").append(html);
+	$("div[name='userList']").append(html);
 	
 	imageDefault();
 }

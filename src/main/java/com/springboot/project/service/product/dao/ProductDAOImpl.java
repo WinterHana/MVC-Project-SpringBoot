@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.project.service.domain.CartVO;
-import com.springboot.project.service.domain.FileVO;
-import com.springboot.project.service.domain.ProductTagVO;
-import com.springboot.project.service.domain.ProductVO;
-import com.springboot.project.service.domain.SearchVO;
-import com.springboot.project.service.domain.TagVO;
+import com.springboot.project.service.domain.product.CartVO;
+import com.springboot.project.service.domain.product.FileVO;
+import com.springboot.project.service.domain.product.ProductTagVO;
+import com.springboot.project.service.domain.product.ProductVO;
+import com.springboot.project.service.domain.product.SearchVO;
+import com.springboot.project.service.domain.product.TagVO;
+import com.springboot.project.service.domain.statistics.ProductCountByTagVO;
+import com.springboot.project.service.domain.statistics.ProductCountByTransactionVO;
 import com.springboot.project.service.product.ProductDAO;
 
 @Repository("productDAOImpl")
@@ -191,5 +193,17 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<ProductVO> getProductListByTagNo(int tagNo) {
 		System.out.println("[" + getClass().getName() + ".getProductListByTagNo] Call");
 		return sqlSession.selectList("ProductMapper.getProductListByTagNo", tagNo);
+	}
+
+	@Override
+	public List<ProductCountByTagVO> getProductCountByTagName() {
+		System.out.println("[" + getClass().getName() + ".getProductCountByTagName] Call");
+		return sqlSession.selectList("ProductMapper.getProductCountByTagName");
+	}
+
+	@Override
+	public List<ProductCountByTransactionVO> getProductCountByTransaction() {
+		System.out.println("[" + getClass().getName() + ".getProductCountByTransaction] Call");
+		return sqlSession.selectList("ProductMapper.getProductCountByTransaction");
 	}
 }

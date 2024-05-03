@@ -27,11 +27,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mvc.common.util.HistoryUtil;
 import com.mvc.common.util.TranStatusCodeUtil;
 import com.springboot.project.controller.common.CommonController;
-import com.springboot.project.service.domain.CartVO;
-import com.springboot.project.service.domain.FileVO;
-import com.springboot.project.service.domain.ProductVO;
-import com.springboot.project.service.domain.PurchaseVO;
-import com.springboot.project.service.domain.UserVO;
+import com.springboot.project.service.domain.product.CartVO;
+import com.springboot.project.service.domain.product.FileVO;
+import com.springboot.project.service.domain.product.ProductVO;
+import com.springboot.project.service.domain.purchase.PurchaseVO;
+import com.springboot.project.service.domain.user.UserVO;
 import com.springboot.project.service.product.ProductService;
 import com.springboot.project.service.purchase.PurchaseService;
 import com.springboot.project.service.user.UserService;
@@ -170,5 +170,15 @@ public class ProductController extends CommonController  {
 		System.out.println("[ProductController.getCartList()] end");
 		
 		return "/product/listCartProduct";
+	}
+	
+	// Navigation
+	@GetMapping(value = "/getProductStatistics")
+	public String getProductStatistics(){
+		System.out.println("[ProductController.getProductStatistics()] start");
+		
+		System.out.println("[ProductController.getProductStatistics()] end");
+		
+		return "/product/productStatistics";
 	}
 }

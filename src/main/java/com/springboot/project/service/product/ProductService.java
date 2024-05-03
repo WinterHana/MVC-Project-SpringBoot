@@ -5,12 +5,14 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.springboot.project.service.domain.CartVO;
-import com.springboot.project.service.domain.FileVO;
-import com.springboot.project.service.domain.ProductVO;
-import com.springboot.project.service.domain.SearchVO;
-import com.springboot.project.service.domain.TagDataVO;
-import com.springboot.project.service.domain.TagVO;
+import com.springboot.project.service.domain.product.CartVO;
+import com.springboot.project.service.domain.product.FileVO;
+import com.springboot.project.service.domain.product.ProductVO;
+import com.springboot.project.service.domain.product.SearchVO;
+import com.springboot.project.service.domain.product.TagDataVO;
+import com.springboot.project.service.domain.product.TagVO;
+import com.springboot.project.service.domain.statistics.ProductCountByTagVO;
+import com.springboot.project.service.domain.statistics.ProductCountByTransactionVO;
 
 public interface ProductService {
 	// Product
@@ -50,4 +52,10 @@ public interface ProductService {
 	public Map<String, Object> getWeatherRecommendProduct(int size);
 	
 	public List<ProductVO> getCartRecommendProduct(int prodNo, int size);
+	
+	// Product statistics
+	public List<ProductCountByTagVO> getProductCountByTagName();
+	
+	public List<ProductCountByTransactionVO> getProductCountByTransaction();
+	
 }

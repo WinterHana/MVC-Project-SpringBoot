@@ -1,4 +1,4 @@
-package com.springboot.project.service.domain;
+package com.springboot.project.service.domain.product;
 
 import java.util.ArrayList;
 import java.util.List;

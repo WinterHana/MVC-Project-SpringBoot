@@ -1,6 +1,5 @@
-package com.springboot.project.service.domain;
+package com.springboot.project.service.domain.product;
 
-import java.sql.Date;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -14,7 +13,8 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddPurchaseDataVO {
-	private PurchaseVO purchase;
-	private List<TransactionListVO> transactionLists;
+public class TagDataVO {
+	private int prodNo;
+	private int tagNo;
+	private String tagName;
 }
