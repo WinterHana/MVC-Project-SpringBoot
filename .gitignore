@@ -31,3 +31,5 @@ build/
 logs/*
 ### VS Code ###
 .vscode/
+
+application-key.properties

@@ -19,16 +19,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class WeatherUtill {
 	
-	@Value("${weather.URL}")
+	@Value("${weather.url}")
 	private String URL; 
 	
-	@Value("${weather.serviceKey}")
+	@Value("${weather.servicekey}")
 	private String SERVICE_KEY;
 	
-	@Value("${weather.pageNo}")
+	@Value("${weather.pageno}")
 	private String PAGE_NO;
 	
-	@Value("${weather.numOfRows}")
+	@Value("${weather.numofrows}")
 	private String NUM_OF_ROWS;
 	
 	@Value("${weather.nx}")
@@ -57,6 +57,13 @@ public class WeatherUtill {
 			today = yesterday.format(todayFormatter);
 		}
 		
+		System.out.println(URL);
+		System.out.println(SERVICE_KEY);
+		System.out.println(PAGE_NO);
+		System.out.println(NUM_OF_ROWS);
+		System.out.println(NX);
+		System.out.println(NY);
+		
 		// Debugging
 		System.out.println("today : " + today);
 		
@@ -65,23 +72,14 @@ public class WeatherUtill {
 		StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst");
 
 		try {
-//		    urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=" + SERVICE_KEY);
-//		    urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(PAGE_NO, "UTF-8")); 
-//		    urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode(NUM_OF_ROWS, "UTF-8")); 
-//		    urlBuilder.append("&" + URLEncoder.encode("dataType","UTF-8") + "=" + URLEncoder.encode("JSON", "UTF-8")); 
-//		    urlBuilder.append("&" + URLEncoder.encode("base_date","UTF-8") + "=" + URLEncoder.encode(today, "UTF-8"));
-//		    urlBuilder.append("&" + URLEncoder.encode("base_time","UTF-8") + "=" + URLEncoder.encode("0800", "UTF-8")); 
-//		    urlBuilder.append("&" + URLEncoder.encode("nx","UTF-8") + "=" + URLEncoder.encode(NX, "UTF-8")); 
-//		    urlBuilder.append("&" + URLEncoder.encode("ny","UTF-8") + "=" + URLEncoder.encode(NY, "UTF-8"));
-
-	        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=f6Z8eHTrMw4Z%2BW9dB6rvzXP4JYV2mTOfcrHxAldnD0wWfyYTA5NqORX102vcS9S3nUbLRkI%2F0%2BgzcPxfl0O0OQ%3D%3D"); /*Service Key*/
-	        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("7", "UTF-8"));
-	        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); 
-	        urlBuilder.append("&" + URLEncoder.encode("dataType","UTF-8") + "=" + URLEncoder.encode("JSON", "UTF-8"));
-	        urlBuilder.append("&" + URLEncoder.encode("base_date","UTF-8") + "=" + URLEncoder.encode(today, "UTF-8")); 
-	        urlBuilder.append("&" + URLEncoder.encode("base_time","UTF-8") + "=" + URLEncoder.encode("0800", "UTF-8")); 
-	        urlBuilder.append("&" + URLEncoder.encode("nx","UTF-8") + "=" + URLEncoder.encode("89", "UTF-8")); 
-	        urlBuilder.append("&" + URLEncoder.encode("ny","UTF-8") + "=" + URLEncoder.encode("90", "UTF-8")); 
+		    urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=" + SERVICE_KEY);
+		    urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(PAGE_NO, "UTF-8")); 
+		    urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode(NUM_OF_ROWS, "UTF-8")); 
+		    urlBuilder.append("&" + URLEncoder.encode("dataType","UTF-8") + "=" + URLEncoder.encode("JSON", "UTF-8")); 
+		    urlBuilder.append("&" + URLEncoder.encode("base_date","UTF-8") + "=" + URLEncoder.encode(today, "UTF-8"));
+		    urlBuilder.append("&" + URLEncoder.encode("base_time","UTF-8") + "=" + URLEncoder.encode("0800", "UTF-8")); 
+		    urlBuilder.append("&" + URLEncoder.encode("nx","UTF-8") + "=" + URLEncoder.encode(NX, "UTF-8")); 
+		    urlBuilder.append("&" + URLEncoder.encode("ny","UTF-8") + "=" + URLEncoder.encode(NY, "UTF-8"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
