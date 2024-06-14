@@ -259,7 +259,7 @@
   	</select>
   	
   	<!-- Product statistics -->
-  	<select id = "getProductCountByTagName"  resultMap = "productCountByTagMap">
+  	<select id = "getProductCountByTagNamei"  resultMap = "productCountByTagMap">
   		SELECT result.tag_name, COUNT(*) count FROM
 			( SELECT p.prod_name, t.tag_name FROM product p
 			INNER JOIN product_tag pt ON pt.prod_no = p.prod_no

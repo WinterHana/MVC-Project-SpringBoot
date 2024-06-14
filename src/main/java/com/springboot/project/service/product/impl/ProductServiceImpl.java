@@ -41,6 +41,10 @@ import com.springboot.project.service.purchase.PurchaseDAO;
 public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
+	@Qualifier("weatherUtil")
+	private WeatherUtill weatherUtil;
+	
+	@Autowired
 	@Qualifier("productDAOImpl")
 	private ProductDAO productDAO;
 	
@@ -390,7 +394,7 @@ public class ProductServiceImpl implements ProductService {
 		WeatherCode todayWeather = WeatherCode.DEFAULT;
 		
 		try {
-			todayWeather = new WeatherUtill().getTodayWeather();
+			todayWeather = weatherUtil.getTodayWeather();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
